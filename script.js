@@ -362,3 +362,78 @@ window.addEventListener('scroll', () => {
   const scrolled = (window.pageYOffset / windowHeight) * 100;
   scrollProgress.style.width = scrolled + '%';
 });
+
+// Projects Carousel - Swipe Indicator
+document.addEventListener('DOMContentLoaded', function() {
+  const projectsContainer = document.querySelector('.projects-container');
+  const swipeIndicator = document.querySelector('.swipe-indicator');
+  
+  if (projectsContainer && swipeIndicator) {
+    let hasScrolled = false;
+    let scrollTimeout;
+    
+    // Only show on mobile
+    function isMobile() {
+      return window.innerWidth <= 768;
+    }
+    
+    // Hide indicator after user scrolls
+    function hideIndicator() {
+      if (!hasScrolled && isMobile()) {
+        hasScrolled = true;
+        projectsContainer.classList.add('scrolled');
+        
+        // Remove indicator after animation
+        setTimeout(() => {
+          if (swipeIndicator) {
+            swipeIndicator.style.display = 'none';
+          }
+        }, 500);
+      }
+    }
+    
+    // Show/hide based on screen size
+    function checkScreenSize() {
+      if (isMobile()) {
+        if (!hasScrolled) {
+          swipeIndicator.style.display = 'flex';
+        }
+      } else {
+        swipeIndicator.style.display = 'none';
+      }
+    }
+    
+    // Initial check
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    // Detect scroll on projects container
+    projectsContainer.addEventListener('scroll', () => {
+      if (projectsContainer.scrollLeft > 10) {
+        hideIndicator();
+      }
+    }, { passive: true });
+    
+    // Detect touch/swipe
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    projectsContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    projectsContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (Math.abs(touchEndX - touchStartX) > 30) {
+        hideIndicator();
+      }
+    }, { passive: true });
+    
+    // Hide indicator after 8 seconds if user doesn't interact
+    setTimeout(() => {
+      if (!hasScrolled && isMobile()) {
+        swipeIndicator.style.opacity = '0.6';
+      }
+    }, 8000);
+  }
+});
