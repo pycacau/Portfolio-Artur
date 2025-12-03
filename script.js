@@ -1,213 +1,354 @@
-// Configuração do efeito Matrix (chuva de caracteres)
+// Matrix Rain Effect
 document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('matrixRain');
-    const ctx = canvas.getContext('2d');
-
-    // Configurações do efeito Matrix
-    const matrixChars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const fontSize = 14;
-    let columns = Math.floor(window.innerWidth / fontSize);
-
-    // Array para armazenar a posição Y de cada coluna
-    const drops = [];
-    function initDrops() {
-        columns = Math.floor(canvas.width / fontSize) || 1;
-        drops.length = 0;
-        for (let i = 0; i < columns; i++) {
-            drops[i] = Math.floor(Math.random() * -100); // Posição inicial aleatória
-        }
+  const matrixCanvas = document.getElementById('matrixCanvas');
+  if (!matrixCanvas) return;
+  
+  const matrixCtx = matrixCanvas.getContext('2d');
+  
+  // Matrix characters
+  const matrixChars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const fontSize = 14;
+  let matrixColumns = 0;
+  const matrixDrops = [];
+  
+  function initMatrix() {
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
+    matrixColumns = Math.floor(matrixCanvas.width / fontSize);
+    
+    matrixDrops.length = 0;
+    for (let i = 0; i < matrixColumns; i++) {
+      matrixDrops[i] = Math.random() * -100;
     }
-
-    // Configuração do estilo do texto
-    ctx.font = `${fontSize}px 'Courier New'`;
-
-    function drawMatrix() {
-        // Fundo semi-transparente para criar rastro
-        ctx.fillStyle = 'rgba(0, 8, 20, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Desenha os caracteres caindo
-        for (let i = 0; i < columns; i++) {
-            // Seleciona um caractere aleatório
-            const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
-
-            // Cor do texto (com variação de brilho)
-            const brightness = Math.floor(Math.random() * 50) + 30; // 30-80% de brilho
-            ctx.fillStyle = `hsl(191, 100%, ${brightness}%)`;
-
-            // Desenha o caractere
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-            // Reinicia a coluna quando chegar ao final e com certa probabilidade
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-            drops[i]++; // Move para baixo
-        }
-    }
-
-    // Ajustar canvas quando a janela for redimensionada
-    function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        ctx.font = `${fontSize}px 'Courier New'`;
-        initDrops();
-    }
-
-    // Inicializar o canvas
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Iniciar animação
-    const matrixInterval = setInterval(drawMatrix, 50);
-
-    // Efeito de glitch ocasional
-    const glitchEffect = document.getElementById('glitchEffect');
-    setInterval(() => {
-        if (Math.random() > 0.95) {
-            glitchEffect.style.display = 'block';
-            setTimeout(() => {
-                glitchEffect.style.display = 'none';
-            }, 100);
-        }
-    }, 5000);
-
-    // Efeito de digitação para o título
-    function typeEffect(element, text, speed) {
-        let i = 0;
-        element.innerHTML = '';
-
-        function type() {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            } else {
-                element.innerHTML += '<span style="animation: blink 1s step-end infinite;">_</span>';
-            }
-        }
-        type();
-    }
-
-    // Aplicar efeito de digitação ao título
-    const title = document.querySelector('h1');
-    if (title) {
-        const originalTitle = title.textContent.trim();
-        typeEffect(title, originalTitle, 80);
-    }
-
-    // Centralizar verticalmente o conteúdo (se necessário)
-    function centerContent() {
-        const headerHeight = document.querySelector('header') ? document.querySelector('header').offsetHeight : 0;
-        const projectsHeight = document.getElementById('projetos') ? document.getElementById('projetos').offsetHeight : 0;
-        const footerHeight = document.querySelector('footer') ? document.querySelector('footer').offsetHeight : 0;
-        const totalHeight = headerHeight + projectsHeight + footerHeight;
-        const windowHeight = window.innerHeight;
-
-        const container = document.querySelector('.main-container');
-        if (container) {
-            if (totalHeight < windowHeight) {
-                container.style.marginTop = ((windowHeight - totalHeight) / 4) + 'px';
-            } else {
-                container.style.marginTop = '';
-            }
-        }
-    }
-
-    centerContent();
-    window.addEventListener('resize', centerContent);
-
-
-    /* ================== CARROSSEL: scroll vertical -> horizontal, drag to scroll ================== */
-    const carousel = document.querySelector('.carousel');
-
-    if (carousel) {
-        // Convert vertical wheel to horizontal scroll when pointer is over carousel
-        carousel.addEventListener('wheel', function(e) {
-            // Only act on vertical delta
-            if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-            e.preventDefault();
-            // Multiply for comfortable speed
-            const speed = 1.2;
-            carousel.scrollLeft += e.deltaY * speed;
-        }, { passive: false });
-
-        // Mouse drag to scroll (desktop)
-        let isDown = false;
-        let startX;
-        let scrollLeftStart;
-
-        carousel.addEventListener('mousedown', (e) => {
-            isDown = true;
-            carousel.classList.add('dragging');
-            startX = e.pageX - carousel.getBoundingClientRect().left;
-            scrollLeftStart = carousel.scrollLeft;
-        });
-
-        window.addEventListener('mouseup', () => {
-            if (isDown) {
-                isDown = false;
-                carousel.classList.remove('dragging');
-            }
-        });
-
-        carousel.addEventListener('mouseleave', () => {
-            if (isDown) {
-                isDown = false;
-                carousel.classList.remove('dragging');
-            }
-        });
-
-        carousel.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - carousel.getBoundingClientRect().left;
-            const walk = (x - startX) * 1.6; // scroll speed multiplier
-            carousel.scrollLeft = scrollLeftStart - walk;
-        });
-
-        // Keyboard navigation while focused (accessibility)
-        carousel.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                carousel.scrollBy({ left: 340, behavior: 'smooth' });
-            } else if (e.key === 'ArrowLeft') {
-                carousel.scrollBy({ left: -340, behavior: 'smooth' });
-            }
-            const carousel = document.querySelector('.carousel');
-
-if (carousel) {
-  // Destacar o card mais central visível
-  function updateActiveCard() {
-    const cards = carousel.querySelectorAll('.card');
-    let closest = null;
-    let closestDistance = Infinity;
-    const carouselCenter = carousel.scrollLeft + (carousel.offsetWidth / 2);
-
-    cards.forEach(card => {
-      const cardCenter = card.offsetLeft + (card.offsetWidth / 2);
-      const dist = Math.abs(cardCenter - carouselCenter);
-      if (dist < closestDistance) {
-        closestDistance = dist;
-        closest = card;
-      }
-    });
-
-    cards.forEach(c => c.classList.remove('active'));
-    if (closest) closest.classList.add('active');
   }
+  
+  function drawMatrix() {
+    // Semi-transparent black for trail effect
+    matrixCtx.fillStyle = 'rgba(15, 23, 42, 0.05)';
+    matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+    
+    // Set font
+    matrixCtx.font = `${fontSize}px 'Courier New', monospace`;
+    
+    // Draw characters
+    for (let i = 0; i < matrixColumns; i++) {
+      const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
+      const x = i * fontSize;
+      const y = matrixDrops[i] * fontSize;
+      
+      // Gradient effect - brighter at top, dimmer at bottom
+      const brightness = Math.max(20, 100 - (matrixDrops[i] * 0.5));
+      const opacity = Math.min(1, brightness / 100);
+      
+      // Use blue/cyan colors
+      const hue = 191 + Math.random() * 20; // Blue-cyan range
+      matrixCtx.fillStyle = `hsla(${hue}, 100%, ${brightness}%, ${opacity})`;
+      
+      matrixCtx.fillText(text, x, y);
+      
+      // Reset drop when it reaches bottom
+      if (y > matrixCanvas.height && Math.random() > 0.975) {
+        matrixDrops[i] = 0;
+      }
+      
+      matrixDrops[i]++;
+    }
+  }
+  
+  // Initialize and animate matrix
+  initMatrix();
+  window.addEventListener('resize', initMatrix);
+  setInterval(drawMatrix, 35);
+});
 
-  carousel.addEventListener('scroll', () => {
-    window.requestAnimationFrame(updateActiveCard);
+// Navigation scroll effect
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (currentScroll > 100) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+  
+  lastScroll = currentScroll;
+});
+
+// Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('active');
+  document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+});
+
+// Close menu when clicking on a link
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    document.body.style.overflow = '';
   });
+});
 
-  updateActiveCard();
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offsetTop = target.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Typing effect for hero subtitle
+const typingText = document.getElementById('typingText');
+const texts = [
+  'Desenvolvedor Full-Stack',
+  'Técnico em TI',
+  'Especialista em Cybersecurity',
+  'Criador de Soluções'
+];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100;
+
+function typeEffect() {
+  const currentText = texts[textIndex];
+  
+  if (isDeleting) {
+    typingText.textContent = currentText.substring(0, charIndex - 1);
+    charIndex--;
+    typingSpeed = 50;
+            } else {
+    typingText.textContent = currentText.substring(0, charIndex + 1);
+    charIndex++;
+    typingSpeed = 100;
+  }
+  
+  if (!isDeleting && charIndex === currentText.length) {
+    typingSpeed = 2000;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    textIndex = (textIndex + 1) % texts.length;
+    typingSpeed = 500;
+  }
+  
+  setTimeout(typeEffect, typingSpeed);
 }
 
-        });
+// Start typing effect when page loads
+if (typingText) {
+  setTimeout(typeEffect, 1000);
+}
 
-        // Improve touch inertia (optional): no extra code required, browser handles it
+// Intersection Observer for fade-in animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
     }
+  });
+}, observerOptions);
 
-    /* ====================== end carousel code ====================== */
+// Observe all sections and cards
+document.addEventListener('DOMContentLoaded', () => {
+  const sections = document.querySelectorAll('section');
+  const cards = document.querySelectorAll('.project-card, .contact-item, .skill-category');
+  
+  sections.forEach(section => {
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(30px)';
+    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(section);
+  });
+  
+  cards.forEach((card, index) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    observer.observe(card);
+  });
+});
 
-}); // DOMContentLoaded end
+// Active navigation link highlight
+const sections = document.querySelectorAll('section[id]');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.pageYOffset;
+  
+  sections.forEach(section => {
+    const sectionHeight = section.offsetHeight;
+    const sectionTop = section.offsetTop - 100;
+    const sectionId = section.getAttribute('id');
+    const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+    
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      if (navLink) {
+        navLink.classList.add('active');
+      }
+    }
+  });
+});
+
+// Add active class styling
+const style = document.createElement('style');
+style.textContent = `
+  .nav-link.active {
+    color: var(--text-primary);
+  }
+  .nav-link.active::after {
+    width: 100%;
+  }
+`;
+document.head.appendChild(style);
+
+// Parallax effect for hero background
+window.addEventListener('scroll', () => {
+  const scrolled = window.pageYOffset;
+  const heroBackground = document.querySelector('.hero-background');
+  if (heroBackground) {
+    heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+  }
+});
+
+// Project cards hover effect enhancement
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-10px) scale(1.02)';
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0) scale(1)';
+  });
+});
+
+// Social links animation
+const socialLinks = document.querySelectorAll('.social-link, .social-card');
+socialLinks.forEach((link, index) => {
+  link.style.animationDelay = `${index * 0.1}s`;
+});
+
+// Form validation (if contact form is added in future)
+function validateEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(email);
+}
+
+// Performance optimization: Lazy load images
+if ('IntersectionObserver' in window) {
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+  
+  document.querySelectorAll('img[data-src]').forEach(img => {
+    imageObserver.observe(img);
+  });
+}
+
+// Add loading animation
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
+// Console message
+console.log('%c👋 Olá! Bem-vindo ao meu portfólio!', 'color: #6366f1; font-size: 20px; font-weight: bold;');
+console.log('%cDesenvolvido por Artur Maciel Cacau', 'color: #8b5cf6; font-size: 14px;');
+console.log('%cGitHub: https://github.com/pycacau', 'color: #94a3b8; font-size: 12px;');
+
+// Add smooth reveal animation on scroll
+const revealElements = document.querySelectorAll('.section-header, .section-description');
+revealElements.forEach((el, index) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
+  
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  revealObserver.observe(el);
+});
+
+// Add cursor trail effect (optional, can be disabled for performance)
+let cursorTrail = [];
+const maxTrailLength = 10;
+
+document.addEventListener('mousemove', (e) => {
+  if (window.innerWidth > 768) { // Only on desktop
+    cursorTrail.push({ x: e.clientX, y: e.clientY, time: Date.now() });
+    
+    if (cursorTrail.length > maxTrailLength) {
+      cursorTrail.shift();
+    }
+    
+    // Remove old trail points
+    cursorTrail = cursorTrail.filter(point => Date.now() - point.time < 500);
+  }
+});
+
+// Add scroll progress indicator
+const scrollProgress = document.createElement('div');
+scrollProgress.style.cssText = `
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6, #ec4899);
+  z-index: 9999;
+  transform-origin: left;
+  width: 0%;
+  transition: width 0.1s ease;
+`;
+document.body.appendChild(scrollProgress);
+
+window.addEventListener('scroll', () => {
+  const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (window.pageYOffset / windowHeight) * 100;
+  scrollProgress.style.width = scrolled + '%';
+});

@@ -1,116 +1,440 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio Artur Maciel</title>
+  <meta name="description" content="Portfólio profissional de Artur Maciel Cacau - Desenvolvedor Full-Stack | Técnico em TI | Cybersecurity">
+  <meta name="keywords" content="desenvolvedor, full-stack, programador, cybersecurity, portfolio, Artur Maciel Cacau">
+  <title>Artur Maciel Cacau | Desenvolvedor Full-Stack</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="grid-lines"></div>
-  <canvas id="matrixRain"></canvas>
-  <div class="scanlines"></div>
-  <div class="glitch-effect" id="glitchEffect"></div>
+  <!-- Animated Background -->
+  <canvas id="matrixCanvas"></canvas>
+  <div class="animated-bg">
+    <div class="gradient-orb orb-1"></div>
+    <div class="gradient-orb orb-2"></div>
+    <div class="gradient-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-content">
+        <a href="#inicio" class="logo-link">
+          <span class="logo-name">Artur Maciel</span>
+        </a>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#inicio" class="nav-link">Início</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#projetos" class="nav-link">Projetos</a></li>
+          <li><a href="#contato" class="nav-link">Contato</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-  <main class="main-container">
-    <header>
-      <div class="container">
-        <div class="header-content">
-          <div class="avatar-container">
-            <img src="avatar.jpg" alt="Foto de Artur Cacau" class="avatar">
+  <!-- Hero Section -->
+  <section id="inicio" class="hero">
+    <div class="hero-background"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-image">
+          <div class="avatar-wrapper">
+            <img src="avatar.jpg" alt="Artur Maciel Cacau" class="avatar">
+            <div class="avatar-glow"></div>
           </div>
-          <div class="title-container">
-            <h1>__Artur Maciel Cacau</h1>
-            <p class="description">Full-Stack Developer | IT Technician | Cybersecurity</p>
+        </div>
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="greeting">Olá, eu sou</span>
+            <span class="name">Artur Maciel Cacau</span>
+          </h1>
+          <p class="hero-subtitle">
+            <span class="typing-text" id="typingText"></span>
+            <span class="cursor">|</span>
+          </p>
+          <p class="hero-description">
+            Desenvolvedor Full-Stack apaixonado por criar soluções inovadoras e eficientes. 
+            Especializado em desenvolvimento web moderno e segurança cibernética.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projetos" class="btn btn-primary">
+              <span>Ver Projetos</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#contato" class="btn btn-secondary">
+              <span>Entre em Contato</span>
+              <i class="fas fa-envelope"></i>
+            </a>
           </div>
-          <div class="buttons">
-            <a href="https://www.instagram.com/arturmaciell_/" target="_blank" class="btn"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="#projetos" class="btn"><i class="fas fa-code"></i> Ver Projetos</a>
-            <a href="https://github.com/pycacau" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/artur-maciel-cacau" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.instagram.com/arturmaciell_/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/5588996828755" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+    <div class="scroll-indicator">
+      <a href="#sobre" class="scroll-down">
+        <span>Scroll</span>
+        <i class="fas fa-chevron-down"></i>
+      </a>
+    </div>
+  </section>
 
-    <section id="projetos">
-      <div class="container">
-        <div class="section-title">
-          <h2>Meus Projetos</h2>
-        </div>
-
-        <div class="carousel">
-          <div class="cards">
-            <!-- MVP React -->
-            <div class="card">
-              <h3>MVP React</h3>
-              <p>Interface moderna com React, styled-components e Framer Motion. Design responsivo e animações fluidas.</p>
-              <div class="tech">
-                <span>React</span><span>Styled Components</span><span>Framer Motion</span><span>JavaScript</span>
-              </div>
-              <div class="card-actions">
-                <a href="https://pycacau.github.io/MVP-React/" class="card-link">Ver Demo <i class="fas fa-external-link-alt"></i></a>
-                <a href="https://github.com/pycacau/MVP-React" class="card-link">Código <i class="fab fa-github"></i></a>
+  <!-- About Section -->
+  <section id="sobre" class="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">01.</span>
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="title-line"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="about-intro">
+            Sou um <strong>Desenvolvedor Full-Stack</strong> com experiência em desenvolvimento web moderno, 
+            segurança cibernética e soluções tecnológicas inovadoras.
+          </p>
+          <p>
+            Com formação técnica em TI e especialização em Cybersecurity, trabalho com tecnologias 
+            modernas para criar aplicações web robustas, escaláveis e seguras. Tenho experiência 
+            tanto no desenvolvimento frontend quanto backend, sempre buscando as melhores práticas 
+            e padrões de código.
+          </p>
+          <p>
+            Minha paixão por tecnologia me levou a explorar diversas áreas, desde desenvolvimento 
+            web até segurança da informação, sempre mantendo-me atualizado com as últimas tendências 
+            e ferramentas do mercado.
+          </p>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3>Frontend</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">Styled Components</span>
+                <span class="skill-tag">Framer Motion</span>
               </div>
             </div>
-
-            <!-- Car Website -->
-            <div class="card">
-              <h3>Car Website</h3>
-              <p>Site moderno de veículos com design elegante e interface interativa, com foco em usabilidade.</p>
-              <div class="tech">
-                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive</span>
-              </div>
-              <div class="card-actions">
-                <a href="https://pycacau.github.io/Car-Website/" class="card-link">Ver Demo <i class="fas fa-external-link-alt"></i></a>
-                <a href="https://github.com/pycacau/Car-Website" class="card-link">Código <i class="fab fa-github"></i></a>
+            <div class="skill-category">
+              <h3>Backend & Outros</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Bash</span>
+                <span class="skill-tag">Git</span>
               </div>
             </div>
-
-            <!-- Pentest -->
-            <div class="card">
-              <h3>Pentest Project</h3>
-              <p>Projeto de testes de penetração e segurança cibernética. Demonstra técnicas de ethical hacking.</p>
-              <div class="tech">
-                <span>Cybersecurity</span><span>Penetration Testing</span><span>Kali Linux</span><span>Ethical Hacking</span>
-              </div>
-              <div class="card-actions">
-                <a href="https://github.com/pycacau/pentest-project" class="card-link">Documentação <i class="fas fa-file-alt"></i></a>
-                <a href="https://github.com/pycacau/pentest-project" class="card-link">Código <i class="fab fa-github"></i></a>
-              </div>
-            </div>
-
-            <!-- Toolkit -->
-            <div class="card">
-              <h3>Cybersecurity Toolkit</h3>
-              <p>Conjunto de ferramentas e scripts para análise de redes e testes de segurança.</p>
-              <div class="tech">
-                <span>Python</span><span>Bash</span><span>Network</span><span>Security</span>
-              </div>
-              <div class="card-actions">
-                <a href="https://github.com/pycacau/toolkit-cyberseguranca" class="card-link">Documentação <i class="fas fa-file-alt"></i></a>
-                <a href="https://github.com/pycacau/toolkit-cyberseguranca" class="card-link">Código <i class="fab fa-github"></i></a>
+            <div class="skill-category">
+              <h3>Cybersecurity</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Penetration Testing</span>
+                <span class="skill-tag">Ethical Hacking</span>
+                <span class="skill-tag">Kali Linux</span>
+                <span class="skill-tag">Network Security</span>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <div class="container">
-        <div class="social-icons">
-          <a href="https://github.com/pycacau" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/arturmaciell_/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-          <a href="mailto:turcacau@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a>
+  <!-- Projects Section -->
+  <section id="projetos" class="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">02.</span>
+        <h2 class="section-title">Projetos</h2>
+        <div class="title-line"></div>
+      </div>
+      <p class="section-description">
+        Alguns dos meus projetos desenvolvidos. Cada um representa um desafio único e uma oportunidade 
+        de aplicar e expandir meus conhecimentos técnicos.
+      </p>
+      <div class="projects-grid">
+        <!-- Roney Advogado -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fas fa-gavel"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://www.roney.adv.br" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Website">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Roney Advogado</h3>
+          <p class="project-description">
+            Site institucional profissional desenvolvido para escritório de advocacia. Design moderno 
+            e elegante com foco em credibilidade e confiança. Interface responsiva e otimizada para 
+            conversão de clientes.
+          </p>
+          <div class="project-tech">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>Responsive</span>
+          </div>
         </div>
-        <p>GitHub: <a href="https://github.com/pycacau" target="_blank">pycacau</a></p>
-        <p>Email: <a href="mailto:turcacau@gmail.com">turcacau@gmail.com</a></p>
-        <p class="copyright">© 2025 Artur Maciel Cacau. Todos os direitos reservados.</p>
+
+        <!-- Codexa Dev -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://www.codexa.dev.br" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Website">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Codexa Dev</h3>
+          <p class="project-description">
+            Plataforma moderna para agência de desenvolvimento. Site corporativo com design 
+            contemporâneo, destacando serviços e portfólio. Desenvolvido com tecnologias modernas 
+            e foco em performance e SEO.
+          </p>
+          <div class="project-tech">
+            <span>React</span>
+            <span>Next.js</span>
+            <span>TypeScript</span>
+            <span>Modern Stack</span>
+          </div>
+        </div>
+
+        <!-- MVP React -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fab fa-react"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/pycacau/MVP-React" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://pycacau.github.io/MVP-React/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Demo">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">MVP React</h3>
+          <p class="project-description">
+            Interface moderna desenvolvida com React, utilizando styled-components para estilização 
+            e Framer Motion para animações fluidas. Design totalmente responsivo com foco em 
+            experiência do usuário.
+          </p>
+          <div class="project-tech">
+            <span>React</span>
+            <span>Styled Components</span>
+            <span>Framer Motion</span>
+            <span>JavaScript</span>
+          </div>
+        </div>
+
+        <!-- Car Website -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fas fa-car"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/pycacau/Car-Website" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://pycacau.github.io/Car-Website/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Demo">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Car Website</h3>
+          <p class="project-description">
+            Site moderno para exibição de veículos com design elegante e interface interativa. 
+            Desenvolvido com foco em usabilidade e experiência visual, utilizando HTML5, CSS3 
+            e JavaScript puro.
+          </p>
+          <div class="project-tech">
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>JavaScript</span>
+            <span>Responsive Design</span>
+          </div>
+        </div>
+
+        <!-- Cybersecurity Toolkit -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fas fa-toolbox"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/pycacau/toolkit-cyberseguranca" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Cybersecurity Toolkit</h3>
+          <p class="project-description">
+            Conjunto de ferramentas e scripts desenvolvidos em Python e Bash para análise de 
+            redes e testes de segurança. Facilita a execução de tarefas comuns em auditorias 
+            de segurança.
+          </p>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>Bash</span>
+            <span>Network Analysis</span>
+            <span>Security Tools</span>
+          </div>
+        </div>
+
+        <!-- Pentest Project -->
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/pycacau/pentest-project" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+          <h3 class="project-title">Pentest Project</h3>
+          <p class="project-description">
+            Projeto de testes de penetração e segurança cibernética. Demonstra técnicas de 
+            ethical hacking e análise de vulnerabilidades, com documentação detalhada dos 
+            processos e metodologias utilizadas.
+          </p>
+          <div class="project-tech">
+            <span>Cybersecurity</span>
+            <span>Penetration Testing</span>
+            <span>Kali Linux</span>
+            <span>Ethical Hacking</span>
+          </div>
+        </div>
       </div>
-    </footer>
-  </main>
+      <div class="projects-footer">
+        <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+          <span>Ver Mais no GitHub</span>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contato" class="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">03.</span>
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="title-line"></div>
+      </div>
+      <p class="section-description">
+        Estou sempre aberto a novas oportunidades e projetos interessantes. 
+        Vamos conversar sobre como posso ajudar você!
+      </p>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Email</h3>
+              <a href="mailto:turcacau@gmail.com">turcacau@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="contact-details">
+              <h3>WhatsApp</h3>
+              <a href="https://wa.me/5588996828755" target="_blank" rel="noopener noreferrer">(88) 99682-8755</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </div>
+            <div class="contact-details">
+              <h3>LinkedIn</h3>
+              <a href="https://www.linkedin.com/in/artur-maciel-cacau" target="_blank" rel="noopener noreferrer">Artur Maciel Cacau</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <i class="fab fa-github"></i>
+            </div>
+            <div class="contact-details">
+              <h3>GitHub</h3>
+              <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer">@pycacau</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-social">
+          <h3>Siga-me nas redes sociais</h3>
+          <div class="social-grid">
+            <a href="https://www.linkedin.com/in/artur-maciel-cacau" target="_blank" rel="noopener noreferrer" class="social-card">
+              <i class="fab fa-linkedin-in"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer" class="social-card">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.instagram.com/arturmaciell_/" target="_blank" rel="noopener noreferrer" class="social-card">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://wa.me/5588996828755" target="_blank" rel="noopener noreferrer" class="social-card">
+              <i class="fab fa-whatsapp"></i>
+              <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <p>&copy; 2025 Artur Maciel Cacau. Todos os direitos reservados.</p>
+        <p class="footer-built">
+          Desenvolvido com <i class="fas fa-heart"></i> por Artur Maciel Cacau
+        </p>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
