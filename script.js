@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const matrixCtx = matrixCanvas.getContext('2d');
   
   // Matrix characters
-  const matrixChars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const fontSize = 14;
+    const matrixChars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const fontSize = 14;
   let matrixColumns = 0;
   const matrixDrops = [];
   
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Draw characters
     for (let i = 0; i < matrixColumns; i++) {
-      const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
+            const text = matrixChars.charAt(Math.floor(Math.random() * matrixChars.length));
       const x = i * fontSize;
       const y = matrixDrops[i] * fontSize;
       
@@ -81,27 +81,37 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
 const navLinks = document.querySelectorAll('.nav-link');
+const menuOverlay = document.getElementById('menuOverlay');
 
-hamburger.addEventListener('click', () => {
+function toggleMenu() {
+  const isActive = navMenu.classList.contains('active');
   hamburger.classList.toggle('active');
   navMenu.classList.toggle('active');
-  document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-});
+  menuOverlay.classList.toggle('active');
+  document.body.style.overflow = isActive ? '' : 'hidden';
+}
+
+hamburger.addEventListener('click', toggleMenu);
+
+// Close menu when clicking overlay
+menuOverlay.addEventListener('click', toggleMenu);
 
 // Close menu when clicking on a link
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
     document.body.style.overflow = '';
   });
 });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+// Close menu on escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMenu.classList.contains('active')) {
     hamburger.classList.remove('active');
     navMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
     document.body.style.overflow = '';
   }
 });
