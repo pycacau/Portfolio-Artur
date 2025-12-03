@@ -135,9 +135,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const typingText = document.getElementById('typingText');
 const texts = [
   'Desenvolvedor Full-Stack',
-  'Técnico em TI',
-  'Especialista em Cybersecurity',
-  'Criador de Soluções'
+  'Técnico em Informática',
+  'Fundador da Codexa',
+  'Especialista em Cybersecurity'
 ];
 let textIndex = 0;
 let charIndex = 0;

@@ -65,7 +65,7 @@ O portfólio utiliza uma paleta moderna com gradientes:
 ## 🔗 Links e Redes Sociais
 
 - **GitHub**: [@pycacau](https://github.com/pycacau)
-- **LinkedIn**: [Artur Maciel Cacau](https://www.linkedin.com/in/artur-maciel-cacau)
+- **LinkedIn**: [Artur Maciel Cacau](https://www.linkedin.com/in/arturcacau)
 - **Instagram**: [@arturmaciell_](https://www.instagram.com/arturmaciell_/)
 - **WhatsApp**: [(88) 99682-8755](https://wa.me/5588996828755)
 - **Email**: turcacau@gmail.com
@@ -104,7 +104,7 @@ O portfólio é totalmente responsivo e se adapta a:
 
 - 📧 Email: turcacau@gmail.com
 - 📱 WhatsApp: (88) 99682-8755
-- 💼 LinkedIn: [Artur Maciel Cacau](https://www.linkedin.com/in/artur-maciel-cacau)
+- 💼 LinkedIn: [Artur Maciel Cacau](https://www.linkedin.com/in/arturcacau)
 - 🐙 GitHub: [@pycacau](https://github.com/pycacau)
 - 📷 Instagram: [@arturmaciell_](https://www.instagram.com/arturmaciell_/)
 
