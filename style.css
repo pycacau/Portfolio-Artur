@@ -737,8 +737,10 @@
     gap: 12px;
     padding: 20px;
     width: 50%;
-    border: 4px solid #fff;
-    border-radius: 20px;
+    background-color: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
   }
   
   .contact .container .content .contact-form .input {
@@ -753,13 +755,20 @@
     width: 49%;
     padding: 12px;
     background: transparent;
-    border: 3px solid #fff;
+    border: 2px solid #fff;
     border-radius: 8px;
     color: #fff;
+    font-size: 1rem;
+    transition: all 0.2s linear;
+  }
+
+  .contact .container .content .contact-form .input input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
   }
   
   .contact .container .content .contact-form .input input:focus {
     outline: none;
+    background-color: rgba(255, 255, 255, 0.05);
   }
   
   .contact .container .content .contact-form textarea {
@@ -767,13 +776,21 @@
     padding: 12px;
     height: 300px;
     background: transparent;
-    border: 3px solid #fff;
+    border: 2px solid #fff;
     border-radius: 8px;
     color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.2s linear;
+  }
+
+  .contact .container .content .contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
   }
   
   .contact .container .content .contact-form textarea:focus {
     outline: none;
+    background-color: rgba(255, 255, 255, 0.05);
   }
 
   .contact .container .content .contact-form .action {
@@ -793,6 +810,11 @@
     background: transparent;
     color: #fff;
     font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     transition: background 0.3s linear, color 0.3s linear, transform 0.2s ease,
       box-shadow 0.2s ease, border-color 0.2s ease;
   }
@@ -805,6 +827,10 @@
     box-shadow:
       0 10px 30px rgba(0, 0, 0, 0.9),
       0 0 18px rgba(255, 255, 255, 0.4);
+  }
+
+  .contact .container .content .contact-form .action button i {
+    font-size: 1.1rem;
   }
   
   footer {
@@ -1092,9 +1118,7 @@
     }
 
     .hero .container .content svg text {
-      font-size: 100px;
-      font-weight: 900;
-      letter-spacing: 0.05em;
+      font-size: 80px;
     }
 
     .hero .container .content h1 {
@@ -1171,31 +1195,29 @@
 
     .contact .container .content .contact-form {
       width: 100%;
-      padding: 16px;
-      border-width: 3px;
+      padding: 20px;
     }
 
     .contact .container .content .contact-form .input {
-      gap: 10px;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .contact .container .content .contact-form .input input {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       font-size: 0.9rem;
-      border-width: 2px;
     }
 
     .contact .container .content .contact-form textarea {
       height: 200px;
-      padding: 10px;
+      padding: 12px;
       font-size: 0.9rem;
-      border-width: 2px;
     }
 
     .contact .container .content .contact-form .action {
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     .contact .container .content .contact-form .action button {
@@ -1248,82 +1270,21 @@
       width: 35%;
     }
   
-    footer {
-      border-top-width: 1px;
-    }
-
     footer .container {
-      padding: 2rem 1.5rem;
-      gap: 2rem;
-      flex-direction: column;
+      padding: 1rem 2rem;
     }
-
     footer .container .profile {
-      width: 100%;
-      text-align: center;
-      align-items: center;
-      gap: 12px;
+      width: 50%;
     }
-
-    footer .container .profile .logo {
-      justify-content: center;
-    }
-
-    footer .container .profile .logo img {
-      width: 45px;
-      height: 45px;
-    }
-
-    footer .container .profile .logo a {
-      font-size: 22px;
-      font-weight: 700;
-    }
-
-    footer .container .profile p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    footer .container .profile .social-media-container {
-      justify-content: center;
-      gap: 10px;
-    }
-
-    footer .container .profile .social-media-container .social-media {
-      width: 40px;
-      height: 40px;
-    }
-
     footer .container .link-container {
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
       width: 100%;
-      gap: 2rem;
-      justify-content: space-between;
     }
   
-    footer .container .link-container .information,
-    footer .container .link-container .resource,
-    footer .container .link-container .navigation {
-      width: calc(50% - 1rem);
-      min-width: 140px;
-    }
-
-    footer .container .link-container .information h1,
-    footer .container .link-container .resource h1,
-    footer .container .link-container .navigation h1 {
-      font-size: 1.2rem;
-      height: auto;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
     footer .container .link-container .information ul li::after,
     footer .container .link-container .resource ul li::after,
     footer .container .link-container .navigation ul li::after {
       width: 100%;
-      border-bottom-width: 2px;
     }
   }
   
@@ -1339,9 +1300,7 @@
     }
 
     .hero .container .content svg text {
-      font-size: 90px;
-      font-weight: 900;
-      letter-spacing: 0.05em;
+      font-size: 70px;
     }
 
     .hero .container .content h1 {
@@ -1460,9 +1419,7 @@
     }
 
     .hero .container .content svg text {
-      font-size: 75px;
-      font-weight: 900;
-      letter-spacing: 0.05em;
+      font-size: 60px;
     }
 
     .hero .container .content h1 {
@@ -1553,24 +1510,28 @@
     }
 
     .contact .container .content .contact-form {
-      padding: 12px;
+      padding: 20px;
       border-width: 2px;
     }
 
     .contact .container .content .contact-form .input input {
-      padding: 8px;
-      font-size: 0.85rem;
+      padding: 10px 12px;
+      font-size: 0.9rem;
     }
 
     .contact .container .content .contact-form textarea {
-      height: 180px;
-      padding: 8px;
-      font-size: 0.85rem;
+      height: 160px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
     }
 
     .contact .container .content .contact-form .action button {
-      padding: 10px;
-      font-size: 0.85rem;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+    }
+
+    .contact .container .content .contact-form .action button i {
+      font-size: 1rem;
     }
 
 
@@ -1582,100 +1543,50 @@
       font-size: 28px;
     }
   
-    footer {
-      border-top-width: 1px;
-    }
-
     footer .container {
-      padding: 2rem 1rem;
-      gap: 2rem;
-      flex-direction: column;
+      padding: 1rem;
+      gap: 1.5rem;
     }
 
     footer .container .profile {
       width: 100%;
-      text-align: center;
-      align-items: center;
-      gap: 12px;
-    }
-
-    footer .container .profile .logo {
-      justify-content: center;
     }
 
     footer .container .profile .logo img {
-      width: 45px;
-      height: 45px;
-    }
-
-    footer .container .profile .logo a {
-      font-size: 22px;
-      font-weight: 700;
-    }
-
-    footer .container .profile p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      text-align: center;
-      max-width: 100%;
-    }
-
-    footer .container .profile .social-media-container {
-      justify-content: center;
-      gap: 10px;
-    }
-
-    footer .container .profile .social-media-container .social-media {
       width: 40px;
       height: 40px;
     }
 
+    footer .container .profile .logo a {
+      font-size: 20px;
+    }
+
+    footer .container .profile p {
+      font-size: 0.85rem;
+    }
+
     footer .container .link-container {
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
       width: 100%;
-      gap: 2rem;
-      justify-content: space-between;
+      gap: 1.5rem;
     }
   
     footer .container .link-container .information,
     footer .container .link-container .resource,
     footer .container .link-container .navigation {
-      width: calc(50% - 1rem);
-      min-width: 140px;
+      width: 100%;
     }
 
     footer .container .link-container .information h1,
     footer .container .link-container .resource h1,
     footer .container .link-container .navigation h1 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       height: auto;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    footer .container .link-container .information ul,
-    footer .container .link-container .resource ul,
-    footer .container .link-container .navigation ul {
-      gap: 10px;
     }
 
     footer .container .link-container .information ul li a,
     footer .container .link-container .resource ul li a,
     footer .container .link-container .navigation ul li a {
-      font-size: 0.9rem;
-      transition: color 0.2s ease;
-    }
-
-    footer .container .link-container .information ul li a:hover,
-    footer .container .link-container .resource ul li a:hover,
-    footer .container .link-container .navigation ul li a:hover {
-      color: rgba(255, 255, 255, 0.8);
-    }
-
-    footer .container .link-container .information ul li::after,
-    footer .container .link-container .resource ul li::after,
-    footer .container .link-container .navigation ul li::after {
-      border-bottom-width: 2px;
+      font-size: 0.85rem;
     }
   }

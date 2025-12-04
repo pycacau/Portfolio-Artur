@@ -331,7 +331,9 @@
                 <h1>FR Advocacia Especializada</h1>
                 <p>
                   Site institucional profissional para escritório de advocacia,
-                  com foco em credibilidade e conversão de clientes
+                  com foco em credibilidade, conversão de clientes e
+                  responsividade.
+                </p>
                 <div class="action">
                   <button
                     onclick="window.open('https://www.roney.adv.br','_blank')"
@@ -348,8 +350,8 @@
               <div class="description">
                 <h1>Codexa Dev</h1>
                 <p>
-                  Site corporativo da agência Codexa, com gradientes modernos e
-                  formulário interativo de orçamento.
+                  Site corporativo da agência Codexa, com gradientes modernos,
+                  formulário interativo de orçamento e foco em conversão.
                 </p>
                 <div class="action">
                   <button
@@ -433,7 +435,8 @@
               <div class="description">
                 <h1>Grilli Restaurant</h1>
                 <p>
-                  Site moderno de restaurante elegante com foco em
+                  Site moderno de restaurante totalmente responsivo, construído
+                  com HTML, CSS e JavaScript. Design elegante com foco em
                   apresentar cardápio, ambiente e experiência gastronômica.
                 </p>
                 <div class="action">
@@ -463,25 +466,30 @@
             data-aos="zoom-in-down"
             data-aos-delay="300"
             class="contact-form"
+            id="contactForm"
           >
             <div class="input">
-              <input type="text" placeholder="Nome..." />
-              <input type="email" placeholder="Email..." />
-              <input type="number" placeholder="Telefone..." />
-              <input type="text" placeholder="Assunto..." />
+              <input type="text" id="contactName" placeholder="Nome..." required />
+              <input type="email" id="contactEmail" placeholder="Email..." required />
+              <input type="tel" id="contactPhone" placeholder="Telefone..." required />
+              <input type="text" id="contactSubject" placeholder="Assunto..." required />
             </div>
-            <textarea name="message" placeholder="Mensagem..."></textarea>
+            <textarea name="message" id="contactMessage" placeholder="Mensagem..." required></textarea>
             <div class="action">
               <button
                 type="button"
-                onclick="window.open('https://wa.me/5588996828755','_blank')"
+                id="whatsappBtn"
+                class="whatsapp-button"
               >
+                <i class="fab fa-whatsapp"></i>
                 Enviar pelo WhatsApp
               </button>
               <button
                 type="button"
-                onclick="window.location.href='mailto:turcacau@gmail.com'"
+                id="emailBtn"
+                class="email-button"
               >
+                <i class="fas fa-envelope"></i>
                 Enviar por Email
               </button>
             </div>
