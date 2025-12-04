@@ -1,470 +1,594 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfólio profissional de Artur Maciel Cacau - Desenvolvedor Full-Stack | Técnico em TI | Cybersecurity">
-  <meta name="keywords" content="desenvolvedor, full-stack, programador, cybersecurity, portfolio, Artur Maciel Cacau">
-  <title>Artur Maciel Cacau | Desenvolvedor Full-Stack</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <!-- Animated Background -->
-  <canvas id="matrixCanvas"></canvas>
-  <div class="animated-bg">
-    <div class="gradient-orb orb-1"></div>
-    <div class="gradient-orb orb-2"></div>
-    <div class="gradient-orb orb-3"></div>
-  </div>
-  <div class="grid-overlay"></div>
-  
-  <!-- Menu Overlay -->
-  <div class="menu-overlay" id="menuOverlay"></div>
-  
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="container">
-      <div class="nav-content">
-        <a href="#inicio" class="logo-link">
-          <span class="logo-name"> < Artur > </span>
-        </a>
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="#inicio" class="nav-link">Início</a></li>
-          <li><a href="#sobre" class="nav-link">Sobre</a></li>
-          <li><a href="#projetos" class="nav-link">Projetos</a></li>
-          <li><a href="#contato" class="nav-link">Contato</a></li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfólio profissional de Artur Maciel Cacau - Desenvolvedor Full-Stack | Técnico em TI | Cybersecurity"
+    />
+    <meta
+      name="keywords"
+      content="desenvolvedor, full-stack, programador, cybersecurity, portfolio, Artur Maciel Cacau"
+    />
+    <!-- Icon -->
+    <link rel="icon" href="favicon.png" />
+    <!-- Devicon para ícones de tecnologias -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+    <!-- Font Awesome para ícones -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Artur Maciel Cacau | Desenvolvedor Full-Stack</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="#hero">Artur</a>
+      </div>
+
+      <nav>
+        <a href="#hero">Início</a>
+        <a href="#about">Sobre</a>
+        <a href="#skill">Tecnologias</a>
+        <a href="#project">Projetos</a>
+        <a href="#contact">Contato</a>
+      </nav>
+
+      <div class="extra-nav">
+        <button onclick="window.location.href='#contact'">
+          Entre em Contato
+        </button>
+      </div>
+
+      <div id="menu" class="hamburger-menu">
+        <svg
+          width="35px"
+          height="35px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 18L20 18"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M4 12L20 12"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M4 6L20 6"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div id="nav-mobile" class="mobile-nav">
+        <div id="close-mobile" class="close">
+          <svg
+            width="800px"
+            height="800px"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: #ffffff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 2px;
+                }
+              </style>
+            </defs>
+
+            <title />
+
+            <g id="cross">
+              <line class="cls-1" x1="7" x2="25" y1="7" y2="25" />
+
+              <line class="cls-1" x1="7" x2="25" y1="25" y2="7" />
+            </g>
+          </svg>
+        </div>
+        <ul>
+          <li><a class="nav-link" href="#hero">Início</a></li>
+          <li><a class="nav-link" href="#about">Sobre</a></li>
+          <li><a class="nav-link" href="#skill">Tecnologias</a></li>
+          <li><a class="nav-link" href="#project">Projetos</a></li>
+          <li><a class="nav-link" href="#contact">Contato</a></li>
         </ul>
-        <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
       </div>
-    </div>
-  </nav>
+    </header>
 
-  <!-- Hero Section -->
-  <section id="inicio" class="hero">
-    <div class="hero-background"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-image">
-          <div class="avatar-wrapper">
-            <img src="avatar.jpg" alt="Artur Maciel Cacau" class="avatar">
-            <div class="avatar-glow"></div>
-          </div>
-        </div>
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="greeting">Olá, eu sou</span>
-            <span class="name">Artur Maciel Cacau</span>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="content">
+          <svg viewBox="0 0 1500 500" data-aos="fade-down">
+            <text x="50%" y="50%" text-anchor="middle">ARTUR</text>
+          </svg>
+          <h1 data-aos="zoom-in-up">
+            Desenvolvendo
+            <span>soluções digitais modernas, rápidas e seguras</span> para
+            alavancar negócios.
           </h1>
-          <p class="hero-subtitle">
-            <span class="typing-text" id="typingText"></span>
-            <span class="cursor">|</span>
-          </p>
-          <p class="hero-description">
-            Desenvolvedor Full-Stack e Técnico em Informática. Fundador da <strong><a href="https://www.codexa.dev.br" target="_blank" rel="noopener noreferrer" style="color: var(--primary-light); text-decoration: none;">Codexa</a></strong>, 
-            criando sistemas modernos, rápidos e seguros com foco em escalabilidade e boa arquitetura.
-          </p>
-          <div class="hero-buttons">
-            <a href="#projetos" class="btn btn-primary">
-              <span>Ver Projetos</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#contato" class="btn btn-secondary">
-              <span>Entre em Contato</span>
-              <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-          <div class="social-links">
-            <a href="https://www.linkedin.com/in/arturcacau" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.instagram.com/arturmaciell_/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://wa.me/5588996828755" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
-              <i class="fab fa-whatsapp"></i>
-            </a>
+          <button
+            data-aos="zoom-out"
+            onclick="window.location.href='#project'"
+          >
+            <span>Meus projetos</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="content">
+          <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title">
+            Sobre Mim
+          </h1>
+          <div class="about-me">
+            <div
+              data-aos="zoom-out-right"
+              data-aos-delay="300"
+              class="profile"
+            >
+              <div class="image-box">
+                <img src="avatar.jpg" alt="Artur Maciel Cacau" />
+              </div>
+            </div>
+
+            <div
+              data-aos="zoom-in-left"
+              data-aos-delay="300"
+              class="description"
+            >
+              <div class="name-role">
+                <h1>Artur Maciel Cacau</h1>
+                <div class="role">
+                  <h2>Desenvolvedor Full-Stack</h2>
+                </div>
+              </div>
+              <p>
+                Sou <strong>Desenvolvedor Full-Stack</strong> e
+                <strong>Técnico em Informática</strong>, apaixonado por criar
+                sistemas modernos, performáticos e seguros. Fundador da
+                <strong>Codexa</strong>, ajudo empresas a transformar ideias em
+                soluções digitais que geram resultados reais.
+              </p>
+              <p>
+                Trabalho com foco em <strong>boa arquitetura</strong>,
+                <strong>escalabilidade</strong> e
+                <strong>segurança da informação</strong>, unindo boas práticas
+                de desenvolvimento com uma visão estratégica de negócio.
+              </p>
+              <p>
+                Estou constantemente me aperfeiçoando em
+                <strong>Segurança da Informação & Pentest</strong>,
+                <strong>Desenvolvimento Full-Stack</strong> e
+                <strong>automação com scripts inteligentes</strong>, sempre
+                buscando entregar soluções de alta qualidade.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="scroll-indicator">
-        <a href="#sobre" class="scroll-down">
-          <span>Scroll</span>
-          <i class="fas fa-chevron-down"></i>
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- About Section -->
-  <section id="sobre" class="about">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-number">01.</span>
-        <h2 class="section-title">Sobre Mim</h2>
-        <div class="title-line"></div>
+    <!-- Skill Section (com ícones de linguagens) -->
+    <section id="skill" class="skill">
+      <div class="container">
+        <div class="content">
+          <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title">
+            Tecnologias
+          </h1>
+          <div class="skills" data-aos-delay="500">
+            <!-- Linguagens -->
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-python-plain colored"></i>
+              <span>Python</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-javascript-plain colored"></i>
+              <span>JavaScript</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-typescript-plain colored"></i>
+              <span>TypeScript</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-php-plain colored"></i>
+              <span>PHP</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-cplusplus-plain colored"></i>
+              <span>C++</span>
+            </div>
+
+            <!-- Front-end -->
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-react-original colored"></i>
+              <span>React</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-nextjs-original colored"></i>
+              <span>Next.js</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-html5-plain colored"></i>
+              <span>HTML5</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-css3-plain colored"></i>
+              <span>CSS3</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-tailwindcss-original colored"></i>
+              <span>Tailwind CSS</span>
+            </div>
+
+            <!-- Back-end & APIs -->
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-nodejs-plain colored"></i>
+              <span>Node.js</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-express-original colored"></i>
+              <span>Express</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-fastapi-plain colored"></i>
+              <span>FastAPI</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-laravel-plain colored"></i>
+              <span>Laravel</span>
+            </div>
+
+            <!-- Bancos de dados -->
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-mysql-plain colored"></i>
+              <span>MySQL</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-postgresql-plain colored"></i>
+              <span>PostgreSQL</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-mongodb-plain colored"></i>
+              <span>MongoDB</span>
+            </div>
+
+            <!-- Ferramentas & DevOps -->
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-git-plain colored"></i>
+              <span>Git</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-linux-plain colored"></i>
+              <span>Linux</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-ubuntu-plain colored"></i>
+              <span>Ubuntu</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-bash-plain colored"></i>
+              <span>Bash</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-postman-plain colored"></i>
+              <span>Postman</span>
+            </div>
+            <div data-aos="zoom-in-down" class="skill-box">
+              <i class="devicon-vscode-plain colored"></i>
+              <span>VSCode</span>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="about-content">
-        <div class="about-text">
-          <p class="about-intro">
-            Sou <strong>Artur Maciel</strong>, desenvolvedor Full-Stack e Técnico em Informática. 
-            Trabalho criando <strong>sistemas modernos, rápidos e seguros</strong>, sempre com foco 
-            em escalabilidade e boa arquitetura.
-          </p>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="project" class="project">
+      <div class="container">
+        <div class="content">
+          <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title">
+            Projetos
+          </h1>
+
+          <div class="projects">
+            <div data-aos="zoom-in-down" data-aos-delay="300" class="card">
+              <img src="fr.png" alt="FR Advocacia Especializada" />
+
+              <div class="description">
+                <h1>FR Advocacia Especializada</h1>
+                <p>
+                  Site institucional profissional para escritório de advocacia,
+                  com foco em credibilidade, conversão de clientes e
+                  responsividade.
+                </p>
+                <div class="action">
+                  <button
+                    onclick="window.open('https://www.roney.adv.br','_blank')"
+                  >
+                    Demo
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in-down" data-aos-delay="400" class="card">
+              <img src="codexa.png" alt="Codexa Dev" />
+
+              <div class="description">
+                <h1>Codexa Dev</h1>
+                <p>
+                  Site corporativo da agência Codexa, com gradientes modernos,
+                  formulário interativo de orçamento e foco em conversão.
+                </p>
+                <div class="action">
+                  <button
+                    onclick="window.open('https://www.codexa.dev.br','_blank')"
+                  >
+                    Demo
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in-down" data-aos-delay="500" class="card">
+              <img src="cars.png" alt="Car Website" />
+
+              <div class="description">
+                <h1>Car Website</h1>
+                <p>
+                  Website moderno para apresentação de veículos, com interface
+                  interativa e foco em experiência visual.
+                </p>
+                <div class="action">
+                  <button
+                    onclick="window.open('https://modelscars.pages.dev','_blank')"
+                  >
+                    Demo
+                  </button>
+                  <button
+                    onclick="window.open('https://github.com/pycacau/Car-Website','_blank')"
+                  >
+                    GitHub
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in-down" data-aos-delay="300" class="card">
+              <div class="project-icon-container">
+                <i class="fas fa-terminal"></i>
+              </div>
+
+              <div class="description">
+                <h1>Cybersecurity Toolkit</h1>
+                <p>
+                  Conjunto de ferramentas e scripts em Python e Bash para
+                  análise de redes e testes de segurança.
+                </p>
+                <div class="action">
+                  <button
+                    onclick="window.open('https://github.com/pycacau/toolkit-cyberseguranca','_blank')"
+                  >
+                    GitHub
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in-down" data-aos-delay="400" class="card">
+              <div class="project-icon-container">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+
+              <div class="description">
+                <h1>Pentest Project</h1>
+                <p>
+                  Projeto focado em técnicas de ethical hacking e análise de
+                  vulnerabilidades, com documentação de processos.
+                </p>
+                <div class="action">
+                  <button
+                    onclick="window.open('https://github.com/pycacau/pentest-project','_blank')"
+                  >
+                    GitHub
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div data-aos="zoom-in-down" data-aos-delay="500" class="card">
+              <img src="grilli-restaurant.png" alt="Grilli Restaurant" />
+
+              <div class="description">
+                <h1>Grilli Restaurant</h1>
+                <p>
+                  Site moderno de restaurante totalmente responsivo, construído
+                  com HTML, CSS e JavaScript. Design elegante com foco em
+                  apresentar cardápio, ambiente e experiência gastronômica.
+                </p>
+                <div class="action">
+                  <button
+                    onclick="window.open('https://github.com/pycacau/grilli-restaurant','_blank')"
+                  >
+                    GitHub
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="content">
+          <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title">
+            Entre em Contato
+          </h1>
+
+          <form
+            data-aos="zoom-in-down"
+            data-aos-delay="300"
+            class="contact-form"
+          >
+            <div class="input">
+              <input type="text" placeholder="Nome..." />
+              <input type="email" placeholder="Email..." />
+              <input type="number" placeholder="Telefone..." />
+              <input type="text" placeholder="Assunto..." />
+            </div>
+            <textarea name="message" placeholder="Mensagem..."></textarea>
+            <div class="action">
+              <button
+                type="button"
+                onclick="window.open('https://wa.me/5588996828755','_blank')"
+              >
+                Enviar pelo WhatsApp
+              </button>
+              <button
+                type="button"
+                onclick="window.location.href='mailto:turcacau@gmail.com'"
+              >
+                Enviar por Email
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div data-aos="fade-up" data-aos-duration="1000" class="container">
+        <div class="profile">
+          <div class="logo">
+            <img src="favicon.png" alt="logo" />
+            <a href="#hero">Artur</a>
+          </div>
+
           <p>
-            Sou fundador da <strong>Codexa</strong>, empresa especializada em desenvolvimento de sites, 
-            sistemas privados e soluções digitais corporativas. Através da Codexa, transformo ideias 
-            em soluções tecnológicas que impulsionam negócios e otimizam processos.
+            Desenvolvedor Full-Stack, Técnico em TI e entusiasta de
+            Cybersecurity. Criando soluções que unem performance, segurança e
+            boa experiência de uso.
           </p>
-          <p>
-            Atualmente estou me aperfeiçoando em <strong>Segurança da Informação & Pentest</strong>, 
-            <strong>Desenvolvimento Full-Stack</strong> e <strong>Automação e scripts inteligentes</strong>. 
-            Minha paixão por tecnologia me leva a explorar constantemente novas ferramentas e metodologias, 
-            sempre buscando as melhores práticas para entregar soluções de alta qualidade.
-          </p>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h3>Linguagens</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">TypeScript</span>
-                <span class="skill-tag">PHP</span>
-                <span class="skill-tag">C++</span>
-              </div>
+
+          <div class="social-media-container">
+            <div class="social-media">
+              <box-icon color="#fff" type="logo" name="linkedin-square"></box-icon>
             </div>
-            <div class="skill-category">
-              <h3>Frameworks & Libraries</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">React</span>
-                <span class="skill-tag">Next.js</span>
-                <span class="skill-tag">Express</span>
-                <span class="skill-tag">FastAPI</span>
-                <span class="skill-tag">Laravel</span>
-              </div>
+            <div class="social-media">
+              <box-icon color="#fff" name="github" type="logo"></box-icon>
             </div>
-            <div class="skill-category">
-              <h3>Back-end & Bancos</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Node.js</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">PostgreSQL</span>
-                <span class="skill-tag">MongoDB</span>
-              </div>
+            <div class="social-media">
+              <box-icon color="#fff" name="instagram" type="logo"></box-icon>
             </div>
-            <div class="skill-category">
-              <h3>Front-end</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">Tailwind</span>
-                <span class="skill-tag">Vite</span>
-              </div>
+            <div class="social-media">
+              <box-icon color="#fff" type="logo" name="whatsapp"></box-icon>
             </div>
-            <div class="skill-category">
-              <h3>Ferramentas</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Git</span>
-                <span class="skill-tag">Linux</span>
-                <span class="skill-tag">Ubuntu</span>
-                <span class="skill-tag">Bash</span>
-                <span class="skill-tag">Postman</span>
-                <span class="skill-tag">VSCode</span>
-              </div>
-            </div>
+          </div>
+        </div>
+
+        <div class="link-container">
+          <div class="information">
+            <h1>Stack</h1>
+            <ul>
+              <li>
+                <a href="#">React &amp; Next.js</a>
+              </li>
+              <li>
+                <a href="#">Node.js &amp; FastAPI</a>
+              </li>
+              <li>
+                <a href="#">MySQL &amp; PostgreSQL</a>
+              </li>
+              <li>
+                <a href="#">Python &amp; TypeScript</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="resource">
+            <h1>Links</h1>
+            <ul>
+              <li>
+                <a
+                  href="https://www.codexa.dev.br"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Codexa</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://github.com/pycacau"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/arturcacau"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="navigation">
+            <h1>Navegação</h1>
+            <ul>
+              <li>
+                <a href="#hero">Início</a>
+              </li>
+              <li>
+                <a href="#about">Sobre</a>
+              </li>
+              <li>
+                <a href="#skill">Tecnologias</a>
+              </li>
+              <li>
+                <a href="#project">Projetos</a>
+              </li>
+              <li>
+                <a href="#contact">Contato</a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Projects Section -->
-  <section id="projetos" class="projects">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-number">02.</span>
-        <h2 class="section-title">Projetos</h2>
-        <div class="title-line"></div>
-      </div>
-      <p class="section-description">
-        Alguns dos meus projetos desenvolvidos. Cada um representa um desafio único e uma oportunidade 
-        de aplicar e expandir meus conhecimentos técnicos.
-      </p>
-      <div class="projects-container">
-        <div class="swipe-indicator" id="swipeIndicator">
-          <div class="swipe-hand">
-            <i class="fas fa-hand-pointer"></i>
-          </div>
-          <span class="swipe-text">Deslize para ver mais</span>
-          <div class="swipe-arrow">
-            <i class="fas fa-chevron-right"></i>
-          </div>
-        </div>
-        <div class="projects-grid" id="projectsGrid">
-        <!-- FR Advocacia Especializada -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-icon">
-              <i class="fas fa-gavel"></i>
-            </div>
-            <div class="project-links">
-              <a href="https://www.roney.adv.br" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Website">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">FR Advocacia Especializada</h3>
-          <p class="project-description">
-            Site institucional profissional desenvolvido para escritório de advocacia especializada. 
-            Design moderno e elegante com foco em credibilidade e confiança. Interface totalmente 
-            responsiva e otimizada para conversão de clientes.
-          </p>
-          <div class="project-tech">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Responsive</span>
-          </div>
-        </div>
-
-        <!-- Codexa Dev -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-icon">
-              <i class="fas fa-code"></i>
-            </div>
-            <div class="project-links">
-              <a href="https://www.codexa.dev.br" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Website">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Codexa Dev</h3>
-          <p class="project-description">
-            Site corporativo da agência Codexa com design moderno e gradientes vibrantes. Inclui 
-            formulário interativo de orçamento com 8 etapas, sistema automático de precificação 
-            e envio de e-mails. Desenvolvido com foco em conversão e experiência do usuário.
-          </p>
-          <div class="project-tech">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Python</span>
-          </div>
-        </div>
-
-        <!-- Grilli Restaurant -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-icon">
-              <i class="fas fa-utensils"></i>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/pycacau/grilli-restaurant" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Grilli Restaurant</h3>
-          <p class="project-description">
-            Site moderno de restaurante totalmente responsivo, construído com HTML, CSS e JavaScript. 
-            Design elegante e profissional com foco em apresentar o menu, ambiente e experiência 
-            gastronômica. Interface otimizada para todos os dispositivos.
-          </p>
-          <div class="project-tech">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Responsive</span>
-          </div>
-        </div>
-
-        <!-- Car Website -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-icon">
-              <i class="fas fa-car"></i>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/pycacau/Car-Website" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-              <a href="https://modelscars.pages.dev" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Demo">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Car Website</h3>
-          <p class="project-description">
-            Site moderno para exibição de veículos com design elegante e interface interativa. 
-            Desenvolvido com foco em usabilidade e experiência visual, utilizando HTML5, CSS3 
-            e JavaScript puro.
-          </p>
-          <div class="project-tech">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>Responsive Design</span>
-          </div>
-        </div>
-
-        <!-- Cybersecurity Toolkit -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-icon">
-              <i class="fas fa-toolbox"></i>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/pycacau/toolkit-cyberseguranca" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Cybersecurity Toolkit</h3>
-          <p class="project-description">
-            Conjunto de ferramentas e scripts desenvolvidos em Python e Bash para análise de 
-            redes e testes de segurança. Facilita a execução de tarefas comuns em auditorias 
-            de segurança.
-          </p>
-          <div class="project-tech">
-            <span>Python</span>
-            <span>Bash</span>
-            <span>Network Analysis</span>
-            <span>Security Tools</span>
-          </div>
-        </div>
-
-        <!-- Pentest Project -->
-        <div class="project-card">
-          <div class="project-header">
-            <div class="project-icon">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/pycacau/pentest-project" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub">
-                <i class="fab fa-github"></i>
-              </a>
-            </div>
-          </div>
-          <h3 class="project-title">Pentest Project</h3>
-          <p class="project-description">
-            Projeto de testes de penetração e segurança cibernética. Demonstra técnicas de 
-            ethical hacking e análise de vulnerabilidades, com documentação detalhada dos 
-            processos e metodologias utilizadas.
-          </p>
-          <div class="project-tech">
-            <span>Cybersecurity</span>
-            <span>Penetration Testing</span>
-            <span>Kali Linux</span>
-            <span>Ethical Hacking</span>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div class="projects-footer">
-        <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          <span>Ver Mais no GitHub</span>
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contato" class="contact">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-number">03.</span>
-        <h2 class="section-title">Entre em Contato</h2>
-        <div class="title-line"></div>
-      </div>
-      <p class="section-description">
-        Estou sempre aberto a novas oportunidades e projetos interessantes. 
-        Vamos conversar sobre como posso ajudar você!
-      </p>
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <div class="contact-details">
-              <h3>Email</h3>
-              <a href="mailto:turcacau@gmail.com">turcacau@gmail.com</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="contact-details">
-              <h3>WhatsApp</h3>
-              <a href="https://wa.me/5588996828755" target="_blank" rel="noopener noreferrer">(88) 99682-8755</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-linkedin-in"></i>
-            </div>
-            <div class="contact-details">
-              <h3>LinkedIn</h3>
-              <a href="https://www.linkedin.com/in/arturcacau" target="_blank" rel="noopener noreferrer">Artur Maciel Cacau</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">
-              <i class="fab fa-github"></i>
-            </div>
-            <div class="contact-details">
-              <h3>GitHub</h3>
-              <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer">@pycacau</a>
-            </div>
-          </div>
-        </div>
-        <div class="contact-social">
-          <h3>Siga-me nas redes sociais</h3>
-          <div class="social-grid">
-            <a href="https://www.linkedin.com/in/arturcacau" target="_blank" rel="noopener noreferrer" class="social-card">
-              <i class="fab fa-linkedin-in"></i>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/pycacau" target="_blank" rel="noopener noreferrer" class="social-card">
-              <i class="fab fa-github"></i>
-              <span>GitHub</span>
-            </a>
-            <a href="https://www.instagram.com/arturmaciell_/" target="_blank" rel="noopener noreferrer" class="social-card">
-              <i class="fab fa-instagram"></i>
-              <span>Instagram</span>
-            </a>
-            <a href="https://wa.me/5588996828755" target="_blank" rel="noopener noreferrer" class="social-card">
-              <i class="fab fa-whatsapp"></i>
-              <span>WhatsApp</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>&copy; 2025 Artur Maciel Cacau. Todos os direitos reservados.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+    <!-- Box Icon -->
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  </body>
 </html>
