@@ -45,6 +45,7 @@
   
   .container {
     padding: 1rem 6rem;
+    max-width: 100%;
   }
   
   .title {
@@ -382,6 +383,7 @@
   .about .container .content .about-me .description .name-role h1 {
     font-weight: bold;
     font-size: 3rem;
+    line-height: 1.2;
   }
   
   .about .container .content .about-me .description .name-role .role {
@@ -395,6 +397,7 @@
     padding: 4px 6px;
     background-color: #fff;
     border-radius: 8px;
+    line-height: 1.3;
     color: #000;
   }
   
@@ -420,6 +423,71 @@
     width: 100%;
   }
   
+  .swipe-indicator {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    animation: swipeHint 2s ease-in-out infinite;
+  }
+
+  .swipe-indicator i:first-child {
+    animation: handMove 1.5s ease-in-out infinite;
+  }
+
+  .swipe-indicator i:last-child {
+    animation: arrowMove 1.5s ease-in-out infinite;
+  }
+
+  @keyframes swipeHint {
+    0%, 100% {
+      opacity: 0.6;
+      transform: translateX(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateX(5px);
+    }
+  }
+
+  @keyframes handMove {
+    0%, 100% {
+      transform: translateX(0) rotate(0deg);
+    }
+    25% {
+      transform: translateX(5px) rotate(10deg);
+    }
+    50% {
+      transform: translateX(10px) rotate(0deg);
+    }
+    75% {
+      transform: translateX(5px) rotate(-10deg);
+    }
+  }
+
+  @keyframes arrowMove {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(8px);
+    }
+  }
+
+  .skills-wrapper,
+  .projects-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
   .skill .container .content .skills {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -427,6 +495,7 @@
     justify-content: center;
     gap: 12px;
     width: 50%;
+    transition: transform 0.3s ease;
   }
   
   .skill .container .content .skills .skill-box {
@@ -461,13 +530,18 @@
     text-align: center;
   }
   
+  .project .container .content .projects-wrapper {
+    width: 85%;
+  }
+
   .project .container .content .projects {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 85%;
+    width: 100%;
+    transition: transform 0.3s ease;
   }
   
   .project .container .content .projects .card {
@@ -931,6 +1005,11 @@
   @media screen and (max-width: 768px) {
     .container {
       padding: 1rem 2rem;
+      max-width: 100%;
+    }
+
+    .title {
+      font-size: 2.2rem;
     }
 
     header {
@@ -978,14 +1057,48 @@
       padding: 4px 10px;
     }
 
+    .swipe-indicator {
+      display: flex;
+    }
+
+    .skills-wrapper {
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+      padding-bottom: 10px;
+    }
+
+    .skills-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .skills-wrapper::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .skills-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+    }
+
     .skill .container .content .skills {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      width: 100%;
+      display: flex;
+      grid-template-columns: none;
+      width: max-content;
+      gap: 12px;
+      padding-right: 20px;
     }
 
     .skill .container .content .skills .skill-box {
+      flex: 0 0 140px;
       height: 100px;
       padding: 10px 6px;
+      scroll-snap-align: start;
+      min-width: 140px;
     }
 
     .skill .container .content .skills .skill-box i {
@@ -1008,10 +1121,44 @@
       width: 100%;
     }
 
-    .project .container .content .projects {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .project .container .content .projects-wrapper {
       width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+      padding-bottom: 10px;
+    }
+
+    .project .container .content .projects-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .project .container .content .projects-wrapper::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .project .container .content .projects-wrapper::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 10px;
+    }
+
+    .project .container .content .projects {
+      display: flex;
+      grid-template-columns: none;
+      width: max-content;
       gap: 16px;
+      padding-right: 20px;
+    }
+
+    .project .container .content .projects .card {
+      flex: 0 0 calc(85% - 8px);
+      min-width: calc(85% - 8px);
+      max-width: calc(85% - 8px);
+      scroll-snap-align: start;
     }
 
     header .mobile-nav ul li {
@@ -1039,19 +1186,35 @@
   @media screen and (max-width: 610px) {
     .container {
       padding: 1rem 1.25rem;
+      max-width: 100%;
     }
 
-    .skill .container .content .skills {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .title {
+      font-size: 1.8rem;
+    }
+
+    .about .container .content .about-me .description .name-role h1 {
+      font-size: 1.8rem;
+    }
+
+    .about .container .content .about-me .description .name-role .role h2 {
+      font-size: 1.2rem;
+    }
+
+    .about .container .content .about-me .description p {
+      font-size: 0.95rem;
     }
 
     .skill .container .content .skills .skill-box {
+      flex: 0 0 120px;
+      min-width: 120px;
       height: 95px;
     }
 
-    .project .container .content .projects {
-      grid-template-columns: 1fr;
-      gap: 16px;
+    .project .container .content .projects .card {
+      flex: 0 0 calc(90% - 8px);
+      min-width: calc(90% - 8px);
+      max-width: calc(90% - 8px);
     }
 
     .about .container .content .about-me .profile .image-box {
@@ -1073,6 +1236,23 @@
   @media screen and (max-width: 450px) {
     .container {
       padding: 1rem;
+      max-width: 100%;
+    }
+
+    .title {
+      font-size: 1.6rem;
+    }
+
+    .about .container .content .about-me .description .name-role h1 {
+      font-size: 1.6rem;
+    }
+
+    .about .container .content .about-me .description .name-role .role h2 {
+      font-size: 1.1rem;
+    }
+
+    .about .container .content .about-me .description p {
+      font-size: 0.9rem;
     }
 
     header {
@@ -1084,12 +1264,9 @@
       letter-spacing: 0.06em;
     }
 
-    .skill .container .content .skills {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-    }
-
     .skill .container .content .skills .skill-box {
+      flex: 0 0 110px;
+      min-width: 110px;
       height: 90px;
       padding: 8px 4px;
     }
@@ -1102,9 +1279,10 @@
       font-size: 0.75rem;
     }
 
-    .project .container .content .projects {
-      grid-template-columns: 1fr;
-      width: 100%;
+    .project .container .content .projects .card {
+      flex: 0 0 calc(95% - 8px);
+      min-width: calc(95% - 8px);
+      max-width: calc(95% - 8px);
     }
 
     header .mobile-nav ul li {
