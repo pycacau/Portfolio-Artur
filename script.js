@@ -103,3 +103,22 @@ socialMediaElements.forEach((element) => {
     }
   });
 });
+
+// Redes Sociais na seção de contato
+const contactSocialItems = document.querySelectorAll(".contact-social-item");
+
+contactSocialItems.forEach((item) => {
+  item.addEventListener("click", () => {
+    const social = item.getAttribute("data-social");
+    let link = socialMediaLinks[social];
+    
+    // Fallback para linkedin-square
+    if (!link && social === "linkedin") {
+      link = socialMediaLinks["linkedin-square"];
+    }
+    
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  });
+});

@@ -405,6 +405,45 @@
     font-size: 1.2rem;
     text-align: justify;
   }
+
+  .about .container .content .stats-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .about .container .content .stats-section .stats {
+    display: flex;
+    gap: 64px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .about .container .content .stats-section .stats .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .about .container .content .stats-section .stats .stat-item h3 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .about .container .content .stats-section .stats .stat-item p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    text-align: center;
+    font-weight: 400;
+  }
   
   .skill,
   .project,
@@ -524,14 +563,90 @@
     position: relative;
   }
 
+  .skill .container .content .skills-formation-wrapper {
+    display: flex;
+    gap: 48px;
+    width: 100%;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+
+  .skill .container .content .formation-section,
+  .skill .container .content .skills-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .skill .container .content .section-subtitle {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .skill .container .content .formation-boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .skill .container .content .formation-box {
+    padding: 20px 24px;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    background-color: #050505;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s linear;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+  }
+
+  .skill .container .content .formation-box:hover {
+    transform: translateX(8px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.95);
+    background-color: #111;
+  }
+
+  .skill .container .content .formation-box i {
+    font-size: 1.8rem;
+    color: #fff;
+    min-width: 30px;
+    flex-shrink: 0;
+  }
+
+  .skill .container .content .formation-box .formation-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .skill .container .content .formation-box .formation-institution {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .skill .container .content .formation-box .formation-course {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.3;
+  }
+
   .skill .container .content .skills {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     align-items: stretch;
     justify-content: center;
     gap: 12px;
-    width: 50%;
-    margin: 0 auto;
+    width: 100%;
     transition: transform 0.3s ease;
   }
   
@@ -731,12 +846,62 @@
     box-shadow: 0 16px 34px rgba(0, 0, 0, 0.95);
   }
   
+  .contact .container .content .contact-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact .container .content .contact-social-left,
+  .contact .container .content .contact-social-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact .container .content .contact-social-item {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #050505;
+    border: 2px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact .container .content .contact-social-item:hover {
+    transform: translateY(-5px) scale(1.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.95);
+    background-color: #111;
+  }
+
+  .contact .container .content .contact-social-item i {
+    font-size: 28px;
+    color: #fff;
+    display: block;
+    line-height: 1;
+  }
+
   .contact .container .content .contact-form {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 20px;
     width: 50%;
+    min-width: 500px;
     background-color: #050505;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 14px;
@@ -1162,9 +1327,51 @@
       line-height: 1.6;
     }
 
+    .about .container .content .stats-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+    }
+
+    .about .container .content .stats-section .stats {
+      gap: 32px;
+    }
+
+    .about .container .content .stats-section .stats .stat-item h3 {
+      font-size: 2.5rem;
+    }
+
+    .about .container .content .stats-section .stats .stat-item p {
+      font-size: 0.95rem;
+    }
+
     header .logo a {
       font-size: 16px;
       padding: 4px 8px;
+    }
+
+    .skill .container .content .skills-formation-wrapper {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .skill .container .content .section-subtitle {
+      font-size: 1.5rem;
+    }
+
+    .skill .container .content .formation-box {
+      padding: 16px 20px;
+    }
+
+    .skill .container .content .formation-box i {
+      font-size: 1.5rem;
+    }
+
+    .skill .container .content .formation-box .formation-institution {
+      font-size: 1rem;
+    }
+
+    .skill .container .content .formation-box .formation-course {
+      font-size: 0.85rem;
     }
 
     .skill .container .content .skills {
@@ -1193,14 +1400,50 @@
       font-size: 0.75rem;
     }
 
+    .contact .container .content .contact-wrapper {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact .container .content .contact-social-left,
+    .contact .container .content .contact-social-right {
+      flex-direction: row;
+      gap: 20px;
+      order: 2;
+    }
+
     .contact .container .content .contact-form {
       width: 100%;
+      min-width: auto;
       padding: 20px;
+      order: 1;
+    }
+
+    .contact .container .content .contact-social-item {
+      width: 50px;
+      height: 50px;
+    }
+
+    .contact .container .content .contact-social-item i {
+      font-size: 24px;
     }
 
     .contact .container .content .contact-form .input {
       flex-direction: column;
       gap: 8px;
+    }
+
+    .contact .container .content .contact-wrapper {
+      gap: 20px;
+    }
+
+    .contact .container .content .contact-social-item {
+      width: 45px;
+      height: 45px;
+    }
+
+    .contact .container .content .contact-social-item i {
+      font-size: 22px;
     }
 
     .contact .container .content .contact-form .input input {
@@ -1325,6 +1568,23 @@
       line-height: 1.6;
     }
 
+    .about .container .content .stats-section {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+    }
+
+    .about .container .content .stats-section .stats {
+      gap: 24px;
+    }
+
+    .about .container .content .stats-section .stats .stat-item h3 {
+      font-size: 2rem;
+    }
+
+    .about .container .content .stats-section .stats .stat-item p {
+      font-size: 0.85rem;
+    }
+
     .project .container .content .projects .card img {
       height: 160px;
     }
@@ -1343,6 +1603,30 @@
 
     .project .container .content .projects .card .description p {
       font-size: 0.85rem;
+    }
+
+    .skill .container .content .skills-formation-wrapper {
+      gap: 24px;
+    }
+
+    .skill .container .content .section-subtitle {
+      font-size: 1.3rem;
+    }
+
+    .skill .container .content .formation-box {
+      padding: 14px 18px;
+    }
+
+    .skill .container .content .formation-box i {
+      font-size: 1.3rem;
+    }
+
+    .skill .container .content .formation-box .formation-institution {
+      font-size: 0.9rem;
+    }
+
+    .skill .container .content .formation-box .formation-course {
+      font-size: 0.8rem;
     }
 
     .skill .container .content .skills {
@@ -1449,6 +1733,48 @@
       line-height: 1.5;
     }
 
+    .about .container .content .stats-section {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
+
+    .about .container .content .stats-section .stats {
+      gap: 20px;
+      flex-direction: column;
+    }
+
+    .about .container .content .stats-section .stats .stat-item h3 {
+      font-size: 2rem;
+    }
+
+    .about .container .content .stats-section .stats .stat-item p {
+      font-size: 0.8rem;
+    }
+
+    .skill .container .content .skills-formation-wrapper {
+      gap: 20px;
+    }
+
+    .skill .container .content .section-subtitle {
+      font-size: 1.2rem;
+    }
+
+    .skill .container .content .formation-box {
+      padding: 12px 16px;
+    }
+
+    .skill .container .content .formation-box i {
+      font-size: 1.2rem;
+    }
+
+    .skill .container .content .formation-box .formation-institution {
+      font-size: 0.85rem;
+    }
+
+    .skill .container .content .formation-box .formation-course {
+      font-size: 0.75rem;
+    }
+
     .skill .container .content .skills {
       grid-template-columns: repeat(6, minmax(0, 1fr));
       width: 100%;
@@ -1507,6 +1833,19 @@
     .project .container .content .projects .card .description .action button {
       font-size: 0.65rem;
       padding: 8px 12px;
+    }
+
+    .contact .container .content .contact-wrapper {
+      gap: 16px;
+    }
+
+    .contact .container .content .contact-social-item {
+      width: 40px;
+      height: 40px;
+    }
+
+    .contact .container .content .contact-social-item i {
+      font-size: 20px;
     }
 
     .contact .container .content .contact-form {

@@ -125,7 +125,7 @@
           </svg>
           <h1 data-aos="zoom-in-up">
             Desenvolvendo
-            <span>soluções digitais modernas, rápidas e seguras</span> para
+            <span>soluções digitais</span> modernas, rápidas e seguras para
             alavancar negócios.
           </h1>
           <button
@@ -189,6 +189,22 @@
               </p>
             </div>
           </div>
+          <div class="stats-section" data-aos="fade-up" data-aos-delay="500">
+            <div class="stats">
+              <div class="stat-item">
+                <h3>50+</h3>
+                <p>Projetos Desenvolvidos</p>
+              </div>
+              <div class="stat-item">
+                <h3>3+</h3>
+                <p>Anos de Experiência</p>
+              </div>
+              <div class="stat-item">
+                <h3>20+</h3>
+                <p>Clientes Satisfeitos</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -200,8 +216,47 @@
           <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title">
             Tecnologias
           </h1>
-          <div class="skills-wrapper">
-            <div class="skills" data-aos-delay="500">
+          <div class="skills-formation-wrapper">
+            <!-- Formação Section -->
+            <div class="formation-section" data-aos="zoom-in-right" data-aos-delay="400">
+              <h2 class="section-subtitle">Formação</h2>
+              <div class="formation-boxes">
+                <div class="formation-box" data-aos="fade-right" data-aos-delay="500">
+                  <i class="fas fa-graduation-cap"></i>
+                  <div class="formation-info">
+                    <span class="formation-institution">Técnico em Informática</span>
+                    <span class="formation-course">EEEP Deputado José Maria Melo - Ensino Médio Técnico</span>
+                  </div>
+                </div>
+                <div class="formation-box" data-aos="fade-right" data-aos-delay="600">
+                  <i class="fas fa-graduation-cap"></i>
+                  <div class="formation-info">
+                    <span class="formation-institution">Análise e Desenvolvimento de Sistemas</span>
+                    <span class="formation-course">FIAP - Cursando Bacharelado</span>
+                  </div>
+                </div>
+                <div class="formation-box" data-aos="fade-right" data-aos-delay="700">
+                  <i class="fas fa-graduation-cap"></i>
+                  <div class="formation-info">
+                    <span class="formation-institution">Cybersegurança - Hacking e Pentest</span>
+                    <span class="formation-course">FIAP - Curso</span>
+                  </div>
+                </div>
+                <div class="formation-box" data-aos="fade-right" data-aos-delay="800">
+                  <i class="fas fa-graduation-cap"></i>
+                  <div class="formation-info">
+                    <span class="formation-institution">Ciências da Computação - Autodidata</span>
+                    <span class="formation-course">UFC - Github</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="skills-section" data-aos="zoom-in-left" data-aos-delay="400">
+              <h2 class="section-subtitle">Skills</h2>
+              <div class="skills-wrapper">
+                <div class="skills" data-aos-delay="500">
             <!-- Linguagens -->
             <div data-aos="zoom-in-down" class="skill-box">
               <i class="devicon-python-plain colored"></i>
@@ -310,6 +365,8 @@
               <span>Pom</span>
             </div>
             </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -364,24 +421,19 @@
             </div>
 
             <div data-aos="zoom-in-down" data-aos-delay="500" class="card">
-              <img src="cars.png" alt="Car Website" />
+              <img src="urubu-ecopark.jpg" alt="Urubu Ecoparque" />
 
               <div class="description">
-                <h1>Car Website</h1>
+                <h1>Urubu Ecoparque</h1>
                 <p>
-                  Website moderno para apresentação de veículos, com interface
-                  interativa e foco em experiência visual.
+                  Website oficial do parque ecológico com design moderno, galeria de fotos,
+                  cardápio completo, integração Instagram e animações temáticas de natureza.
                 </p>
                 <div class="action">
                   <button
-                    onclick="window.open('https://modelscars.pages.dev','_blank')"
+                    onclick="window.open('https://urubuecoparque.pages.dev','_blank')"
                   >
                     Demo
-                  </button>
-                  <button
-                    onclick="window.open('https://github.com/pycacau/Car-Website','_blank')"
-                  >
-                    GitHub
                   </button>
                 </div>
               </div>
@@ -462,38 +514,61 @@
             Entre em Contato
           </h1>
 
-          <form
-            data-aos="zoom-in-down"
-            data-aos-delay="300"
-            class="contact-form"
-            id="contactForm"
-          >
-            <div class="input">
-              <input type="text" id="contactName" placeholder="Nome..." required />
-              <input type="email" id="contactEmail" placeholder="Email..." required />
-              <input type="tel" id="contactPhone" placeholder="Telefone..." required />
-              <input type="text" id="contactSubject" placeholder="Assunto..." required />
+          <div class="contact-wrapper">
+            <!-- Ícones à esquerda -->
+            <div class="contact-social-left" data-aos="fade-right" data-aos-delay="400">
+              <div class="contact-social-item" data-social="linkedin">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="contact-social-item" data-social="github">
+                <i class="fab fa-github"></i>
+              </div>
             </div>
-            <textarea name="message" id="contactMessage" placeholder="Mensagem..." required></textarea>
-            <div class="action">
-              <button
-                type="button"
-                id="whatsappBtn"
-                class="whatsapp-button"
-              >
+
+            <!-- Formulário central -->
+            <form
+              data-aos="zoom-in-down"
+              data-aos-delay="300"
+              class="contact-form"
+              id="contactForm"
+            >
+              <div class="input">
+                <input type="text" id="contactName" placeholder="Nome..." required />
+                <input type="email" id="contactEmail" placeholder="Email..." required />
+                <input type="tel" id="contactPhone" placeholder="Telefone..." required />
+                <input type="text" id="contactSubject" placeholder="Assunto..." required />
+              </div>
+              <textarea name="message" id="contactMessage" placeholder="Mensagem..." required></textarea>
+              <div class="action">
+                <button
+                  type="button"
+                  id="whatsappBtn"
+                  class="whatsapp-button"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                  Enviar pelo WhatsApp
+                </button>
+                <button
+                  type="button"
+                  id="emailBtn"
+                  class="email-button"
+                >
+                  <i class="fas fa-envelope"></i>
+                  Enviar por Email
+                </button>
+              </div>
+            </form>
+
+            <!-- Ícones à direita -->
+            <div class="contact-social-right" data-aos="fade-left" data-aos-delay="400">
+              <div class="contact-social-item" data-social="instagram">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div class="contact-social-item" data-social="whatsapp">
                 <i class="fab fa-whatsapp"></i>
-                Enviar pelo WhatsApp
-              </button>
-              <button
-                type="button"
-                id="emailBtn"
-                class="email-button"
-              >
-                <i class="fas fa-envelope"></i>
-                Enviar por Email
-              </button>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </section>
