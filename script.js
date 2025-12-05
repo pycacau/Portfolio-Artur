@@ -79,3 +79,27 @@ emailBtn.addEventListener("click", () => {
   const emailUrl = `mailto:turcacau@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
   window.location.href = emailUrl;
 });
+
+// Redes Sociais - Adicionar funcionalidade aos ícones
+const socialMediaLinks = {
+  "linkedin-square": "https://www.linkedin.com/in/arturcacau",
+  "github": "https://github.com/pycacau",
+  "instagram": "https://www.instagram.com/arturmaciell_", // Ajuste conforme necessário
+  "whatsapp": "https://wa.me/5588996828755" // Usando o mesmo número do formulário
+};
+
+const socialMediaElements = document.querySelectorAll(".social-media");
+
+socialMediaElements.forEach((element) => {
+  element.addEventListener("click", () => {
+    // Encontrar o box-icon dentro do elemento
+    const boxIcon = element.querySelector("box-icon");
+    if (boxIcon) {
+      const iconName = boxIcon.getAttribute("name");
+      const link = socialMediaLinks[iconName];
+      if (link) {
+        window.open(link, "_blank", "noopener,noreferrer");
+      }
+    }
+  });
+});
