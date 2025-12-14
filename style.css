@@ -209,15 +209,113 @@
   
   .hero .container .content svg {
     margin-bottom: -9rem;
+    width: 100%;
+    height: auto;
   }
   
   .hero .container .content svg text {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 132px;
+    letter-spacing: 0.06em;
+    /* Tornar o tamanho responsivo: usa clamp para controlar mínimo, ideal (vw) e máximo */
+    font-size: clamp(64px, 18vw, 160px);
     animation: stroke 5s infinite alternate;
     filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.35));
   }
+
+/* Título alternativo e destaque principal para garantir hierarquia visual */
+.hero-name {
+  margin: 0.25rem 0 0.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: clamp(56px, 12vw, 220px);
+  line-height: 0.9;
+  letter-spacing: 0.06em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.9);
+  background: linear-gradient(90deg, #ffffff, #e6e6e6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: none; /* mostrado por default via SVG, ativado em mobile */
+  text-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 24px rgba(255,255,255,0.04);
+  z-index: 1;
+}
+
+/* Melhor contraste/contorno do texto SVG */
+.hero-svg text {
+  fill: transparent;
+  stroke: rgba(255,255,255,0.85);
+  stroke-width: 1.8px;
+  paint-order: stroke;
+}
+
+/* Ajustes responsivos para telas pequenas */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem 1.25rem;
+  }
+
+  .hero .container .content svg {
+    margin-bottom: -3rem;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero .container .content svg text {
+    /* Forçar maior destaque no mobile em relação ao subtítulo */
+    font-size: clamp(48px, 28vw, 120px);
+    letter-spacing: 0.04em;
+  }
+
+  /* No mobile, esconder o SVG (que pode ficar pequeno) e usar o título grande */
+  .hero-svg {
+    display: none;
+  }
+
+  .hero-name {
+    display: block;
+  }
+
+  .hero .container .content h1 {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    width: 95%;
+  }
+
+  /* Simplificar header no mobile (mostra hamburger) */
+  header nav {
+    display: none;
+  }
+
+  header .hamburger-menu {
+    display: block;
+  }
+
+  /* About: empilhar colunas no mobile e ajustar títulos */
+  .about .container .content .about-me {
+    flex-direction: column;
+  }
+
+  .about .container .content .about-me .profile,
+  .about .container .content .about-me .description {
+    width: 100%;
+  }
+
+  .about .container .content .about-me .profile .image-box {
+    height: auto;
+    max-height: 50vh;
+  }
+
+  .about .container .content .about-me .description .name-role h1 {
+    font-size: 2rem;
+  }
+
+  .about .container .content .about-me .description .name-role .role h2 {
+    font-size: 1.2rem;
+  }
+}
   
   .hero .container .content h1 {
     text-align: center;
