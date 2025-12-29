@@ -517,16 +517,6 @@
           </h1>
 
           <div class="contact-wrapper">
-            <!-- Ícones à esquerda -->
-            <div class="contact-social-left" data-aos="fade-right" data-aos-delay="400">
-              <div class="contact-social-item" data-social="linkedin">
-                <i class="fab fa-linkedin"></i>
-              </div>
-              <div class="contact-social-item" data-social="github">
-                <i class="fab fa-github"></i>
-              </div>
-            </div>
-
             <!-- Formulário central -->
             <form
               data-aos="zoom-in-down"
@@ -561,8 +551,14 @@
               </div>
             </form>
 
-            <!-- Ícones à direita -->
-            <div class="contact-social-right" data-aos="fade-left" data-aos-delay="400">
+            <!-- Ícones de redes sociais em uma fileira -->
+            <div class="contact-social-container" data-aos="fade-up" data-aos-delay="400">
+              <div class="contact-social-item" data-social="linkedin">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="contact-social-item" data-social="github">
+                <i class="fab fa-github"></i>
+              </div>
               <div class="contact-social-item" data-social="instagram">
                 <i class="fab fa-instagram"></i>
               </div>
@@ -606,73 +602,84 @@
         </div>
 
         <div class="link-container">
-          <div class="information">
-            <h1>Stack</h1>
-            <ul>
-              <li>
-                <a href="#">React &amp; Next.js</a>
-              </li>
-              <li>
-                <a href="#">Node.js &amp; FastAPI</a>
-              </li>
-              <li>
-                <a href="#">MySQL &amp; PostgreSQL</a>
-              </li>
-              <li>
-                <a href="#">Python &amp; TypeScript</a>
-              </li>
-            </ul>
-          </div>
+          <div class="link-content">
+            <div class="information">
+              <button class="footer-accordion-btn" data-accordion="information">
+                <h1>Stack</h1>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul class="footer-accordion-content">
+                <li>
+                  <a href="#">React &amp; Next.js</a>
+                </li>
+                <li>
+                  <a href="#">Node.js &amp; FastAPI</a>
+                </li>
+                <li>
+                  <a href="#">MySQL &amp; PostgreSQL</a>
+                </li>
+                <li>
+                  <a href="#">Python &amp; TypeScript</a>
+                </li>
+              </ul>
+            </div>
 
-          <div class="resource">
-            <h1>Links</h1>
-            <ul>
-              <li>
-                <a
-                  href="https://www.codexa.dev.br"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >Codexa</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://github.com/pycacau"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >GitHub</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/arturcacau"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  >LinkedIn</a
-                >
-              </li>
-            </ul>
-          </div>
+            <div class="resource">
+              <button class="footer-accordion-btn" data-accordion="resource">
+                <h1>Links</h1>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul class="footer-accordion-content">
+                <li>
+                  <a
+                    href="https://www.codexa.dev.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Codexa</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/pycacau"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >GitHub</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/arturcacau"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >LinkedIn</a
+                  >
+                </li>
+              </ul>
+            </div>
 
-          <div class="navigation">
-            <h1>Navegação</h1>
-            <ul>
-              <li>
-                <a href="#hero">Início</a>
-              </li>
-              <li>
-                <a href="#about">Sobre</a>
-              </li>
-              <li>
-                <a href="#skill">Tecnologias</a>
-              </li>
-              <li>
-                <a href="#project">Projetos</a>
-              </li>
-              <li>
-                <a href="#contact">Contato</a>
-              </li>
-            </ul>
+            <div class="navigation">
+              <button class="footer-accordion-btn" data-accordion="navigation">
+                <h1>Navegação</h1>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <ul class="footer-accordion-content">
+                <li>
+                  <a href="#hero">Início</a>
+                </li>
+                <li>
+                  <a href="#about">Sobre</a>
+                </li>
+                <li>
+                  <a href="#skill">Tecnologias</a>
+                </li>
+                <li>
+                  <a href="#project">Projetos</a>
+                </li>
+                <li>
+                  <a href="#contact">Contato</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

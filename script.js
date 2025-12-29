@@ -122,3 +122,50 @@ contactSocialItems.forEach((item) => {
     }
   });
 });
+
+// Footer Accordion (expandir/colapsar tópicos)
+const footerAccordionBtns = document.querySelectorAll(".footer-accordion-btn");
+footerAccordionBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const content = btn.nextElementSibling;
+    const icon = btn.querySelector("i");
+    const isActive = btn.classList.contains("active");
+    
+    // Fechar todos os outros acordeons
+    footerAccordionBtns.forEach((otherBtn) => {
+      if (otherBtn !== btn) {
+        otherBtn.classList.remove("active");
+        const otherContent = otherBtn.nextElementSibling;
+        const otherIcon = otherBtn.querySelector("i");
+        if (otherContent) {
+          otherContent.style.maxHeight = null;
+        }
+        if (otherIcon) {
+          otherIcon.classList.remove("fa-chevron-up");
+          otherIcon.classList.add("fa-chevron-down");
+        }
+      }
+    });
+    
+    // Toggle do acordeon atual
+    if (isActive) {
+      btn.classList.remove("active");
+      if (content) {
+        content.style.maxHeight = null;
+      }
+      if (icon) {
+        icon.classList.remove("fa-chevron-up");
+        icon.classList.add("fa-chevron-down");
+      }
+    } else {
+      btn.classList.add("active");
+      if (content) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+      if (icon) {
+        icon.classList.remove("fa-chevron-down");
+        icon.classList.add("fa-chevron-up");
+      }
+    }
+  });
+});
