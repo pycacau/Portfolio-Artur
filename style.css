@@ -241,6 +241,42 @@
   display: none; /* mostrado por default via SVG, ativado em mobile */
   text-shadow: 0 6px 20px rgba(0,0,0,0.6), 0 0 24px rgba(255,255,255,0.04);
   z-index: 1;
+  filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.35));
+  animation: textStroke 5s infinite alternate;
+}
+
+/* Animação de stroke para texto no mobile - similar à animação do SVG */
+@keyframes textStroke {
+  0% {
+    -webkit-text-stroke-width: 0px;
+    opacity: 0.4;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+  }
+  25% {
+    -webkit-text-stroke-width: 1px;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.3));
+  }
+  50% {
+    -webkit-text-stroke-width: 1.8px;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
+  }
+  70% {
+    -webkit-text-stroke-width: 2.2px;
+    opacity: 1;
+    filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.4));
+  }
+  80% {
+    -webkit-text-stroke-width: 2.5px;
+    opacity: 1;
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.45));
+  }
+  100% {
+    -webkit-text-stroke-width: 1.8px;
+    opacity: 0.95;
+    filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.35));
+  }
 }
 
 /* Melhor contraste/contorno do texto SVG */
@@ -276,6 +312,9 @@
 
   .hero-name {
     display: block;
+    animation: textStroke 5s infinite alternate;
+    -webkit-text-stroke: 1.8px rgba(255,255,255,0.85);
+    filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.35));
   }
 
   .hero .container .content h1 {
@@ -832,7 +871,7 @@
   .project .container .content .projects {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: 20px;
     width: 100%;
@@ -844,12 +883,14 @@
     border-radius: 14px;
     background-color: #050505;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    min-height: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     box-shadow: 0 10px 26px rgba(0, 0, 0, 0.85);
+    max-width: 100%;
+    overflow: hidden;
+    height: 100%;
   }
   
   .project .container .content .projects .card img {
@@ -859,6 +900,8 @@
     object-position: center;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.02);
+    max-width: 100%;
+    max-height: 200px;
   }
   
   .project .container .content .projects .card .project-icon-container {
@@ -920,11 +963,14 @@
   .project .container .content .projects .card .description p {
     font-size: 0.9rem;
     font-weight: 400;
-    line-height: 1.6;
+    line-height: 1.5;
     text-align: justify;
     opacity: 0.9;
-    max-height: 4.8em; /* aprox. 3 linhas */
+    max-height: 4.5em; /* aprox. 3 linhas */
     overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
   
   .project .container .content .projects .card .description .action {
