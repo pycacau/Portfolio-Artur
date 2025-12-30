@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Certificados e Certificações de Artur Maciel Cacau - Desenvolvedor Full-Stack"
+    />
+    <!-- Icon -->
+    <link rel="icon" href="../favicon.png" />
+    <!-- Font Awesome para ícones -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="certificados.css" />
+    <title>Certificados | Artur Maciel Cacau</title>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="../index.html#hero">Artur</a>
+      </div>
+
+      <nav>
+        <a href="../index.html#hero">Início</a>
+        <a href="../index.html#about">Sobre</a>
+        <a href="../index.html#skill">Tecnologias</a>
+        <a href="../index.html#project">Projetos</a>
+        <a href="../index.html#contact">Contato</a>
+      </nav>
+
+      <div class="extra-nav">
+        <button onclick="window.location.href='../index.html#contact'">
+          Entre em Contato
+        </button>
+      </div>
+
+      <div id="menu" class="hamburger-menu">
+        <svg
+          width="35px"
+          height="35px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 18L20 18"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M4 12L20 12"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M4 6L20 6"
+            stroke="#ffffff"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </div>
+
+      <!-- Mobile Nav -->
+      <div id="nav-mobile" class="mobile-nav">
+        <div id="close-mobile" class="close">
+          <svg
+            width="800px"
+            height="800px"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <style>
+                .cls-1 {
+                  fill: none;
+                  stroke: #ffffff;
+                  stroke-linecap: round;
+                  stroke-linejoin: round;
+                  stroke-width: 2px;
+                }
+              </style>
+            </defs>
+            <g id="cross">
+              <line class="cls-1" x1="7" x2="25" y1="7" y2="25" />
+              <line class="cls-1" x1="7" x2="25" y1="25" y2="7" />
+            </g>
+          </svg>
+        </div>
+        <ul>
+          <li><a class="nav-link" href="../index.html#hero">Início</a></li>
+          <li><a class="nav-link" href="../index.html#about">Sobre</a></li>
+          <li><a class="nav-link" href="../index.html#skill">Tecnologias</a></li>
+          <li><a class="nav-link" href="../index.html#project">Projetos</a></li>
+          <li><a class="nav-link" href="../index.html#contact">Contato</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Certificados Section -->
+    <section id="certificados" class="certificados-section">
+      <div class="container">
+        <div class="content">
+          <h1 data-aos="zoom-in-down" data-aos-delay="300" class="title">
+            Meus Certificados
+          </h1>
+          <p class="subtitle" data-aos="fade-up" data-aos-delay="400">
+            Certificações e cursos que comprovam minha dedicação ao aprendizado contínuo
+          </p>
+
+          <!-- Filtro por Empresa -->
+          <div class="filter-container" data-aos="fade-up" data-aos-delay="500">
+            <div class="filter-wrapper">
+              <label for="empresaFilter">
+                <i class="fas fa-filter"></i>
+                Filtrar por Empresa:
+              </label>
+              <select id="empresaFilter" class="filter-select">
+                <option value="all">Todas as Empresas</option>
+                <!-- As opções serão preenchidas dinamicamente via JavaScript -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Grid de Certificados -->
+          <div class="certificates-grid" id="certificatesGrid">
+            <!-- Os certificados serão inseridos aqui via JavaScript -->
+            <div class="no-certificates">
+              <i class="fas fa-certificate"></i>
+              <p>Certificados serão adicionados em breve</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal para visualizar certificado -->
+    <div id="certificateModal" class="modal">
+      <span class="close-modal">&times;</span>
+      <img class="modal-content" id="modalImage" />
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="certificados.js"></script>
+  </body>
+</html>
+
