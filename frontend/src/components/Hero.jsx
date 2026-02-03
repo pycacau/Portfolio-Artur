@@ -25,19 +25,19 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Etheral Shadow Background */}
-      <EtheralShadow
-        color="rgba(100, 100, 100, 1)"
-        animation={{ scale: 100, speed: 90 }}
-        noise={{ opacity: 0.8, scale: 1.2 }}
-        sizing="fill"
-        className="absolute inset-0"
-      >
-        <div className="relative z-10 h-full w-full" />
-      </EtheralShadow>
+      {/* Etheral Shadow Background - Atrás do conteúdo */}
+      <div className="absolute inset-0 z-0">
+        <EtheralShadow
+          color="rgba(100, 100, 100, 1)"
+          animation={{ scale: 100, speed: 90 }}
+          noise={{ opacity: 0.8, scale: 1.2 }}
+          sizing="fill"
+          className="w-full h-full"
+        />
+      </div>
 
       <motion.div 
-        className="relative z-10 text-center px-4 max-w-5xl mx-auto"
+        className="relative z-20 text-center px-4 max-w-5xl mx-auto"
         style={{ opacity, scale }}
       >
         <motion.div
