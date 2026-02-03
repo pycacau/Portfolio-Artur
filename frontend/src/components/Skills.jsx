@@ -110,36 +110,6 @@ const Skills = () => {
             ))}
           </motion.div>
         </div>
-
-        {/* Formação */}
-        <motion.div
-          className="mt-20"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <h3 className="text-4xl font-bold text-white mb-8 text-center">Formação</h3>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg border-2 border-black">
-              <h4 className="text-xl font-bold text-black mb-2">Técnico em Informática</h4>
-              <p className="text-gray-700">EEEP Deputado José Maria Melo - Ensino Médio Técnico</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg border-2 border-black">
-              <h4 className="text-xl font-bold text-black mb-2">
-                Superior em Análise e Desenvolvimento de Sistemas
-              </h4>
-              <p className="text-gray-700">FIAP - Cursando Bacharelado</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg border-2 border-black">
-              <h4 className="text-xl font-bold text-black mb-2">Cybersegurança - Hacking e Pentest</h4>
-              <p className="text-gray-700">FIAP - Curso</p>
-            </div>
-            <div className="bg-white p-6 rounded-lg border-2 border-black">
-              <h4 className="text-xl font-bold text-black mb-2">Ciências da Computação - Autodidata</h4>
-              <p className="text-gray-700">UFC - Github</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
