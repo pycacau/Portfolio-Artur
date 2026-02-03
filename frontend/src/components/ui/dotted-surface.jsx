@@ -31,7 +31,11 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
       antialias: true,
     });
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    
+    // Usar tamanho do container ao invés da window
+    const width = container.clientWidth || window.innerWidth;
+    const height = container.clientHeight || window.innerHeight;
+    renderer.setSize(width, height);
     renderer.setClearColor(scene.fog.color, 0);
 
     container.appendChild(renderer.domElement);
