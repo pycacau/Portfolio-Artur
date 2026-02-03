@@ -108,7 +108,7 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
       positionAttribute.needsUpdate = true;
 
       renderer.render(scene, camera);
-      count += 0.15; // Velocidade da animação
+      count += 0.05; // Velocidade MAIS LENTA
     };
 
     // Handle window resize
