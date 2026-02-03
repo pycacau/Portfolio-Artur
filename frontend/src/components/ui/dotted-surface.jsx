@@ -66,10 +66,10 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
 
     // Create material
     const material = new THREE.PointsMaterial({
-      size: 8,
+      size: 12,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
+      opacity: 1.0,
       sizeAttenuation: true,
     });
 
