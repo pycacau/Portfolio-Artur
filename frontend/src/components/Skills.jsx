@@ -67,8 +67,8 @@ const Skills = () => {
 
   return (
     <section id="skills" className="py-24 bg-black relative overflow-hidden" ref={ref}>
-      {/* Dotted Surface Background - Atrás do conteúdo */}
-      <div className="absolute inset-0 z-0">
+      {/* Dotted Surface Background - Embaixo na parte inferior */}
+      <div className="absolute bottom-0 left-0 right-0 h-96 z-0">
         <DottedSurface theme="dark" />
       </div>
       
