@@ -13,32 +13,32 @@ const Skills = () => {
     {
       icon: Code,
       title: 'Frontend',
-      skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS'],
+      skills: 'React, Next.js, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS',
     },
     {
       icon: Database,
       title: 'Backend',
-      skills: ['Node.js', 'Express', 'FastAPI', 'Laravel', 'Python', 'PHP'],
+      skills: 'Node.js, Express, FastAPI, Laravel, Python, PHP',
     },
     {
       icon: Globe,
       title: 'Database',
-      skills: ['MongoDB', 'PostgreSQL', 'MySQL'],
+      skills: 'MongoDB, PostgreSQL, MySQL',
     },
     {
       icon: Terminal,
       title: 'DevOps & Tools',
-      skills: ['Git', 'Linux', 'Ubuntu', 'Bash', 'VSCode', 'Postman'],
+      skills: 'Git, Linux, Ubuntu, Bash, VSCode, Postman',
     },
     {
       icon: Shield,
       title: 'Segurança',
-      skills: ['Cybersecurity', 'Pentesting', 'Ethical Hacking'],
+      skills: 'Cybersecurity, Pentesting, Ethical Hacking',
     },
     {
       icon: Cpu,
       title: 'Outras Linguagens',
-      skills: ['C++', 'Python', 'TypeScript'],
+      skills: 'C++, Python, TypeScript',
     },
   ];
 
