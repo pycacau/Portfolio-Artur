@@ -16,7 +16,7 @@ const About = () => {
   ];
 
   return (
-    <section id="sobre" className="py-24 bg-white" ref={ref}>
+    <section id="sobre" className="py-24 bg-white bg-texture relative noise-overlay" ref={ref}>
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="grid md:grid-cols-2 gap-16 items-center"
