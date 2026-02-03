@@ -100,19 +100,26 @@ const Projects = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
-              <div className="relative h-64 overflow-hidden">
+              {/* Corner decoration */}
+              <div className="absolute top-0 right-0 w-16 h-16 bg-black transform rotate-45 translate-x-8 -translate-y-8 group-hover:translate-x-6 group-hover:-translate-y-6 transition-transform duration-300"></div>
+              
+              <div className="relative h-64 overflow-hidden bg-gray-100">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                
+                {/* Hover actions */}
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center gap-4">
                   {project.demo && (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-black p-3 rounded-full hover:scale-110 transform"
+                      className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white text-black p-3 rounded-full hover:scale-110 transform hover:bg-gray-200"
                     >
                       <ExternalLink className="w-6 h-6" />
                     </a>
@@ -122,17 +129,29 @@ const Projects = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-black p-3 rounded-full hover:scale-110 transform"
+                      className="opacity-0 group-hover:opacity-100 transition-all duration-300 bg-white text-black p-3 rounded-full hover:scale-110 transform hover:bg-gray-200"
                     >
                       <Github className="w-6 h-6" />
                     </a>
                   )}
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold text-black mb-2">{project.title}</h3>
+              
+              <div className="p-6 relative">
+                {/* Number badge */}
+                <div className="absolute -top-4 left-6 w-8 h-8 bg-black text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
+                  {index + 1}
+                </div>
+                
+                <h3 className="text-2xl font-bold text-black mb-2 mt-2 group-hover:text-gray-700 transition-colors duration-300">
+                  {project.title}
+                </h3>
                 <p className="text-gray-700 mb-4 line-clamp-3">{project.description}</p>
-                <p className="text-sm text-gray-600">{project.tags}</p>
+                
+                {/* Decorative line */}
+                <div className="w-12 h-1 bg-black mb-3 group-hover:w-full transition-all duration-500"></div>
+                
+                <p className="text-sm text-gray-600 font-medium">{project.tags}</p>
               </div>
             </motion.div>
           ))}
