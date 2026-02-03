@@ -19,7 +19,7 @@ const Projects = () => {
         'Site institucional profissional para escritório de advocacia, com foco em credibilidade, conversão de clientes e responsividade.',
       image: 'https://www.arturmaciel.com.br/fr.png',
       demo: 'https://fradv.com.br',
-      tags: ['React', 'Tailwind', 'Responsive'],
+      tags: 'React · Tailwind · Responsive',
     },
     {
       title: 'Codexa Dev',
@@ -27,7 +27,7 @@ const Projects = () => {
         'Site corporativo da agência Codexa, com gradientes modernos, formulário interativo de orçamento e foco em conversão.',
       image: 'https://www.arturmaciel.com.br/codexa.png',
       demo: 'https://codexa.com.br',
-      tags: ['Next.js', 'Design Moderno', 'Forms'],
+      tags: 'Next.js · Design Moderno · Forms',
     },
     {
       title: 'Urubu Ecoparque',
@@ -35,7 +35,7 @@ const Projects = () => {
         'Website oficial do parque ecológico com design moderno, galeria de fotos, cardápio completo, com API.',
       image: 'https://www.arturmaciel.com.br/urubu-ecopark.jpg',
       demo: 'https://urubuecoparque.com.br',
-      tags: ['Full-Stack', 'API', 'Gallery'],
+      tags: 'Full-Stack · API · Gallery',
     },
     {
       title: 'Spansiva Tecnologia Aplicada',
@@ -43,7 +43,7 @@ const Projects = () => {
         'Site institucional moderno para loja de tecnologia, com foco em PCs gamer, impressoras e acessórios premium. Design responsivo e otimizado para conversão.',
       image: 'https://www.arturmaciel.com.br/spansiva.png',
       demo: 'https://spansiva.com.br',
-      tags: ['E-commerce', 'React', 'SEO'],
+      tags: 'E-commerce · React · SEO',
     },
     {
       title: 'Pentest Project',
@@ -51,7 +51,7 @@ const Projects = () => {
         'Projeto focado em técnicas de ethical hacking e análise de vulnerabilidades, com documentação de processos.',
       image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80',
       github: 'https://github.com/arturmaciel',
-      tags: ['Security', 'Python', 'Pentest'],
+      tags: 'Security · Python · Pentest',
     },
     {
       title: 'Grilli Restaurant',
@@ -59,19 +59,19 @@ const Projects = () => {
         'Site moderno de restaurante totalmente responsivo, construído com HTML, CSS e JavaScript. Design elegante com foco em apresentar cardápio, ambiente e experiência gastronômica.',
       image: 'https://www.arturmaciel.com.br/grilli-restaurant.png',
       github: 'https://github.com/arturmaciel',
-      tags: ['HTML', 'CSS', 'JavaScript'],
+      tags: 'HTML · CSS · JavaScript',
     },
     {
       title: 'Projeto 7',
       description: 'Descrição do projeto 7. Espaço reservado para futuro projeto.',
       image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
-      tags: ['React', 'Node.js'],
+      tags: 'React · Node.js',
     },
     {
       title: 'Projeto 8',
       description: 'Descrição do projeto 8. Espaço reservado para futuro projeto.',
       image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80',
-      tags: ['TypeScript', 'API'],
+      tags: 'TypeScript · API',
     },
   ];
 
