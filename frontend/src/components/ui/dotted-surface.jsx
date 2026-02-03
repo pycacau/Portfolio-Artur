@@ -161,7 +161,7 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
     <div
       ref={containerRef}
       className={cn('pointer-events-none absolute inset-0 w-full h-full', className)}
-      style={{ zIndex: 0 }}
+      style={{ zIndex: 0, position: 'absolute' }}
       {...props}
     />
   );
