@@ -9,6 +9,7 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    const container = containerRef.current;
     const SEPARATION = 150;
     const AMOUNTX = 40;
     const AMOUNTY = 60;
@@ -33,7 +34,7 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(scene.fog.color, 0);
 
-    containerRef.current.appendChild(renderer.domElement);
+    container.appendChild(renderer.domElement);
 
     // Create particles
     const positions = [];
@@ -52,7 +53,7 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
         if (theme === 'dark') {
           colors.push(200, 200, 200);
         } else {
-          colors.push(0, 0, 0);
+          colors.push(50, 50, 50);
         }
       }
     }
@@ -91,10 +92,10 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
         for (let iy = 0; iy < AMOUNTY; iy++) {
           const index = i * 3;
 
-          // Animate Y position with sine waves
+          // Animate Y position with sine waves - MAIS AMPLITUDE
           positions[index + 1] =
-            Math.sin((ix + count) * 0.3) * 50 +
-            Math.sin((iy + count) * 0.5) * 50;
+            Math.sin((ix + count) * 0.3) * 80 +
+            Math.sin((iy + count) * 0.5) * 80;
 
           i++;
         }
@@ -103,7 +104,7 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
       positionAttribute.needsUpdate = true;
 
       renderer.render(scene, camera);
-      count += 0.1;
+      count += 0.15; // Velocidade da animação
     };
 
     // Handle window resize
@@ -149,10 +150,8 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
 
         sceneRef.current.renderer.dispose();
 
-        if (containerRef.current && sceneRef.current.renderer.domElement) {
-          containerRef.current.removeChild(
-            sceneRef.current.renderer.domElement
-          );
+        if (container && sceneRef.current.renderer.domElement) {
+          container.removeChild(sceneRef.current.renderer.domElement);
         }
       }
     };
@@ -161,7 +160,8 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
   return (
     <div
       ref={containerRef}
-      className={cn('pointer-events-none fixed inset-0 -z-1', className)}
+      className={cn('pointer-events-none absolute inset-0 w-full h-full', className)}
+      style={{ zIndex: 0 }}
       {...props}
     />
   );
