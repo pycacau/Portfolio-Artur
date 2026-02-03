@@ -31,12 +31,13 @@ const About = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="relative w-full max-w-md mx-auto">
-              <div className="absolute inset-0 bg-black transform rotate-3 rounded-lg"></div>
+            <div className="relative w-full max-w-md mx-auto group">
+              <div className="absolute inset-0 bg-black transform rotate-6 rounded-lg transition-transform duration-300 group-hover:rotate-3"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-black transform -rotate-3 rounded-lg opacity-50"></div>
               <img
                 src="https://customer-assets.emergentagent.com/job_portfolio-redesign-10/artifacts/dc7hl80b_Homem%20de%20neg%C3%B3cios%20com%20MacBook.png"
                 alt="Artur Maciel Cacau"
-                className="relative rounded-lg w-full shadow-2xl transform hover:scale-[1.02] transition-transform duration-300"
+                className="relative rounded-lg w-full shadow-2xl transform hover:scale-[1.02] transition-transform duration-500"
               />
             </div>
           </motion.div>
