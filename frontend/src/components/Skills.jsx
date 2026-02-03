@@ -72,16 +72,7 @@ const Skills = () => {
                   </div>
                   <h3 className="text-2xl font-bold text-black">{category.title}</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill, skillIndex) => (
-                    <span
-                      key={skillIndex}
-                      className="px-4 py-2 bg-gray-100 text-black rounded-full text-sm font-medium hover:bg-black hover:text-white transition-colors duration-300 cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-gray-700 leading-relaxed">{category.skills}</p>
               </motion.div>
             );
           })}
