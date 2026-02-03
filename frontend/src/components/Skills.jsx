@@ -85,14 +85,14 @@ const Skills = () => {
 
         {/* Grid com IconCloud e Formações lado a lado */}
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* IconCloud - Nuvem 3D de Ícones */}
+          {/* IconCloud - Nuvem 3D de Ícones SEM FUNDO */}
           <motion.div
             className="flex justify-center items-center"
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative flex w-full items-center justify-center overflow-hidden rounded-lg bg-black px-4 pb-8 pt-8">
+            <div className="relative flex w-full items-center justify-center overflow-visible px-4 pb-8 pt-8">
               <IconCloud iconSlugs={iconSlugs} />
             </div>
           </motion.div>
