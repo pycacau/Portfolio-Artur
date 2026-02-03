@@ -78,7 +78,7 @@ const Projects = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
-    <section id="projetos" className="py-24 bg-white" ref={ref}>
+    <section id="projetos" className="py-24 bg-white bg-texture relative noise-overlay" ref={ref}>
       <div className="max-w-7xl mx-auto px-4">
         <motion.div
           className="text-center mb-16"
