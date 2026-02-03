@@ -45,7 +45,7 @@ const Header = () => {
           {/* Logo */}
           <motion.a
             href="#"
-            className="text-2xl font-bold text-white"
+            className="flex items-center"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
             onClick={(e) => {
@@ -53,7 +53,11 @@ const Header = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            ARTUR
+            <img 
+              src="/logo.png" 
+              alt="Artur Maciel Logo" 
+              className="h-10 w-auto"
+            />
           </motion.a>
 
           {/* Desktop Navigation */}
