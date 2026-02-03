@@ -94,10 +94,11 @@ const Projects = () => {
           {displayedProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="group relative bg-white rounded-lg overflow-hidden border-2 border-black hover:shadow-2xl transition-all duration-300"
+              className="group relative bg-white rounded-lg overflow-hidden border-2 border-black hover:shadow-2xl hover:border-gray-600 transition-all duration-500"
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
               <div className="relative h-64 overflow-hidden">
                 <img
