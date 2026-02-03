@@ -4,6 +4,7 @@ import { useInView } from 'react-intersection-observer';
 import { GraduationCap, BookOpen, Shield, Code2 } from 'lucide-react';
 import { IconCloud } from './ui/interactive-icon-cloud';
 import { FeatureCard } from './ui/grid-feature-cards';
+import { DottedSurface } from './ui/dotted-surface';
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -65,8 +66,11 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 bg-black" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="skills" className="py-24 bg-black relative overflow-hidden" ref={ref}>
+      {/* Dotted Surface Background */}
+      <DottedSurface theme="dark" className="absolute inset-0" />
+      
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
