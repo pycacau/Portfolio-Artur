@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +18,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (location.pathname === '/' && location.hash) {
+      const element = document.querySelector(location.hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   const navLinks = [
     { name: 'Sobre', href: '#sobre' },
     { name: 'Skills', href: '#skills' },
@@ -23,10 +37,23 @@ const Header = () => {
   ];
 
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+    setIsMobileMenuOpen(false);
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -46,14 +73,11 @@ const Header = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <motion.a
-              href="#"
+              href="/"
               className="flex items-center gap-3"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+              onClick={handleLogoClick}
               data-testid="header-logo"
             >
               <img 
@@ -69,7 +93,7 @@ const Header = () => {
                 <motion.a
                   key={index}
                   href={link.href}
-                  className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium px-4 py-2 rounded-full hover:bg-white/10"
+                  className="relative text-white/80 hover:text-white transition-colors duration-300 font-medium px-4 py-2 rounded-full hover:bg-white/10 cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
                   onClick={(e) => {

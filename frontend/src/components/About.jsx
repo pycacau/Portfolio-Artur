@@ -41,13 +41,13 @@ const About = () => {
               <div className="absolute -inset-4 bg-gradient-to-tr from-black via-gray-900 to-gray-800 rounded-3xl transform -rotate-2 opacity-10"></div>
               
               {/* Main image container */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                <img
-                  src="https://customer-assets.emergentagent.com/job_etheral-portfolio/artifacts/7gt14k62_WhatsApp%20Image%202026-02-04%20at%2021.38.21.jpeg"
-                  alt="Artur Maciel Cacau"
-                  className="w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-700"
-                />
-                {/* Overlay gradient */}
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                  <img
+                    src="/profile.jpeg"
+                    alt="Artur Maciel Cacau"
+                    className="w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                  {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                 
                 {/* Floating badge */}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, MessageSquare, Github, Linkedin, Instagram, ArrowUpRight } from 'lucide-react';
+import { Mail, MessageSquare, Github, Instagram, ArrowUpRight } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Contact = () => {
@@ -11,7 +11,7 @@ const Contact = () => {
   });
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/5585999999999', '_blank');
+    window.open('https://wa.me/5588996828755', '_blank');
   };
 
   const handleEmail = () => {
@@ -19,9 +19,8 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com/arturmaciel', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com/in/arturmaciel', label: 'LinkedIn' },
-    { icon: Instagram, href: 'https://instagram.com/arturmaciel', label: 'Instagram' },
+    { icon: Github, href: 'https://github.com/pycacau', label: 'GitHub' },
+    { icon: Instagram, href: 'https://instagram.com/arturmaciell_', label: 'Instagram' },
   ];
 
   return (
