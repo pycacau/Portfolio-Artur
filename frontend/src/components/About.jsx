@@ -86,21 +86,20 @@ const About = () => {
               Artur Maciel<br />
               <span className="text-gray-500">Cacau</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 font-light">Desenvolvedor Full-Stack & Fundador da Codexa</p>
+            <p className="text-xl text-gray-600 mb-8 font-light">Técnico em Informática & Desenvolvedor Full-stack</p>
 
             <div className="space-y-5 text-gray-600 leading-relaxed text-lg">
               <p>
-                Sou <span className="text-black font-medium">Desenvolvedor Full-Stack</span> e{' '}
-                <span className="text-black font-medium">Técnico em Informática</span>,
-                apaixonado por criar sistemas modernos, performáticos e seguros.
+                <span className="text-black font-medium">Desenvolvedor Full-Stack</span>  com 4 anos de experiência no desenvolvimento de
+                software, sendo capaz de atuar desde a concepção do projeto até a
+                implementação, passando pela criação de protótipos e a realização de testes.
+                Dotado de capacidade de planejamento, proativdade e trabalho em equipe,
+                entregando os melhores resultados ao cliente, garantindo a funcionalidade
+                dos produtos.{' '}
+              
               </p>
 
-              <p>
-                Trabalho com foco em <span className="text-black font-medium">boa arquitetura</span>,{' '}
-                <span className="text-black font-medium">escalabilidade</span> e{' '}
-                <span className="text-black font-medium">segurança da informação</span>, unindo boas práticas 
-                de desenvolvimento com uma visão estratégica de negócio.
-              </p>
+           
             </div>
 
             {/* Estatísticas */}
