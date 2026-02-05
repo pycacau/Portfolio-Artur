@@ -19,16 +19,16 @@ export const cloudProps = {
     reverse: true,
     depth: 1,
     wheelZoom: false,
-    imageScale: 2,
+    imageScale: 2.2,
     activeCursor: 'default',
     tooltip: 'native',
-    initial: [0.1, -0.1],
+    initial: [0.2, -0.2],
     clickToFront: 500,
     tooltipDelay: 0,
     outlineColour: '#0000',
-    maxSpeed: 0.02, // OTIMIZAÇÃO: Velocidade reduzida
-    minSpeed: 0.01, // OTIMIZAÇÃO: Velocidade mínima reduzida
-    freezeActive: true, // OTIMIZAÇÃO: Congelar quando não ativo
+    maxSpeed: 0.045,
+    minSpeed: 0.02,
+    freezeActive: false,
   },
 };
 

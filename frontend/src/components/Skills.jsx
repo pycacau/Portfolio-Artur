@@ -89,10 +89,18 @@ const Skills = () => {
           <motion.div
             className="flex justify-center items-center"
             initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            animate={
+              inView
+                ? { opacity: 1, x: 0, y: [0, -8, 0] }
+                : {}
+            }
+            transition={{
+              duration: 0.8,
+              delay: 0.2,
+              y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+            }}
           >
-            <div className="relative flex w-full items-center justify-center overflow-visible px-4 pb-8 pt-8">
+            <div className="relative flex w-full items-center justify-center overflow-visible px-4 pb-4 pt-0 -mt-6 md:-mt-10">
               <IconCloud iconSlugs={iconSlugs} />
             </div>
           </motion.div>
