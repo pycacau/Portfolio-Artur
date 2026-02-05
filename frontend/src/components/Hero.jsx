@@ -1,23 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { EtheralShadow } from './ui/etheral-shadow';
 
 const Hero = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
   
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
 
   const scrollToProjects = () => {
     document.getElementById('projetos')?.scrollIntoView({ behavior: 'smooth' });
@@ -29,8 +20,8 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <EtheralShadow
           color="rgba(100, 100, 100, 1)"
-          animation={{ scale: 100, speed: 90 }}
-          noise={{ opacity: 0.8, scale: 1.2 }}
+          animation={{ scale: 60, speed: 40 }}
+          noise={{ opacity: 0.5, scale: 1.2 }}
           sizing="fill"
           className="w-full h-full"
         />
@@ -43,7 +34,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="text-8xl md:text-9xl font-bold text-white mb-6 tracking-tight">
             ARTUR
@@ -54,7 +45,7 @@ const Hero = () => {
           className="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
         >
           Desenvolvendo soluções digitais modernas, rápidas e seguras para alavancar negócios.
         </motion.p>
@@ -63,7 +54,7 @@ const Hero = () => {
           className="flex gap-4 justify-center flex-wrap"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
         >
           <Button
             size="lg"
@@ -85,14 +76,11 @@ const Hero = () => {
 
       <motion.div
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{
-          duration: 0.8,
-          delay: 1.2,
-          repeat: Infinity,
-          repeatType: 'reverse',
-          repeatDelay: 0.5,
+          opacity: { duration: 0.5, delay: 1 },
+          y: { duration: 2, repeat: Infinity, ease: "easeInOut" }
         }}
       >
         <ArrowDown className="w-8 h-8 text-white" />
