@@ -1,20 +1,21 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import * as THREE from 'three';
 import { cn } from '@/lib/utils';
 
 export function DottedSurface({ className, theme = 'dark', ...props }) {
   const containerRef = useRef(null);
   const sceneRef = useRef(null);
+  const isVisibleRef = useRef(true);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const SEPARATION = 150;
-    const AMOUNTX = 40;
-    const AMOUNTY = 60;
+    // OTIMIZAÇÃO: Menos partículas (25x35 = 875 vs 40x60 = 2400)
+    const SEPARATION = 180;
+    const AMOUNTX = 25;
+    const AMOUNTY = 35;
 
-    // Scene setup
     const scene = new THREE.Scene();
     scene.fog = new THREE.Fog(theme === 'dark' ? 0x000000 : 0xffffff, 2000, 10000);
 
@@ -28,11 +29,12 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
 
     const renderer = new THREE.WebGLRenderer({
       alpha: true,
-      antialias: true,
+      antialias: false, // OTIMIZAÇÃO: Desativar antialiasing
+      powerPreference: 'low-power' // OTIMIZAÇÃO: Preferir GPU de baixo consumo
     });
-    renderer.setPixelRatio(window.devicePixelRatio);
+    // OTIMIZAÇÃO: Limitar pixel ratio para evitar renderização pesada em telas retina
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     
-    // Usar tamanho do container ao invés da window
     const width = container.clientWidth || window.innerWidth;
     const height = container.clientHeight || window.innerHeight;
     renderer.setSize(width, height);
@@ -40,11 +42,8 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
 
     container.appendChild(renderer.domElement);
 
-    // Create particles
     const positions = [];
     const colors = [];
-
-    // Create geometry for all particles
     const geometry = new THREE.BufferGeometry();
 
     for (let ix = 0; ix < AMOUNTX; ix++) {
@@ -62,100 +61,98 @@ export function DottedSurface({ className, theme = 'dark', ...props }) {
       }
     }
 
-    geometry.setAttribute(
-      'position',
-      new THREE.Float32BufferAttribute(positions, 3)
-    );
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
 
-    // Create material
     const material = new THREE.PointsMaterial({
-      size: 12,
+      size: 10,
       vertexColors: true,
       transparent: true,
       opacity: 1.0,
       sizeAttenuation: true,
     });
 
-    // Create points object
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
     let count = 0;
     let animationId;
+    let lastTime = 0;
+    const targetFPS = 30; // OTIMIZAÇÃO: Limitar a 30 FPS
+    const frameInterval = 1000 / targetFPS;
 
-    // Animation function
-    const animate = () => {
+    // OTIMIZAÇÃO: Throttled animation loop
+    const animate = (currentTime) => {
       animationId = requestAnimationFrame(animate);
+      
+      // Não animar se não estiver visível
+      if (!isVisibleRef.current) return;
+      
+      // Throttle para 30 FPS
+      const deltaTime = currentTime - lastTime;
+      if (deltaTime < frameInterval) return;
+      lastTime = currentTime - (deltaTime % frameInterval);
 
       const positionAttribute = geometry.attributes.position;
-      const positions = positionAttribute.array;
+      const pos = positionAttribute.array;
 
       let i = 0;
       for (let ix = 0; ix < AMOUNTX; ix++) {
         for (let iy = 0; iy < AMOUNTY; iy++) {
           const index = i * 3;
-
-          // Animate Y position with sine waves - MAIS AMPLITUDE
-          positions[index + 1] =
-            Math.sin((ix + count) * 0.3) * 80 +
-            Math.sin((iy + count) * 0.5) * 80;
-
+          pos[index + 1] =
+            Math.sin((ix + count) * 0.3) * 60 +
+            Math.sin((iy + count) * 0.5) * 60;
           i++;
         }
       }
 
       positionAttribute.needsUpdate = true;
-
       renderer.render(scene, camera);
-      count += 0.05; // Velocidade MAIS LENTA
+      count += 0.03; // Velocidade mais lenta
     };
 
-    // Handle window resize
+    // OTIMIZAÇÃO: Intersection Observer para pausar quando fora da tela
+    const observer = new IntersectionObserver(
+      (entries) => {
+        isVisibleRef.current = entries[0].isIntersecting;
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(container);
+
+    // Resize handler com debounce
+    let resizeTimeout;
     const handleResize = () => {
-      const width = container.clientWidth || window.innerWidth;
-      const height = container.clientHeight || window.innerHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        const width = container.clientWidth || window.innerWidth;
+        const height = container.clientHeight || window.innerHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      }, 100);
     };
 
     window.addEventListener('resize', handleResize);
+    animate(0);
 
-    // Start animation
-    animate();
+    sceneRef.current = { scene, camera, renderer, particles: [points], animationId };
 
-    // Store references
-    sceneRef.current = {
-      scene,
-      camera,
-      renderer,
-      particles: [points],
-      animationId,
-      count,
-    };
-
-    // Cleanup function
     return () => {
       window.removeEventListener('resize', handleResize);
+      observer.disconnect();
+      clearTimeout(resizeTimeout);
 
       if (sceneRef.current) {
         cancelAnimationFrame(sceneRef.current.animationId);
-
-        // Clean up Three.js objects
         sceneRef.current.scene.traverse((object) => {
           if (object instanceof THREE.Points) {
             object.geometry.dispose();
-            if (Array.isArray(object.material)) {
-              object.material.forEach((material) => material.dispose());
-            } else {
-              object.material.dispose();
-            }
+            object.material.dispose();
           }
         });
-
         sceneRef.current.renderer.dispose();
-
         if (container && sceneRef.current.renderer.domElement) {
           container.removeChild(sceneRef.current.renderer.domElement);
         }

@@ -1,4 +1,4 @@
-import React, { useRef, useId, useEffect } from 'react';
+import React, { useRef, useId, useEffect, useState } from 'react';
 import { animate, useMotionValue } from 'framer-motion';
 
 function mapRange(value, fromLow, fromHigh, toLow, toHigh) {
@@ -26,13 +26,33 @@ export function EtheralShadow({
   children
 }) {
   const id = useInstanceId();
-  const animationEnabled = animation && animation.scale > 0;
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+  
+  // OTIMIZAÇÃO: Reduzir escala e velocidade da animação
+  const animationEnabled = animation && animation.scale > 0 && isVisible;
   const feColorMatrixRef = useRef(null);
   const hueRotateMotionValue = useMotionValue(180);
   const hueRotateAnimation = useRef(null);
 
-  const displacementScale = animation ? mapRange(animation.scale, 1, 100, 20, 100) : 0;
-  const animationDuration = animation ? mapRange(animation.speed, 1, 100, 1000, 50) : 1;
+  // OTIMIZAÇÃO: Reduzir displacement scale para menos processamento
+  const displacementScale = animation ? mapRange(animation.scale, 1, 100, 10, 50) : 0;
+  const animationDuration = animation ? mapRange(animation.speed, 1, 100, 2000, 100) : 1;
+
+  // OTIMIZAÇÃO: Intersection Observer para pausar quando fora da tela
+  useEffect(() => {
+    if (!containerRef.current) return;
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setIsVisible(entries[0].isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+    
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (feColorMatrixRef.current && animationEnabled) {
@@ -40,8 +60,9 @@ export function EtheralShadow({
         hueRotateAnimation.current.stop();
       }
       hueRotateMotionValue.set(0);
+      // OTIMIZAÇÃO: Animação mais lenta e suave
       hueRotateAnimation.current = animate(hueRotateMotionValue, 360, {
-        duration: animationDuration / 25,
+        duration: animationDuration / 15, // Mais lento
         repeat: Infinity,
         repeatType: "loop",
         repeatDelay: 0,
@@ -49,7 +70,7 @@ export function EtheralShadow({
         delay: 0,
         onUpdate: (value) => {
           if (feColorMatrixRef.current) {
-            feColorMatrixRef.current.setAttribute("values", String(value));
+            feColorMatrixRef.current.setAttribute("values", String(Math.round(value)));
           }
         }
       });
@@ -59,11 +80,14 @@ export function EtheralShadow({
           hueRotateAnimation.current.stop();
         }
       };
+    } else if (!animationEnabled && hueRotateAnimation.current) {
+      hueRotateAnimation.current.stop();
     }
   }, [animationEnabled, animationDuration, hueRotateMotionValue]);
 
   return (
     <div
+      ref={containerRef}
       className={className}
       style={{
         overflow: "hidden",
