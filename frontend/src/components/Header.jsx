@@ -80,10 +80,13 @@ const Header = () => {
               onClick={handleLogoClick}
               data-testid="header-logo"
             >
-              <img 
-                src="/logo.png" 
-                alt="Artur Maciel Logo" 
-                className="h-9 w-auto"
+              <img
+                src="/logo.png"
+                alt="Artur Maciel"
+                className="h-10 md:h-12 w-auto select-none object-contain drop-shadow-[0_2px_8px_rgba(255,255,255,0.25)]"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
               />
             </motion.a>
 

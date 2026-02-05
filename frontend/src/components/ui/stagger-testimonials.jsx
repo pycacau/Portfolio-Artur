@@ -138,7 +138,7 @@ export function StaggerTestimonials({ testimonials: customTestimonials }) {
 
   return (
     <div
-      className="relative w-full overflow-hidden bg-gray-50"
+      className="relative w-full overflow-hidden bg-transparent"
       style={{ height: 600 }}
     >
       {testimonialsList.map((testimonial, index) => {

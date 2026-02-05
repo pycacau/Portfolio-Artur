@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
+import { EtheralShadow } from './ui/etheral-shadow';
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -66,8 +67,18 @@ const Projects = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, 6);
 
   return (
-    <section id="projetos" className="py-32 bg-gray-50 relative" ref={ref}>
-      <div className="max-w-7xl mx-auto px-4">
+    <section id="projetos" className="py-32 bg-black relative overflow-hidden" ref={ref}>
+      {/* Background effect */}
+      <div className="absolute inset-0 z-0">
+        <EtheralShadow
+          color="rgba(120, 120, 120, 0.9)"
+          animation={{ scale: 50, speed: 35 }}
+          noise={{ opacity: 0.45, scale: 1.1 }}
+          sizing="fill"
+          className="w-full h-full"
+        />
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <motion.div
           className="text-center mb-20"
           initial={{ opacity: 0, y: 30 }}
@@ -75,27 +86,27 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
         >
           <motion.span 
-            className="inline-block px-4 py-1.5 bg-black text-white text-sm font-medium rounded-full mb-6"
+            className="inline-block px-4 py-1.5 bg-white text-black text-sm font-medium rounded-full mb-6"
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
           >
             Portfólio
           </motion.span>
-          <h2 className="text-5xl md:text-6xl font-bold text-black mb-4">
+          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
             Projetos em<br />
-            <span className="text-gray-400">Destaque</span>
+            <span className="text-gray-300">Destaque</span>
           </h2>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Soluções desenvolvidas com excelência e foco em resultados
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedProjects.map((project, index) => (
             <motion.div
               key={index}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
+              className="group relative rounded-2xl overflow-hidden transition-all duration-500 border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10"
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -108,7 +119,7 @@ const Projects = () => {
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                 />
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
                 
                 {/* Hover actions */}
                 <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-all duration-500">
@@ -138,17 +149,17 @@ const Projects = () => {
               </div>
               
               <div className="p-6">
-                <h3 className="text-xl font-bold text-black mb-2 group-hover:text-gray-700 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-gray-200 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-500 text-sm mb-4 line-clamp-2">{project.description}</p>
+                <p className="text-gray-300 text-sm mb-4 line-clamp-2">{project.description}</p>
                 
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIndex) => (
                     <span 
                       key={tagIndex}
-                      className="text-xs px-3 py-1 bg-gray-100 text-gray-600 rounded-full"
+                      className="text-xs px-3 py-1 bg-white/10 text-white/80 rounded-full border border-white/20"
                     >
                       {tag}
                     </span>
@@ -168,7 +179,7 @@ const Projects = () => {
           >
             <Button
               size="lg"
-              className="bg-black text-white hover:bg-gray-800 transition-all duration-300 px-8 py-6 text-lg rounded-full group"
+              className="bg-white text-black hover:bg-gray-100 transition-all duration-300 px-8 py-6 text-lg rounded-full group"
               onClick={() => setShowAll(true)}
               data-testid="show-all-projects-btn"
             >
