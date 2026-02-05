@@ -26,7 +26,6 @@ module.exports = {
             '**/build/**',
             '**/dist/**',
             '**/coverage/**',
-            '**/public/**',
         ],
       };
       return webpackConfig;
