@@ -18,32 +18,32 @@ const Projects = () => {
       title: 'FR Advocacia Especializada',
       description:
         'Site institucional profissional para escritório de advocacia, com foco em credibilidade, conversão de clientes e responsividade.',
-      image: 'https://www.arturmaciel.com.br/fr.png',
-      demo: 'https://fradv.com.br',
+      image: '/fr.png',
+      demo: 'https://www.roney.adv.br',
       tags: ['React', 'Tailwind', 'Responsive'],
     },
     {
       title: 'Codexa Dev',
       description:
         'Site corporativo da agência Codexa, com gradientes modernos, formulário interativo de orçamento e foco em conversão.',
-      image: 'https://www.arturmaciel.com.br/codexa.png',
-      demo: 'https://codexa.com.br',
+      image: '/codexa.png',
+      demo: 'https://www.codexa.dev.br',
       tags: ['Next.js', 'Design Moderno', 'Forms'],
     },
     {
       title: 'Urubu Ecoparque',
       description:
         'Website oficial do parque ecológico com design moderno, galeria de fotos, cardápio completo, com API.',
-      image: 'https://www.arturmaciel.com.br/urubu-ecopark.jpg',
-      demo: 'https://urubuecoparque.com.br',
+      image: '/urubu.png',
+      demo: 'https://urubuecoparque.pages.dev',
       tags: ['Full-Stack', 'API', 'Gallery'],
     },
     {
       title: 'Spansiva Tecnologia Aplicada',
       description:
         'Site institucional moderno para loja de tecnologia, com foco em PCs gamer, impressoras e acessórios premium.',
-      image: 'https://www.arturmaciel.com.br/spansiva.png',
-      demo: 'https://spansiva.com.br',
+      image: '/spansiva.png',
+      demo: 'https://spansiva.pages.dev',
       tags: ['E-commerce', 'React', 'SEO'],
     },
     {
@@ -58,7 +58,7 @@ const Projects = () => {
       title: 'Grilli Restaurant',
       description:
         'Site moderno de restaurante totalmente responsivo, construído com HTML, CSS e JavaScript.',
-      image: 'https://www.arturmaciel.com.br/grilli-restaurant.png',
+      image: '/grilli.png',
       github: 'https://github.com/arturmaciel',
       tags: ['HTML', 'CSS', 'JavaScript'],
     },

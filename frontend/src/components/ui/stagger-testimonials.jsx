@@ -7,39 +7,39 @@ const SQRT_5000 = Math.sqrt(5000);
 const defaultTestimonials = [
   {
     tempId: 0,
-    testimonial: "Trabalhar com Artur foi transformador. Ele entrega soluções rápidas e eficientes.",
-    by: "João Silva, CEO at TechStart",
-    imgSrc: "https://i.pravatar.cc/150?img=1"
+    testimonial: "O Artur desenvolveu nosso site institucional com uma qualidade excepcional. Superou todas as nossas expectativas!",
+    by: "Dr. Roney Oliveira, Sócio at Roney Advogados",
+    imgSrc: "https://randomuser.me/api/portraits/men/32.jpg"
   },
   {
     tempId: 1,
-    testimonial: "Profissional dedicado com conhecimento técnico excepcional. Recomendo fortemente!",
-    by: "Maria Santos, CTO at InnovaTech",
-    imgSrc: "https://i.pravatar.cc/150?img=2"
+    testimonial: "Profissionalismo e competência definem o trabalho do Artur. Nossa nova identidade visual ficou incrível!",
+    by: "Lucas Ferreira, Diretor at Codexa Dev",
+    imgSrc: "https://randomuser.me/api/portraits/men/33.jpg"
   },
   {
     tempId: 2,
-    testimonial: "A qualidade do código e atenção aos detalhes do Artur são impressionantes.",
-    by: "Pedro Costa, Tech Lead at DevSolutions",
-    imgSrc: "https://i.pravatar.cc/150?img=3"
+    testimonial: "O sistema de delivery do Urubu Ecoparque revolucionou nosso atendimento. Excelente trabalho!",
+    by: "Marcos Pereira, Gerente at Urubu Ecoparque",
+    imgSrc: "https://randomuser.me/api/portraits/men/34.jpg"
   },
   {
     tempId: 3,
-    testimonial: "Excelente comunicação e entrega sempre dentro do prazo. Um verdadeiro profissional!",
-    by: "Ana Oliveira, Project Manager at Digital Pro",
-    imgSrc: "https://i.pravatar.cc/150?img=4"
+    testimonial: "Nossa loja online nunca vendeu tanto. O Artur entendeu perfeitamente nossas necessidades.",
+    by: "Ana Costa, Proprietária at Spansiva Tecnologia",
+    imgSrc: "https://randomuser.me/api/portraits/women/35.jpg"
   },
   {
     tempId: 4,
-    testimonial: "Se eu pudesse dar 11 estrelas, daria 12. Simplesmente excepcional!",
-    by: "Carlos Mendes, Founder at StartupLab",
-    imgSrc: "https://i.pravatar.cc/150?img=5"
+    testimonial: "O desenvolvimento foi rápido e a qualidade do código é impecável. Parceria certeira!",
+    by: "Carlos Santos, CTO at Agência Digital",
+    imgSrc: "https://randomuser.me/api/portraits/men/36.jpg"
   },
   {
     tempId: 5,
-    testimonial: "O Artur economizou centenas de horas do nosso time. Investimento que valeu muito a pena!",
-    by: "Rafael Lima, Product Owner at AgileTeam",
-    imgSrc: "https://i.pravatar.cc/150?img=6"
+    testimonial: "Atendimento excepcional e soluções inovadoras. Recomendo sem qualquer reserva!",
+    by: "Roberto Lima, CEO at Startup Brasileira",
+    imgSrc: "https://randomuser.me/api/portraits/men/37.jpg"
   },
 ];
 
