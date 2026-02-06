@@ -18,7 +18,7 @@ const Projects = () => {
       title: 'FR Advocacia Especializada',
       description:
         'Site institucional profissional para escritório de advocacia, com foco em credibilidade, conversão de clientes e responsividade.',
-      image: '/fr.png',
+      image: '/fr.png?v=1',
       demo: 'https://www.roney.adv.br',
       tags: ['React', 'Tailwind', 'Responsive'],
     },
@@ -26,7 +26,7 @@ const Projects = () => {
       title: 'Codexa Dev',
       description:
         'Site corporativo da agência Codexa, com gradientes modernos, formulário interativo de orçamento e foco em conversão.',
-      image: '/codexa.png',
+      image: '/codexa.png?v=1',
       demo: 'https://www.codexa.dev.br',
       tags: ['Next.js', 'Design Moderno', 'Forms'],
     },
@@ -34,7 +34,7 @@ const Projects = () => {
       title: 'Urubu Ecoparque',
       description:
         'Website oficial do parque ecológico com design moderno, galeria de fotos, cardápio completo, com API.',
-      image: '/urubu.png',
+      image: '/urubu.png?v=1',
       demo: 'https://urubuecoparque.pages.dev',
       tags: ['Full-Stack', 'API', 'Gallery'],
     },
@@ -42,7 +42,7 @@ const Projects = () => {
       title: 'Spansiva Tecnologia Aplicada',
       description:
         'Site institucional moderno para loja de tecnologia, com foco em PCs gamer, impressoras e acessórios premium.',
-      image: '/spansiva.png',
+      image: '/spansiva.png?v=1',
       demo: 'https://spansiva.pages.dev',
       tags: ['E-commerce', 'React', 'SEO'],
     },
@@ -58,7 +58,7 @@ const Projects = () => {
       title: 'Grilli Restaurant',
       description:
         'Site moderno de restaurante totalmente responsivo, construído com HTML, CSS e JavaScript.',
-      image: '/grilli.png',
+      image: '/grilli.png?v=1',
       github: 'https://github.com/arturmaciel',
       tags: ['HTML', 'CSS', 'JavaScript'],
     },
