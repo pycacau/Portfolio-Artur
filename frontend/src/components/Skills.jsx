@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { GraduationCap, BookOpen, Shield, Code2 } from 'lucide-react';
+import { GraduationCap, BookOpen, Shield, Code2, Award, ArrowRight } from 'lucide-react';
 import { IconCloud } from './ui/interactive-icon-cloud';
 import { FeatureCard } from './ui/grid-feature-cards';
 import { DottedSurface } from './ui/dotted-surface';
+import { Link } from 'react-router-dom';
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -122,6 +123,41 @@ const Skills = () => {
                 <FeatureCard feature={feature} />
               </motion.div>
             ))}
+            
+            {/* Link para Certificados */}
+            <motion.div
+              className="sm:col-span-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.9 }}
+            >
+              <Link to="/certificados" data-testid="certificates-link">
+                <motion.div
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
+                        <Award className="w-6 h-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-white">Ver Certificados & Diplomas</h3>
+                        <p className="text-sm text-gray-400">Confira minhas certificações</p>
+                      </div>
+                    </div>
+                    <motion.div
+                      className="text-white/60 group-hover:text-white transition-colors"
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="w-6 h-6" />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </div>
