@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Home from "@/pages/Home";
 import TermsOfService from "@/pages/TermsOfService";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import Certificates from "@/pages/Certificates";
 import ScrollToTop from "@/components/ScrollToTop";
 import { Footer } from "@/components/ui/footer";
 import { Github, Instagram, Phone, Hexagon } from "lucide-react";
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/certificados" element={<Certificates />} />
         </Routes>
         <Footer
           logo={<Hexagon className="h-8 w-8 text-white" />}

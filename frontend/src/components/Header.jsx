@@ -33,11 +33,16 @@ const Header = () => {
     { name: 'Sobre', href: '#sobre' },
     { name: 'Skills', href: '#skills' },
     { name: 'Projetos', href: '#projetos' },
+    { name: 'Certificados', href: '/certificados', isPage: true },
     { name: 'Contato', href: '#contato' },
   ];
 
-  const scrollToSection = (href) => {
+  const scrollToSection = (href, isPage = false) => {
     setIsMobileMenuOpen(false);
+    if (isPage) {
+      navigate(href);
+      return;
+    }
     if (location.pathname !== '/') {
       navigate('/' + href);
     } else {
@@ -98,7 +103,7 @@ const Header = () => {
                   transition={{ duration: 0.2 }}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    scrollToSection(link.href, link.isPage);
                   }}
                   data-testid={`nav-${link.name.toLowerCase()}`}
                 >
@@ -165,7 +170,7 @@ const Header = () => {
                   transition={{ delay: 0.1 + index * 0.05 }}
                   onClick={(e) => {
                     e.preventDefault();
-                    scrollToSection(link.href);
+                    scrollToSection(link.href, link.isPage);
                   }}
                 >
                   {link.name}
