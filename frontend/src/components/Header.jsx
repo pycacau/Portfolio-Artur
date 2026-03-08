@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FlowButton } from './ui/flow-button';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -111,16 +112,12 @@ const Header = () => {
                 </motion.a>
               ))}
               
-              {/* CTA Button */}
-              <motion.button
-                className="ml-4 px-6 py-2.5 bg-white text-black font-medium rounded-full hover:bg-gray-100 transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              {/* Novo Botão Animado */}
+              <FlowButton 
+                text="Vamos Conversar" 
                 onClick={() => scrollToSection('#contato')}
-                data-testid="header-cta"
-              >
-                Fale Comigo
-              </motion.button>
+                className="ml-4"
+              />
             </nav>
 
             {/* Mobile Menu Button */}
