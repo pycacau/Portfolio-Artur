@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, MessageSquare, Github, Instagram, ArrowUpRight } from 'lucide-react';
+import { Mail, MessageSquare, Github, Instagram, ArrowUpRight, Sparkles } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Contact = () => {
@@ -24,102 +24,87 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contato" className="py-32 bg-black relative overflow-hidden" ref={ref}>
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-gray-800/30 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gray-800/20 rounded-full blur-3xl"></div>
-      
-      <div className="max-w-5xl mx-auto px-4 relative z-10">
+    <section id="contato" className="py-24 md:py-40 bg-white relative overflow-hidden border-t-2 border-black" ref={ref}>
+      {/* Background Decorativo - Ajustado para bolinhas pretas mais visíveis */}
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:24px_24px] md:[background-size:32px_32px]" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <motion.span 
-            className="inline-block px-4 py-1.5 bg-white/10 text-white/80 text-sm font-medium rounded-full mb-6 backdrop-blur-sm"
-            initial={{ opacity: 0, y: 10 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.2 }}
+          {/* Badge Estilo Cartoon */}
+          <motion.div 
+            className="inline-flex items-center gap-2 px-5 py-2 bg-white border-2 border-black text-black text-[10px] md:text-xs font-black uppercase tracking-[0.2em] rounded-none mb-10 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
           >
-            Vamos conversar?
-          </motion.span>
+            <Sparkles size={14} className="animate-pulse text-black" strokeWidth={3} />
+            Disponível para novos projetos
+          </motion.div>
           
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Entre em<br />
-            <span className="text-gray-500">Contato</span>
+          {/* TÍTULO CARTOON: Destaque na palavra com leve rotação */}
+          <h2 className="text-6xl md:text-8xl font-black text-black mb-10 tracking-tighter leading-[1.2] md:leading-[1.2] py-4 uppercase italic">
+            VAMOS <br className="hidden md:block" />
+            <span className="inline-block bg-black text-white px-6 py-2 mt-2 border-2 border-black transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+              CONVERSAR?
+            </span>
           </h2>
-          <p className="text-xl text-gray-400 mb-16 max-w-2xl mx-auto">
-            Tem um projeto em mente? Vamos transformar sua ideia em uma solução digital de sucesso.
+
+          <p className="text-lg md:text-2xl text-black font-medium mb-12 max-w-2xl mx-auto leading-relaxed border-b-2 border-black pb-8">
+            Transformo ideias complexas em interfaces simples e funcionais. 
+            Como posso ajudar o seu negócio hoje?
           </p>
 
-          <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          {/* Botões Brutalistas */}
+          <div className="flex flex-col sm:flex-row gap-6 md:gap-8 justify-center mb-20">
             <Button
               size="lg"
-              className="bg-white text-black hover:bg-gray-100 transition-all duration-300 px-8 py-6 text-lg font-medium rounded-full group"
+              className="bg-black text-white border-2 border-black rounded-none px-8 py-7 md:px-10 md:py-8 text-lg md:text-xl font-black uppercase tracking-tighter group transition-all duration-300 hover:bg-black hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
               onClick={handleWhatsApp}
-              data-testid="whatsapp-btn"
             >
-              <MessageSquare className="w-5 h-5 mr-2" />
+              <MessageSquare className="w-5 h-5 md:w-6 md:h-6 mr-3" strokeWidth={2.5} />
               WhatsApp
-              <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" strokeWidth={3} />
             </Button>
+
             <Button
               size="lg"
               variant="outline"
-              className="border-white/30 text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-6 text-lg font-medium rounded-full group"
+              className="bg-white text-black border-2 border-black rounded-none px-8 py-7 md:px-10 md:py-8 text-lg md:text-xl font-black uppercase tracking-tighter group transition-all duration-300 hover:bg-white hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
               onClick={handleEmail}
-              data-testid="email-btn"
             >
-              <Mail className="w-5 h-5 mr-2" />
-              Email
-              <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <Mail className="w-5 h-5 md:w-6 md:h-6 mr-3" strokeWidth={2.5} />
+              E-mail
             </Button>
-          </motion.div>
+          </div>
 
-          {/* Social Links */}
-          <motion.div
-            className="flex justify-center gap-4 mb-16"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {socialLinks.map((social, index) => {
-              const Icon = social.icon;
-              return (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:bg-white hover:text-black hover:border-white transition-all duration-300"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label={social.label}
-                  data-testid={`social-${social.label.toLowerCase()}`}
-                >
-                  <Icon className="w-5 h-5" />
-                </motion.a>
-              );
-            })}
-          </motion.div>
-
-          {/* Footer */}
-          <motion.div
-            className="pt-8 border-t border-white/10"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Artur Maciel Cacau. Todos os direitos reservados.
-            </p>
-          </motion.div>
+          {/* Redes Sociais */}
+          <div className="flex flex-col items-center gap-6">
+            <span className="text-[10px] md:text-xs font-black text-black uppercase tracking-[0.3em] bg-white border-2 border-black px-4 py-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
+              Redes Sociais
+            </span>
+            <div className="flex gap-4 md:gap-6">
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-14 h-14 md:w-16 md:h-16 bg-white border-2 border-black rounded-none flex items-center justify-center text-black hover:bg-black hover:text-white transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]"
+                  >
+                    <Icon className="w-6 h-6 md:w-7 md:h-7" strokeWidth={2.5} />
+                  </a>
+                );
+              })}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

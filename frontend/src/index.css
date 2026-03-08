@@ -84,6 +84,53 @@ code {
     }
 }
 
+@keyframes morphChar {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.9);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(-3px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.morph-char {
+  animation: morphChar 0.3s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+/* Opcional: Efeito de glitch no hover */
+.glitch-effect {
+  animation: glitch 0.2s infinite;
+  will-change: transform;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-1px); }
+  40% { transform: translateX(1px); }
+  60% { transform: translateX(-0.5px); }
+  80% { transform: translateX(0.5px); }
+}
+
+/* Performance optimizations */
+* {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.motion-safe {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+}
+
 @layer base {
     [data-debug-wrapper="true"] {
         display: contents !important;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code2, Shield, Briefcase, Sparkles } from 'lucide-react';
+import { Code2, Shield, Briefcase, User } from 'lucide-react';
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -10,120 +10,120 @@ const About = () => {
   });
 
   const stats = [
-    { icon: Code2, number: '50+', label: 'Projetos Desenvolvidos' },
-    { icon: Briefcase, number: '3+', label: 'Anos de Experiência' },
-    { icon: Shield, number: '20+', label: 'Clientes Satisfeitos' },
+    { icon: Code2, number: '50+', label: 'Projetos' },
+    { icon: Briefcase, number: '4+', label: 'Anos Exp.' },
+    { icon: Shield, number: '20+', label: 'Clientes' },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.3 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  };
+
   return (
-    <section id="sobre" className="py-32 bg-white relative overflow-hidden" ref={ref}>
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-gray-100 to-transparent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-gray-100 to-transparent rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+    <section id="sobre" className="py-24 md:py-32 bg-white relative overflow-hidden border-b-2 border-black" ref={ref}>
+      {/* Grid de fundo sutil */}
+      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px]" />
+      </div>
       
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
-        <motion.div
-          className="grid lg:grid-cols-2 gap-20 items-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Foto */}
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Layout de Texto e Imagem */}
+        <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-center mb-24">
+          
+          {/* FOTO À ESQUERDA */}
           <motion.div
-            className="relative order-2 lg:order-1"
+            className="lg:col-span-5 order-2 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="relative w-full max-w-lg mx-auto">
-              {/* Background shapes */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-gray-900 via-gray-800 to-black rounded-3xl transform rotate-3 opacity-20"></div>
-              <div className="absolute -inset-4 bg-gradient-to-tr from-black via-gray-900 to-gray-800 rounded-3xl transform -rotate-2 opacity-10"></div>
-              
-              {/* Main image container */}
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                  <img
-                    src="/profile.jpeg"
-                    alt="Artur Maciel Cacau"
-                    className="w-full aspect-square object-cover transform group-hover:scale-105 transition-transform duration-700"
-                  />
-                  {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
-                
-                {/* Floating badge */}
-                <motion.div 
-                  className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ delay: 0.8 }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-black" />
-                    <span className="text-sm font-semibold text-black">Disponível para projetos</span>
-                  </div>
-                </motion.div>
+            <div className="relative group w-full max-w-md mx-auto lg:mx-0">
+              <div className="absolute inset-0 bg-black translate-x-4 translate-y-4" />
+              <div className="relative border-2 border-black bg-white p-0 rounded-none overflow-hidden transition-transform group-hover:-translate-x-1 group-hover:-translate-y-1 duration-300">
+                <img
+                  src="/profile.jpeg"
+                  alt="Artur Maciel Cacau"
+                  className="w-full aspect-[4/5] object-cover"
+                />
+                <div className="absolute top-4 left-4 bg-black border-2 border-white text-white px-3 py-1 flex items-center gap-2 shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
+                  <div className="w-2 h-2 bg-green-500 rounded-none animate-pulse" />
+                  <span className="text-[10px] font-black uppercase tracking-widest">Ativo</span>
+                </div>
               </div>
             </div>
           </motion.div>
 
-          {/* Conteúdo */}
+          {/* CONTEÚDO DE TEXTO À DIREITA */}
           <motion.div
-            className="order-1 lg:order-2"
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            className="lg:col-span-7 order-1 lg:order-2"
+            variants={containerVariants}
+            initial="hidden"
+            animate={inView ? "visible" : "hidden"}
           >
-            <motion.span 
-              className="inline-block px-4 py-1.5 bg-black text-white text-sm font-medium rounded-full mb-6"
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
-            >
-              Sobre mim
-            </motion.span>
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1 bg-black text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8 border-2 border-black shadow-[4px_4px_0px_0px_rgba(200,200,200,1)]">
+              <User size={12} strokeWidth={3} />
+              <span>Sua trajetória</span>
+            </motion.div>
             
-            <h2 className="text-5xl lg:text-6xl font-bold text-black mb-4 leading-tight">
-              Artur Maciel<br />
-              <span className="text-gray-500">Cacau</span>
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 font-light">Técnico em Informática & Desenvolvedor Full-stack</p>
+            <motion.h2 variants={itemVariants} className="text-6xl md:text-8xl font-black text-black mb-10 tracking-tighter leading-[0.85] uppercase italic">
+              ARTUR MACIEL
+            </motion.h2>
 
-            <div className="space-y-5 text-gray-600 leading-relaxed text-lg">
+            <motion.div variants={itemVariants} className="space-y-6 text-black leading-tight text-xl font-medium max-w-2xl border-l-4 border-black pl-6">
               <p>
-                <span className="text-black font-medium">Desenvolvedor Full-Stack</span>  com 4 anos de experiência no desenvolvimento de
-                software, sendo capaz de atuar desde a concepção do projeto até a
-                implementação, passando pela criação de protótipos e a realização de testes.
-                Dotado de capacidade de planejamento, proativdade e trabalho em equipe,
-                entregando os melhores resultados ao cliente, garantindo a funcionalidade
-                dos produtos.{' '}
-              
+                <span className="bg-black text-white px-1">Desenvolvedor Full-Stack e Técnico em Informática</span>. Transformo problemas complexos em interfaces simples, rápidas e seguras.
               </p>
-
-           
-            </div>
-
-            {/* Estatísticas */}
-            <div className="grid grid-cols-3 gap-8 mt-12 pt-8 border-t border-gray-200">
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    className="text-center lg:text-left"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                  >
-                    <div className="flex items-center justify-center lg:justify-start gap-2 mb-2">
-                      <Icon className="w-5 h-5 text-gray-400" />
-                      <p className="text-3xl font-bold text-black">{stat.number}</p>
-                    </div>
-                    <p className="text-sm text-gray-500">{stat.label}</p>
-                  </motion.div>
-                );
-              })}
-            </div>
+              <p className="text-gray-600 leading-relaxed text-lg font-normal">
+                Com especialização em arquitetura de sistemas escaláveis e interfaces modernas, atuo desde a concepção até a implementação final de projetos digitais.
+              </p>
+              <p className="text-gray-600 leading-relaxed text-lg font-normal">
+                Minha abordagem combina fundamentos técnicos sólidos com design estratégico, garantindo soluções que não apenas funcionam bem, mas também geram resultados reais para negócios.
+              </p>
+            </motion.div>
           </motion.div>
+        </div>
+
+        {/* FAIXA DE ESTATÍSTICAS CENTRALIZADA EMBAIXO */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="relative w-full"
+        >
+          {/* Sombra da faixa */}
+          <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 md:translate-x-3 md:translate-y-3" />
+          
+          {/* Faixa Principal */}
+          <div className="relative bg-white border-2 border-black grid grid-cols-1 sm:grid-cols-3 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black overflow-hidden">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon;
+              return (
+                <div 
+                  key={index} 
+                  className="flex flex-col items-center justify-center p-8 md:p-10 hover:bg-black hover:text-white transition-all duration-300 group cursor-default"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-white" strokeWidth={3} />
+                    <span className="text-4xl md:text-5xl font-black italic tracking-tighter leading-none">
+                      {stat.number}
+                    </span>
+                  </div>
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-black opacity-60 group-hover:opacity-100">
+                    {stat.label}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
         </motion.div>
       </div>
     </section>
