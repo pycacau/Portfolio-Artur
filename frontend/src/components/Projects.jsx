@@ -59,7 +59,7 @@ const Projects = () => {
     },
   ];
 
-  const initialVisibleProjects = 4;
+  const initialVisibleProjects = isMobile ? 4 : 3;
   const displayedProjects = showAll ? allProjects : allProjects.slice(0, initialVisibleProjects);
 
   return (
