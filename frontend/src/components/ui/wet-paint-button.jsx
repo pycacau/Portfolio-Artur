@@ -2,40 +2,44 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-const WetPaintButton = ({ children, className, ...props }) => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  
+const WetPaintButton = ({ children, className, disableDrips = false, lightDrips = false, ...props }) => {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
-    <button 
+    <button
       {...props}
       className={cn(
-        "group relative rounded-2xl bg-white px-12 py-8 font-bold text-black transition-colors hover:bg-gray-200", 
+        "group relative rounded-2xl bg-white px-12 py-8 font-bold text-black transition-colors hover:bg-gray-200",
         className
       )}
     >
       {children}
-      {/* Gotas de "tinta" - Versão reduzida no Mobile (apenas 2 gotas) */}
-      {isMobile ? (
-        <>
-          <Drip left="25%" height={16} delay={0.8} />
-          <Drip left="75%" height={12} delay={2.5} />
-        </>
-      ) : (
-        /* Desktop: 4 gotas completas */
-        <>
-          <Drip left="10%" height={24} delay={0.5} />
-          <Drip left="30%" height={20} delay={3} />
-          <Drip left="57%" height={10} delay={4.25} />
-          <Drip left="85%" height={16} delay={1.5} />
-        </>
-      )}
+
+      {!disableDrips &&
+        (isMobile ? (
+          lightDrips ? (
+            <Drip left="50%" height={12} delay={1.5} />
+          ) : (
+            <>
+              <Drip left="25%" height={16} delay={0.8} />
+              <Drip left="75%" height={12} delay={2.5} />
+            </>
+          )
+        ) : (
+          <>
+            <Drip left="10%" height={24} delay={0.5} />
+            <Drip left="30%" height={20} delay={3} />
+            <Drip left="57%" height={10} delay={4.25} />
+            <Drip left="85%" height={16} delay={1.5} />
+          </>
+        ))}
     </button>
   );
 };
 
 const Drip = ({ left, height, delay }) => {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-  
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <motion.div
       className="absolute top-[99%] origin-top z-10"
@@ -43,12 +47,12 @@ const Drip = ({ left, height, delay }) => {
       initial={{ scaleY: 0.75 }}
       animate={{ scaleY: [0.75, 1, 0.75] }}
       transition={{
-        duration: isMobile ? 1.5 : 2, // Mais rápido no mobile
+        duration: isMobile ? 1.7 : 2,
         times: [0, 0.25, 1],
         delay,
         ease: "easeIn",
         repeat: Infinity,
-        repeatDelay: isMobile ? 3 : 2, // Intervalo maior no mobile
+        repeatDelay: isMobile ? 3.6 : 2,
       }}
     >
       <div
@@ -83,17 +87,17 @@ const Drip = ({ left, height, delay }) => {
           className="fill-white transition-colors group-hover:fill-gray-200"
         />
       </svg>
-      
+
       <motion.div
         initial={{ y: -8, opacity: 1 }}
-        animate={{ y: [-8, isMobile ? 30 : 50], opacity: [1, 0] }} // Menos distância no mobile
+        animate={{ y: [-8, isMobile ? 30 : 50], opacity: [1, 0] }}
         transition={{
-          duration: isMobile ? 1.5 : 2, // Mais rápido no mobile
+          duration: isMobile ? 1.7 : 2,
           times: [0, 1],
           delay,
           ease: "easeIn",
           repeat: Infinity,
-          repeatDelay: isMobile ? 3 : 2, // Intervalo maior no mobile
+          repeatDelay: isMobile ? 3.6 : 2,
         }}
         className="absolute top-full h-2 w-2 rounded-full bg-white transition-colors group-hover:bg-gray-200"
       />

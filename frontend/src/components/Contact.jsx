@@ -48,9 +48,9 @@ const Contact = () => {
           </motion.div>
           
           {/* TÍTULO CARTOON: Destaque na palavra com leve rotação */}
-          <h2 className="text-6xl md:text-8xl font-black text-black mb-10 tracking-tighter leading-[1.2] md:leading-[1.2] py-4 uppercase italic">
-            VAMOS <br className="hidden md:block" />
-            <span className="inline-block bg-black text-white px-6 py-2 mt-2 border-2 border-black transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+          <h2 className="text-[clamp(2rem,11vw,4.5rem)] md:text-8xl font-black text-black mb-10 tracking-normal sm:tracking-tight md:tracking-tighter leading-[1.05] md:leading-[1.2] py-3 md:py-4 uppercase italic max-w-full px-1 whitespace-normal">
+            <span className="block">VAMOS</span>
+            <span className="inline-block max-w-full bg-black text-white px-3 sm:px-6 py-2 mt-2 border-2 border-black transform md:-rotate-2 md:hover:rotate-0 transition-transform duration-300">
               CONVERSAR?
             </span>
           </h2>
