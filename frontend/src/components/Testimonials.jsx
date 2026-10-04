@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BriefcaseBusiness, Star, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, MotionConfig } from 'framer-motion';
@@ -43,8 +43,23 @@ export const TestimonialsColumn = ({ testimonials, duration = 18, direction = 'u
 
 export default function Testimonials() {
   const { reviews, error } = useReviews();
+  const [mobile, setMobile] = useState(() => window.matchMedia('(max-width: 767px)').matches);
+  useEffect(() => {
+    const query = window.matchMedia('(max-width: 767px)');
+    const update = () => setMobile(query.matches);
+    query.addEventListener('change', update);
+    return () => query.removeEventListener('change', update);
+  }, []);
   const items = composeFeedbacks(reviews, feedbackExamples);
-  const columns = [0,1,2].map(index => items.filter((_, itemIndex) => itemIndex % 3 === index));
+  const count = mobile ? 2 : 3;
+  const columns = Array.from({ length: count }, () => []);
+  const priority = mobile ? [0, 1] : [1, 0, 2];
+  let cursor = 0;
+  priority.forEach((columnIndex, order) => {
+    const capacity = Math.floor(items.length / count) + (order < items.length % count ? 1 : 0);
+    columns[columnIndex] = items.slice(cursor, cursor + capacity);
+    cursor += capacity;
+  });
   const durations = [18, 23, 20];
   const average = reviews.length ? (reviews.reduce((total, review) => total + review.rating, 0) / reviews.length).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : null;
   const renderColumns = (decorative = false) => columns.map((column, index) => <TestimonialsColumn key={index}
