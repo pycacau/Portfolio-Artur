@@ -1,0 +1,17 @@
+{
+  "name": "artur-portfolio-reviews",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-worker.mjs",
+    "build:pages": "node scripts/build-pages.mjs",
+    "db:generate": "drizzle-kit generate",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "drizzle-kit": "0.31.10",
+    "drizzle-orm": "0.45.2",
+    "esbuild": "0.25.12"
+  },
+  "packageManager": "npm@11.9.0"
+}

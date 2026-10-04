@@ -1,20 +1,25 @@
 import React from "react";
-import Hero from "../components/Hero";
+import MascotPortfolioHero from "../components/MascotPortfolioHero";
 import About from "../components/About";
-import Skills from "../components/Skills";
+import BusinessBenefits from "../components/BusinessBenefits";
 import Projects from "../components/Projects";
 import Testimonials from "../components/Testimonials";
 import Contact from "../components/Contact";
+import CloudNightScene from "../components/CloudNightScene";
+import { Footer } from "../components/ui/footer";
 
 const Home = () => {
   return (
     <>
-      <Hero />
+      <MascotPortfolioHero href="#contato" hair="#241d19" hairStyle="textured" />
       <About />
-      <Skills />
-      <Projects />
-      <Testimonials />
-      <Contact />
+      <CloudNightScene lightContent={<>
+        <Testimonials />
+        <Contact />
+      </>} footerContent={<Footer className="portfolio-footer--in-scene" />}>
+        <BusinessBenefits />
+        <Projects />
+      </CloudNightScene>
     </>
   );
 };

@@ -1,0 +1,49 @@
+.contact-section { padding: clamp(64px, 8vw, 112px) 0; overflow-x: clip; }
+.contact-section__container { position: relative; z-index: 1; width: min(100% - 40px, 1160px); margin-inline: auto; }
+.contact-section__eyebrow { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding-bottom: 20px; margin-bottom: clamp(32px, 5vw, 56px); border-bottom: 1px solid #090909; font-size: .875rem; font-weight: 700; }
+.contact-section__eyebrow > span:first-child { text-transform: uppercase; letter-spacing: .12em; }
+.contact-section__availability { color: #535353; font-weight: 500; }
+.contact-section__layout { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); grid-template-areas: 'intro panel' 'email panel'; align-items: start; column-gap: clamp(32px, 6vw, 88px); }
+.contact-section__intro { grid-area: intro; min-width: 0; }
+.contact-section__title { font-size: clamp(3rem, 6.3vw, 5.7rem); }
+.contact-section__title > span { color: #606060; }
+.contact-section__description { max-width: 440px; margin-top: 24px; color: #535353; font-size: 1rem; line-height: 1.75; }
+.contact-email { grid-area: email; display: flex; flex-direction: column; gap: 10px; width: fit-content; max-width: 100%; margin-top: 36px; padding-block: 14px; border-bottom: 2px solid #090909; color: #090909; text-decoration: none; transition: border-color 180ms ease, color 180ms ease; }
+.contact-email__label { display: flex; align-items: center; gap: 9px; color: #535353; font-size: .875rem; line-height: 1.5; }
+.contact-email__label svg { flex-shrink: 0; }
+.contact-email__address { font-size: clamp(1rem, 1.9vw, 1.4rem); line-height: 1.45; font-weight: 650; letter-spacing: -.035em; overflow-wrap: anywhere; }
+.contact-email:hover { color: #606060; border-color: #606060; }
+.contact-panel { grid-area: panel; min-width: 0; background: #090909; color: #fff; border: 2px solid #090909; box-shadow: 7px 7px 0 #b7b7b7; }
+.contact-panel__main { padding: clamp(24px, 3.5vw, 40px); }
+.contact-panel__caption { color: #b8b8b8; font-size: .875rem; line-height: 1.5; }
+.contact-panel h3 { margin-top: 22px; font-size: clamp(1.8rem, 3.2vw, 2.5rem); font-weight: 650; line-height: 1.15; letter-spacing: -.05em; }
+.contact-panel__main > p { margin-top: 18px; max-width: 340px; color: #b8b8b8; font-size: 1rem; line-height: 1.7; }
+.contact-panel__whatsapp { display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; margin-top: 30px; padding: 14px 16px; color: #090909; background: #fff; border: 2px solid #fff; box-shadow: 4px 4px 0 #686868; font-size: 1rem; font-weight: 700; text-align: center; line-height: 1.4; transition: transform 180ms ease, box-shadow 180ms ease; }
+.contact-panel__whatsapp svg { flex-shrink: 0; }
+.contact-panel__whatsapp:hover { transform: translate(4px, 4px); box-shadow: 0 0 0 #686868; }
+.contact-social { display: flex; align-items: center; gap: 14px; min-height: 90px; padding: 18px clamp(24px, 3.5vw, 40px); border-top: 1px solid #414141; transition: background-color 180ms ease; }
+.contact-social:hover { background: #202020; }
+.contact-social__icon { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border: 1px solid #555; }
+.contact-social__identity { display: flex; flex: 1; flex-direction: column; min-width: 0; gap: 3px; }
+.contact-social__name { font-size: 1rem; font-weight: 650; }
+.contact-social__detail { color: #b8b8b8; font-size: .875rem; line-height: 1.5; overflow-wrap: anywhere; }
+.contact-social__action { color: #b8b8b8; font-size: .875rem; flex-shrink: 0; }
+.contact-section a:focus-visible { outline: 2px solid #090909; outline-offset: 5px; }
+.contact-panel a:focus-visible { position: relative; outline: 2px solid #fff; outline-offset: -6px; }
+@media (max-width: 767px) {
+  .contact-section__layout { grid-template-columns: minmax(0, 1fr); grid-template-areas: 'intro' 'panel' 'email'; gap: 36px; }
+  .contact-section__title { font-size: clamp(2.75rem, 11.5vw, 5rem); }
+  .contact-section__description { max-width: 540px; margin-top: 20px; }
+  .contact-email { margin-top: 0; }
+  .contact-email__address { font-size: clamp(1rem, 4.5vw, 1.35rem); }
+  .contact-panel { margin-right: 7px; }
+  .contact-panel h3 { font-size: 2rem; }
+}
+@media (max-width: 374px) {
+  .contact-social { padding-inline: 20px; gap: 10px; }
+  .contact-social__action { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-section a { transition: none; }
+  .contact-panel__whatsapp:hover { transform: none; }
+}

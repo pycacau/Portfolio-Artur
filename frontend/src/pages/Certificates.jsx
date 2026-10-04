@@ -1,17 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Construction, Award } from 'lucide-react';
+import SectionAtmosphere from '../components/SectionAtmosphere';
 
 const Certificates = () => {
   return (
-    <div className="min-h-screen bg-black pt-24 pb-16">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="portfolio-section portfolio-section--dark min-h-screen relative overflow-x-clip pt-28 pb-20" data-page-shell data-gsap-reveal>
+      <SectionAtmosphere theme="dark" intensity="soft" />
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 relative z-10">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.35 }}
         >
           <motion.span
             className="inline-block px-4 py-1.5 bg-white text-black text-sm font-medium rounded-full mb-6"
@@ -22,7 +24,7 @@ const Certificates = () => {
             <Award className="w-4 h-4 inline mr-2" />
             Certificados & Diplomas
           </motion.span>
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <h1 className="display-title display-title--light text-[clamp(3rem,10vw,5rem)] mb-4">
             Certificados
           </h1>
           <p className="text-xl text-gray-400">
@@ -35,19 +37,19 @@ const Certificates = () => {
           className="flex flex-col items-center justify-center py-20"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.35, delay: 0.12 }}
         >
           <div className="relative">
             {/* Animated background glow */}
             <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-gray-700 to-gray-500 rounded-full blur-3xl opacity-20"
+              className="absolute inset-0 bg-gradient-to-r from-white/20 to-white/5 rounded-full blur-3xl opacity-20"
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             />
             
             {/* Icon Container */}
             <motion.div
-              className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-12 mb-8"
+              className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-none p-10 mb-8"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >

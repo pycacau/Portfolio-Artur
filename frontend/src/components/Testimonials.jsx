@@ -1,105 +1,89 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Quote } from 'lucide-react';
-import { useDevicePerformance } from '@/hooks/use-device-performance';
+import { BriefcaseBusiness, Star, ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { motion, MotionConfig } from 'framer-motion';
+import { feedbackExamples } from '@/data/feedbackExamples';
+import { composeFeedbacks } from '@/lib/reviews';
+import useReviews from '@/hooks/useReviews';
+import './Testimonials.css';
 
-const Testimonials = () => {
-  const { lowMotion, reduceMotion } = useDevicePerformance();
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-
-  const testimonials = [
-    {
-      name: 'Dr. Francisco Roney',
-      role: 'roney.adv.br',
-      content: 'O Artur captou a seriedade que precisavamos. O site virou nossa ferramenta de autoridade.',
-      initials: 'FR',
-      color: 'bg-slate-700',
-    },
-    {
-      name: 'Rafaela Melo',
-      role: 'Agronoma',
-      content: 'Design e performance excelentes. O site e rapido e condiz com minha atuacao no campo.',
-      initials: 'RM',
-      color: 'bg-emerald-700',
-    },
-    {
-      name: 'Lidiane Rodrigues',
-      role: 'Empreendedora',
-      content: 'Superou expectativas. Layout limpo e focado em conversao. Profissional nota 10.',
-      initials: 'LR',
-      color: 'bg-pink-600',
-    },
-    {
-      name: 'Equipe Codexa',
-      role: 'Agencia Tech',
-      content: 'Tranquilidade total. Ele entende o negocio e transforma em codigo de alta performance.',
-      initials: 'EC',
-      color: 'bg-indigo-600',
-    },
-  ];
-
-  return (
-    <section id="depoimentos" className="py-20 bg-white relative border-y-2 border-black" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <motion.div
-          className="mb-12"
-          initial={reduceMotion ? false : { opacity: 0, y: lowMotion ? 10 : 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={reduceMotion ? undefined : { duration: lowMotion ? 0.3 : 0.5 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-black text-black tracking-tighter uppercase leading-none italic">
-            Feedback <span className="text-gray-400 font-light">Real</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pb-2 md:pb-0">
-          {testimonials.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={reduceMotion ? false : { opacity: 0, y: lowMotion ? 10 : 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={reduceMotion ? undefined : { delay: lowMotion ? index * 0.04 : index * 0.1, duration: lowMotion ? 0.22 : 0.4 }}
-              className="
-                bg-white p-3 sm:p-8 border-2 border-black rounded-none
-                flex flex-col justify-between
-                hover:translate-x-[-2px] hover:translate-y-[-2px]
-                sm:hover:translate-x-[-4px] sm:hover:translate-y-[-4px]
-                hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-                sm:hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]
-                transition-all duration-300 group
-              "
-            >
-              <div>
-                <div className="flex items-center gap-2 sm:gap-4 mb-3 sm:mb-6">
-                  <div
-                    className={`w-9 h-9 sm:w-12 sm:h-12 ${item.color} border-2 border-black flex items-center justify-center text-white font-black text-[10px] sm:text-sm shrink-0 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]`}
-                  >
-                    {item.initials}
-                  </div>
-                  <div className="overflow-hidden">
-                    <h4 className="text-black font-black text-[11px] sm:text-sm uppercase tracking-tight truncate italic">
-                      {item.name}
-                    </h4>
-                    <p className="text-gray-500 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider sm:tracking-widest truncate">
-                      {item.role}
-                    </p>
-                  </div>
-                </div>
-                <p className="text-black font-medium text-[11px] sm:text-sm leading-snug sm:leading-relaxed italic">
-                  "{item.content}"
-                </p>
-              </div>
-
-              <div className="mt-3 sm:mt-6 flex justify-end text-black opacity-20 group-hover:opacity-100 transition-opacity">
-                <Quote size={16} className="sm:w-5 sm:h-5" fill="currentColor" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+const StoryCard = ({ item, duplicate = false }) => (
+  <article className="feedback-card" aria-hidden={duplicate ? 'true' : undefined}>
+    <div className="feedback-card__label"><span />{item.isExample ? 'Espaço reservado' : 'Avaliação enviada'}</div>
+    {!item.isExample && <div className="feedback-card__stars" aria-label={`${item.rating} de 5 estrelas`}>
+      {[1,2,3,4,5].map(value => <Star key={value} size={13} fill={value <= item.rating ? 'currentColor' : 'none'} aria-hidden="true" />)}
+    </div>}
+    <p className="feedback-card__text">{item.text}</p>
+    <div className="feedback-card__client">
+      <div className="feedback-card__avatar" aria-hidden="true">{item.photoUrl ? <img src={item.photoUrl} alt="" width="42" height="42" loading="lazy" /> : item.isExample ? item.id.slice(-2) : item.name.split(/\s+/).slice(0,2).map(part => part[0]).join('')}</div>
+      <div className="feedback-card__identity">
+        <h3>{item.isExample ? 'Seu comentário aparece aqui' : item.name}</h3>
+        <p>{item.isExample ? item.role : item.projectName || 'Projeto web'}</p>
       </div>
-    </section>
+    </div>
+    {item.projectUrl && <a className="feedback-card__project" href={item.projectUrl} target="_blank" rel="noopener noreferrer nofollow ugc" tabIndex={duplicate ? -1 : undefined}>Ver projeto<ArrowUpRight size={12} /></a>}
+  </article>
+);
+
+export const TestimonialsColumn = ({ testimonials, duration = 18, direction = 'up', decorative = false }) => {
+  return (
+    <div className="feedback-column" data-direction={direction}>
+      <motion.div className="feedback-column__track" drag={false} draggable={false}
+        animate={{ y: direction === 'down' ? ['-50%', '0%'] : ['0%', '-50%'] }}
+        transition={{ duration, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}>
+        {[false, true].map(copy => (
+          <div className="feedback-column__group" key={String(copy)} aria-hidden={copy ? 'true' : undefined}>
+            {testimonials.map(item => <StoryCard key={item.id} item={item} duplicate={copy || decorative} />)}
+          </div>
+        ))}
+      </motion.div>
+    </div>
   );
 };
 
-export default Testimonials;
+export default function Testimonials() {
+  const { reviews, error } = useReviews();
+  const items = composeFeedbacks(reviews, feedbackExamples);
+  const columns = [0,1,2].map(index => items.filter((_, itemIndex) => itemIndex % 3 === index));
+  const durations = [18, 23, 20];
+  const average = reviews.length ? (reviews.reduce((total, review) => total + review.rating, 0) / reviews.length).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : null;
+  const renderColumns = (decorative = false) => columns.map((column, index) => <TestimonialsColumn key={index}
+    testimonials={column} duration={durations[index] * column.length / 3} direction={index === 1 ? 'down' : 'up'} decorative={decorative} />);
+  return (
+    <MotionConfig reducedMotion="never">
+    <section id="depoimentos" className="portfolio-section portfolio-section--paper feedback-section py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 min-w-0">
+        <div className="feedback-heading">
+          <div>
+            <div className="section-eyebrow section-eyebrow--dark mb-5" data-gsap-reveal>
+              <BriefcaseBusiness size={12} />
+              <span>Feedbacks & experiências</span>
+            </div>
+            <h2 className="display-title display-title--dark text-[clamp(2.8rem,10vw,5rem)] md:text-[5.2rem]" data-gsap-title>
+              FEEDBACKS<br />& EXPERIÊNCIAS
+            </h2>
+          </div>
+          <p className="feedback-heading__description" data-gsap-reveal>
+            Compartilhe a sua experiência e ajude outras pessoas a conhecerem meu trabalho.
+          </p>
+        </div>
+
+        <div className="feedback-toolbar">
+          <span><span className="feedback-toolbar__dot" />{reviews.length ? `${reviews.length} ${reviews.length === 1 ? 'avaliação recebida' : 'avaliações recebidas'} · ${average}/5` : 'Ainda sem avaliações recebidas'}</span>
+          <Link to="/avaliar" className="feedback-review-link">Deixar uma avaliação<ArrowUpRight size={14} /></Link>
+        </div>
+
+        {error && <p className="feedback-unavailable" role="status">{error}</p>}
+        <div id="feedback-columns" className="feedback-wall">
+          <div className="feedback-wall__columns">
+            {renderColumns()}
+          </div>
+          <div className="feedback-wall__blur" aria-hidden="true">
+            <div className="feedback-wall__columns">{renderColumns(true)}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </MotionConfig>
+  );
+}

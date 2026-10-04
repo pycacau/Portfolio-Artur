@@ -1,130 +1,160 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Code2, Shield, Briefcase, User } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import ProfileCard from './ProfileCard';
+import HeroGridWaterfall from './HeroGridWaterfall';
 
 const About = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  const stats = [
-    { icon: Code2, number: '50+', label: 'Projetos' },
-    { icon: Briefcase, number: '4+', label: 'Anos Exp.' },
-    { icon: Shield, number: '20+', label: 'Clientes' },
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.3 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  const handleContactClick = () => {
+    document.getElementById('contato')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="sobre" className="py-24 md:py-32 bg-white relative overflow-hidden border-b-2 border-black" ref={ref}>
-      {/* Grid de fundo sutil */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#000000_1px,transparent_1px)] [background-size:20px_20px]" />
-      </div>
-      
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* Layout de Texto e Imagem */}
-        <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-center mb-24">
-          
-          {/* FOTO À ESQUERDA */}
-          <motion.div
-            className="lg:col-span-5 order-2 lg:order-1"
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8 }}
+    <section
+      id="sobre"
+      className="relative overflow-hidden py-20 md:py-24 lg:py-28"
+      style={{ background: '#ebebea', color: '#111' }}
+    >
+      <HeroGridWaterfall />
+
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10 min-w-0">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 md:mb-12 lg:mb-16"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="w-12 h-px bg-black/20" />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-black/40">
+              Sobre mim
+            </span>
+          </div>
+          <h2
+            className="font-black leading-[0.95] tracking-tight text-black mb-4"
+            style={{
+              fontSize: 'clamp(2.25rem, 5vw, 3.5rem)',
+              fontFamily: '"Archivo Black","Arial Black",Helvetica,Arial,sans-serif',
+            }}
           >
-            <div className="relative group w-full max-w-md mx-auto lg:mx-0">
-              <div className="absolute inset-0 bg-black translate-x-4 translate-y-4" />
-              <div className="relative border-2 border-black bg-white p-0 rounded-none overflow-hidden transition-transform group-hover:-translate-x-1 group-hover:-translate-y-1 duration-300">
-                <img
-                  src="/profile.jpeg"
-                  alt="Artur Maciel Cacau"
-                  className="w-full aspect-[4/5] object-cover"
-                />
-                <div className="absolute top-4 left-4 bg-black border-2 border-white text-white px-3 py-1 flex items-center gap-2 shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">
-                  <div className="w-2 h-2 bg-green-500 rounded-none animate-pulse" />
-                  <span className="text-[10px] font-black uppercase tracking-widest">Ativo</span>
-                </div>
-              </div>
-            </div>
+            ARTUR MACIEL
+          </h2>
+          <p className="text-base md:text-lg text-black/[0.55] max-w-xl font-medium leading-relaxed">
+            Desenvolvedor Full-Stack transformando ideias em produtos digitais
+          </p>
+        </motion.div>
+
+        {/* Main Grid */}
+        <div className="grid gap-10 md:gap-12 lg:grid-cols-[minmax(280px,360px)_minmax(0,1fr)] lg:gap-12 xl:gap-16 items-center">
+          {/* Profile Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-[360px] mx-auto lg:mx-0 min-w-0"
+          >
+            <ProfileCard
+              name="Artur Maciel"
+              title="Desenvolvedor Full-Stack"
+              handle="@arturmaciel.py"
+              verified={true}
+              status="Disponível"
+              contactText="Vamos Conversar"
+              avatarUrl="/profile.jpeg"
+              showUserInfo={true}
+              enableTilt={true}
+              enableMobileTilt={true}
+              onContactClick={handleContactClick}
+              iconUrl="/profile-iconpattern.png"
+              grainUrl="/profile-grain.webp"
+              behindGlowEnabled={false}
+              innerGradient="linear-gradient(145deg, #353535 0%, #141414 58%, #090909 100%)"
+            />
           </motion.div>
 
-          {/* CONTEÚDO DE TEXTO À DIREITA */}
+          {/* Content */}
           <motion.div
-            className="lg:col-span-7 order-1 lg:order-2"
-            variants={containerVariants}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full max-w-xl mx-auto lg:mx-0 min-w-0 space-y-6 md:space-y-7"
           >
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1 bg-black text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8 border-2 border-black shadow-[4px_4px_0px_0px_rgba(200,200,200,1)]">
-              <User size={12} strokeWidth={3} />
-              <span>Sua trajetória</span>
-            </motion.div>
-            
-            <motion.h2 variants={itemVariants} className="text-6xl md:text-8xl font-black text-black mb-10 tracking-tighter leading-[0.85] uppercase italic">
-              ARTUR MACIEL
-            </motion.h2>
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-full text-[11px] font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+                  Desenvolvedor Full-Stack
+                </span>
+                <span className="text-xs font-medium text-black/60">Técnico em Informática</span>
+              </div>
+              <p className="text-xl lg:text-2xl leading-[1.45] text-black/[0.85] font-medium max-w-[36ch]">
+                Transformo problemas complexos em produtos digitais{' '}
+                <span className="relative inline-block">
+                  <span className="relative z-10">claros, rápidos e seguros</span>
+                  <span className="absolute bottom-1 left-0 right-0 h-2 bg-black/[0.06] -z-0" />
+                </span>
+                .
+              </p>
+            </div>
 
-            <motion.div variants={itemVariants} className="space-y-6 text-black leading-tight text-xl font-medium max-w-2xl border-l-4 border-black pl-6">
-              <p>
-                <span className="bg-black text-white px-1">Desenvolvedor Full-Stack e Técnico em Informática</span>. Transformo problemas complexos em interfaces simples, rápidas e seguras.
-              </p>
-              <p className="text-gray-600 leading-relaxed text-lg font-normal">
-                Com especialização em arquitetura de sistemas escaláveis e interfaces modernas, atuo desde a concepção até a implementação final de projetos digitais.
-              </p>
-              <p className="text-gray-600 leading-relaxed text-lg font-normal">
-                Minha abordagem combina fundamentos técnicos sólidos com design estratégico, garantindo soluções que não apenas funcionam bem, mas também geram resultados reais para negócios.
-              </p>
+            {/* Description blocks */}
+            <div className="space-y-5 md:space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="group relative pl-7 md:pl-8"
+              >
+                <div aria-hidden="true" className="absolute left-[3px] top-2 -bottom-7 md:-bottom-8 w-px bg-black/20" />
+                <div aria-hidden="true" className="absolute left-0 top-1 z-10 w-2 h-2 rounded-full bg-black ring-4 ring-[#ebebea] transition-transform duration-300 group-hover:scale-125" />
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.12em] text-black/70 mb-2">
+                  O que eu desenvolvo
+                </h3>
+                <p className="text-[15px] md:text-base leading-[1.65] text-black/[0.65] group-hover:text-black/80 transition-colors">
+                  Crio sites institucionais, lojas virtuais e sistemas web. Cuido da interface, das funcionalidades e da integração com o banco de dados para entregar uma solução completa.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="group relative pl-7 md:pl-8"
+              >
+                <div aria-hidden="true" className="absolute left-0 top-1 z-10 w-2 h-2 rounded-full bg-black ring-4 ring-[#ebebea] transition-transform duration-300 group-hover:scale-125" />
+                <h3 className="text-[11px] font-bold uppercase tracking-[0.12em] text-black/70 mb-2">
+                  Como eu trabalho
+                </h3>
+                <p className="text-[15px] md:text-base leading-[1.65] text-black/[0.65] group-hover:text-black/80 transition-colors">
+                  Começo entendendo o que seu negócio precisa. Planejo a estrutura, desenvolvo e testo cada etapa, com atenção à experiência no celular, à velocidade e à facilidade de manutenção.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="pt-1"
+            >
+              <motion.button
+                onClick={handleContactClick}
+                className="group inline-flex items-center gap-2.5 px-6 py-3 min-h-11 bg-black text-white rounded-full border-2 border-black font-semibold text-xs uppercase tracking-wider shadow-[4px_4px_0_#777773] transition-[transform,box-shadow] duration-200 hover:translate-x-1 hover:translate-y-1 hover:shadow-none active:translate-x-1 active:translate-y-1 active:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-4 focus-visible:ring-offset-[#ebebea]"
+              >
+                Iniciar Projeto
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" strokeWidth={2.5} />
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>
-
-        {/* FAIXA DE ESTATÍSTICAS CENTRALIZADA EMBAIXO */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6, duration: 0.8 }}
-          className="relative w-full"
-        >
-          {/* Sombra da faixa */}
-          <div className="absolute inset-0 bg-black translate-x-2 translate-y-2 md:translate-x-3 md:translate-y-3" />
-          
-          {/* Faixa Principal */}
-          <div className="relative bg-white border-2 border-black grid grid-cols-1 sm:grid-cols-3 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-black overflow-hidden">
-            {stats.map((stat, index) => {
-              const Icon = stat.icon;
-              return (
-                <div 
-                  key={index} 
-                  className="flex flex-col items-center justify-center p-8 md:p-10 hover:bg-black hover:text-white transition-all duration-300 group cursor-default"
-                >
-                  <div className="flex items-center gap-3 mb-2">
-                    <Icon className="w-5 h-5 text-gray-400 group-hover:text-white" strokeWidth={3} />
-                    <span className="text-4xl md:text-5xl font-black italic tracking-tighter leading-none">
-                      {stat.number}
-                    </span>
-                  </div>
-                  <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] font-black opacity-60 group-hover:opacity-100">
-                    {stat.label}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

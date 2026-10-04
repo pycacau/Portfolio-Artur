@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { EtheralShadow } from '../components/ui/etheral-shadow';
+import SectionAtmosphere from '../components/SectionAtmosphere';
 import { Shield, FileText, AlertCircle, Scale, CheckCircle } from 'lucide-react';
 
 const TermsOfService = () => {
@@ -19,22 +19,13 @@ const TermsOfService = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 }
+      transition: { duration: 0.35 }
     }
   };
 
   return (
-    <div className="min-h-screen bg-black text-white relative overflow-hidden pt-32 pb-24">
-      {/* Background Effect */}
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
-        <EtheralShadow
-          color="rgba(100, 100, 100, 0.5)"
-          animation={{ scale: 40, speed: 60 }}
-          noise={{ opacity: 0.3, scale: 1.2 }}
-          sizing="fill"
-          className="w-full h-full"
-        />
-      </div>
+    <div className="portfolio-section portfolio-section--dark min-h-screen text-white relative overflow-x-clip pt-32 pb-24" data-page-shell data-gsap-reveal>
+      <SectionAtmosphere theme="dark" intensity="soft" />
 
       <motion.div 
         className="container mx-auto px-6 relative z-10 max-w-4xl"
@@ -46,17 +37,17 @@ const TermsOfService = () => {
           <div className="inline-flex items-center justify-center p-3 bg-white/5 rounded-full mb-6 backdrop-blur-sm border border-white/10">
             <Scale className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Termos de Uso</h1>
+          <h1 className="display-title display-title--light text-[clamp(2.8rem,10vw,5rem)] mb-6">Termos de Uso</h1>
           <p className="text-xl text-gray-400">
             Última atualização: {new Date().toLocaleDateString('pt-BR')}
           </p>
         </motion.div>
 
         <div className="space-y-12">
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
+          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-blue-500/10 rounded-lg mt-1">
-                <CheckCircle className="w-6 h-6 text-blue-400" />
+              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
+                <CheckCircle className="w-6 h-6 text-white/70" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-white">1. Aceitação dos Termos</h2>
@@ -67,10 +58,10 @@ const TermsOfService = () => {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
+          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-purple-500/10 rounded-lg mt-1">
-                <FileText className="w-6 h-6 text-purple-400" />
+              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
+                <FileText className="w-6 h-6 text-white/70" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-white">2. Uso de Licença</h2>
@@ -87,10 +78,10 @@ const TermsOfService = () => {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
+          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-yellow-500/10 rounded-lg mt-1">
-                <AlertCircle className="w-6 h-6 text-yellow-400" />
+              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
+                <AlertCircle className="w-6 h-6 text-white/70" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-white">3. Isenção de Responsabilidade</h2>
@@ -101,10 +92,10 @@ const TermsOfService = () => {
             </div>
           </motion.section>
 
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-3xl p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
+          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-green-500/10 rounded-lg mt-1">
-                <Shield className="w-6 h-6 text-green-400" />
+              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
+                <Shield className="w-6 h-6 text-white/70" />
               </div>
               <div>
                 <h2 className="text-2xl font-bold mb-4 text-white">4. Limitações</h2>

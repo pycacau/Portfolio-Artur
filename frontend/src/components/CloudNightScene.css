@@ -1,0 +1,74 @@
+.portfolio-night {
+  --night-surface: #0c0d10;
+  --night-ink: #f0f1f3;
+  --cloud-height: clamp(180px, 32vw, 640px);
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  background: linear-gradient(to bottom, var(--night-surface) var(--light-cloud-start, 100%), #ebebea var(--light-cloud-end, 100%), #ebebea var(--footer-cloud-start, 100%), var(--night-surface) var(--footer-cloud-end, 100%));
+  color: var(--night-ink);
+}
+
+/* Blend only inside the dense middle of the cloud bank, including narrow screens. */
+.portfolio-night::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--cloud-height);
+  background: linear-gradient(to bottom, #ebebea 48%, var(--night-surface) 52%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.portfolio-night__grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cloud-transition {
+  position: relative;
+  z-index: 2;
+  height: var(--cloud-height);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.cloud-transition img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cloud-transition--footer { height: clamp(96px, 11vw, 180px); }
+.cloud-transition--footer img { position: absolute; top: 50%; width: 100%; height: auto; max-width: none; transform: translateY(-55%); }
+.portfolio-footer-scene { position: relative; z-index: 2; color: var(--night-ink); }
+
+.portfolio-night > .portfolio-section {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  color: var(--night-ink);
+}
+.portfolio-night #servicos { padding-top: clamp(24px, 5vw, 72px); }
+
+/* Recolor the formerly light home sections without changing their layouts. */
+.portfolio-night > .portfolio-section--paper .display-title--dark { color: var(--night-ink); }
+.portfolio-night > .portfolio-section--paper .section-eyebrow--dark { color: rgba(240, 241, 243, 0.55); }
+.portfolio-night > .portfolio-section--paper .text-black { color: var(--night-ink); }
+.portfolio-night > .portfolio-section--paper [class*="text-black/"] { color: rgba(240, 241, 243, 0.68); }
+.portfolio-night > .portfolio-section--paper [class*="text-black/35"],
+.portfolio-night > .portfolio-section--paper [class*="text-black/38"],
+.portfolio-night > .portfolio-section--paper [class*="text-black/40"] { color: rgba(240, 241, 243, 0.48); }
+.portfolio-night > .portfolio-section--paper [class*="bg-black/15"] { background: rgba(240, 241, 243, 0.15); }
+
+/* The second cloud reveals the same vertical grid on a light surface. */
+.portfolio-day { position: relative; z-index: 2; color: #090909; }
+.portfolio-day > .portfolio-section { background: transparent; }
+.portfolio-day #depoimentos { padding-top: clamp(24px, 5vw, 72px); }
