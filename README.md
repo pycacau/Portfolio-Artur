@@ -35,6 +35,8 @@ Conecte este repositório ao Pages e configure:
 
 O arquivo `.node-version` seleciona Node.js 24. O build instala as dependências do frontend, gera o site e empacota a API em `_worker.js`, no formato avançado do Pages. O binding `ASSETS` é fornecido pelo Pages. A página `/avaliar` funciona também ao abrir seu endereço diretamente.
 
+Se o projeto Pages já usa o preset React, com raiz `frontend`, comando `npm run build` e saída `build`, esse caminho também inclui a API: o `postbuild` gera `_worker.js` e `_routes.json` dentro de `frontend/build`. Não publique somente os arquivos estáticos nem desative o `postbuild`. As rotas `/api/*` devem retornar JSON; se `/api/reviews` mostrar o HTML da página inicial, a API não foi incluída no deploy. Os bindings abaixo são necessários nos dois formatos de build.
+
 Antes de receber avaliações, crie um banco D1 e um bucket R2 na sua conta Cloudflare. Em **Settings → Bindings** do projeto Pages, conecte:
 
 | Tipo | Nome do binding | Recurso |

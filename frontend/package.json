@@ -7,6 +7,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dotenv": "10.0.0",
     "framer-motion": "^12.35.1",
     "gsap": "^3.14.2",
     "lucide-react": "^0.507.0",
@@ -16,12 +17,12 @@
     "react-router-dom": "^7.5.1",
     "react-scripts": "5.0.1",
     "tailwind-merge": "^3.2.0",
-    "tailwindcss-animate": "^1.0.7",
-    "dotenv": "10.0.0"
+    "tailwindcss-animate": "^1.0.7"
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build"
+    "build": "craco build",
+    "postbuild": "node ../scripts/build-pages-worker.mjs"
   },
   "browserslist": {
     "production": [
@@ -39,6 +40,7 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^7.1.0",
     "autoprefixer": "^10.4.20",
+    "esbuild": "0.25.12",
     "eslint": "^8.57.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.2",
