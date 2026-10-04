@@ -21,7 +21,7 @@ const StoryCard = ({ item, duplicate = false }) => (
         <p>{item.isExample ? item.role : item.projectName || 'Projeto web'}</p>
       </div>
     </div>
-    {item.projectUrl && <a className="feedback-card__project" href={item.projectUrl} target="_blank" rel="noopener noreferrer nofollow ugc" tabIndex={duplicate ? -1 : undefined}>Ver projeto<ArrowUpRight size={12} /></a>}
+    {item.projectUrl && <a className="feedback-card__project" href={item.projectUrl} rel="nofollow ugc" tabIndex={duplicate ? -1 : undefined}>Ver projeto<ArrowUpRight size={12} /></a>}
   </article>
 );
 
