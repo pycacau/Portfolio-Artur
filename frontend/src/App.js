@@ -5,6 +5,8 @@ import StaggeredMenu from "@/components/StaggeredMenu";
 import Home from "@/pages/Home";
 import TermsOfService from "@/pages/TermsOfService";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import CookiePolicy from '@/pages/CookiePolicy';
+import NotFound from '@/pages/NotFound';
 import Certificates from "@/pages/Certificates";
 import ScrollToTop from "@/components/ScrollToTop";
 import SiteMotionController from "@/components/SiteMotionController";
@@ -54,8 +56,10 @@ function App() {
           <Route path="/avaliar" element={<React.Suspense fallback={<main className="min-h-screen bg-[#ebebea] p-24 text-center">Carregando formulário…</main>}><ReviewPage /></React.Suspense>} />
           <Route path="/terms" element={<TermsOfService />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
           <Route path="/certificados" element={<Certificates />} />
           <Route path="/artigos/*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <FooterOutsideHome>
         <Footer />

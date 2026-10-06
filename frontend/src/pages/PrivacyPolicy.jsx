@@ -1,118 +1,85 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import SectionAtmosphere from '../components/SectionAtmosphere';
-import { Lock, Eye, Database, Share2, Cookie } from 'lucide-react';
+import LegalPage from '../components/LegalPage';
 
-const PrivacyPolicy = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+const sections = [
+  {
+    "id": "responsavel",
+    "title": "Quem é responsável",
+    "paragraphs": [
+      "Artur Maciel Cacau é responsável pelas decisões sobre os dados tratados neste portfólio. O canal de atendimento sobre privacidade é developer@arturmaciel.com.br."
+    ]
+  },
+  {
+    "id": "dados",
+    "title": "Dados que você fornece",
+    "paragraphs": [
+      "Ao enviar uma avaliação, são registrados nome, nota, comentário, data de envio e, se preenchidos, nome do projeto, link e foto. Não é exigido login. O sistema também mantém um identificador do envio e uma versão normalizada do nome para evitar duplicidades.",
+      "Ao entrar em contato por e-mail, WhatsApp ou redes sociais, são recebidas as informações que você escolher enviar nesses canais. Não envie dados sensíveis ou documentos que não sejam necessários para o atendimento."
+    ]
+  },
+  {
+    "id": "finalidades",
+    "title": "Finalidades e bases do tratamento",
+    "paragraphs": [
+      "A publicação da avaliação, do nome e dos campos opcionais é realizada com sua autorização específica no formulário. Essa autorização pode ser revogada pelo canal de privacidade.",
+      "Informações de contato são usadas para responder solicitações e, quando aplicável, preparar propostas ou executar contratos. Dados estritamente necessários à segurança são tratados para prevenir abuso e proteger o serviço, observando a necessidade, os direitos do titular e a base legal aplicável."
+    ]
+  },
+  {
+    "id": "dados-publicos",
+    "title": "O que fica público",
+    "paragraphs": [
+      "Nome, nota, comentário, data, nome do projeto, link e foto enviados na avaliação podem ser vistos por qualquer visitante. Conteúdo público também pode ser acessado por mecanismos de busca ou copiado por terceiros.",
+      "IP e identificadores técnicos de controle não são exibidos nos cards. A foto é opcional e pode ser retirada mediante solicitação, assim como os demais campos da avaliação."
+    ]
+  },
+  {
+    "id": "seguranca",
+    "title": "Segurança e registros técnicos",
+    "paragraphs": [
+      "A infraestrutura recebe informações técnicas das requisições, como endereço IP, para entregar e proteger o site. No envio de avaliações, a aplicação transforma o IP em um identificador por hora para limitar tentativas abusivas; esse identificador não é publicado.",
+      "Registros de limitação têm expiração e são limpos em envios posteriores. Um identificador derivado de IP não deve ser entendido como garantia de anonimato. A aplicação valida os campos e arquivos enviados e utiliza conexão HTTPS, mas nenhum sistema elimina todos os riscos."
+    ]
+  },
+  {
+    "id": "fornecedores",
+    "title": "Hospedagem e serviços externos",
+    "paragraphs": [
+      "A Cloudflare fornece hospedagem, proteção, banco de dados D1 e armazenamento R2 das fotos. Esses serviços podem processar informações em infraestrutura fora do Brasil, sujeita aos mecanismos e requisitos legais aplicáveis às transferências internacionais.",
+      "Fontes e bibliotecas podem ser carregadas de provedores externos, como Google Fonts e CDN de arquivos. Esses provedores recebem as informações técnicas necessárias às requisições. Links para WhatsApp, Instagram, LinkedIn e projetos externos são regidos pelas políticas dos respectivos serviços.",
+      "Os dados das avaliações não são vendidos. O acesso por prestadores é limitado às finalidades operacionais pertinentes. Informações poderão ser fornecidas quando exigidas por obrigação legal ou ordem válida."
+    ]
+  },
+  {
+    "id": "retencao",
+    "title": "Por quanto tempo os dados permanecem",
+    "paragraphs": [
+      "Avaliações permanecem enquanto forem utilizadas no portfólio e a autorização de publicação estiver vigente. A retirada pode ser solicitada a qualquer momento. Dados de atendimento são mantidos pelo período necessário à solicitação, à relação contratual e às obrigações legais pertinentes.",
+      "Após uma solicitação aplicável, dados deixam de ser publicados ou são eliminados, ressalvadas hipóteses legais de conservação. Cópias técnicas de segurança podem seguir o ciclo de retenção do provedor; a retirada não garante apagar cópias já feitas por terceiros."
+    ]
+  },
+  {
+    "id": "direitos",
+    "title": "Seus direitos e como exercê-los",
+    "paragraphs": [
+      "Você pode solicitar confirmação do tratamento, acesso, correção, informações sobre compartilhamento, revogação do consentimento e eliminação quando cabível, além dos demais direitos previstos na LGPD.",
+      "Envie a solicitação para developer@arturmaciel.com.br, descrevendo o pedido e a avaliação ou atendimento relacionado. A confirmação de autoria será proporcional ao necessário. O exercício desses direitos é gratuito e observará os prazos legais aplicáveis."
+    ],
+    "link": {
+      "href": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+      "label": "Consultar a LGPD"
     }
-  };
+  },
+  {
+    "id": "cookies",
+    "title": "Cookies e estatísticas",
+    "paragraphs": [
+      "A aplicação não instala cookies de publicidade para suas funcionalidades. A infraestrutura de segurança pode usar cookies estritamente necessários, conforme os recursos habilitados. O Cloudflare Web Analytics coleta métricas de acesso e desempenho sem cookies de rastreamento.",
+      "A página de cookies detalha essas diferenças. Novas ferramentas de publicidade ou medição que alterem esse tratamento deverão ser avaliadas antes da ativação, com informação e consentimento quando necessário."
+    ]
+  }
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.35 }
-    }
-  };
-
-  return (
-    <div className="portfolio-section portfolio-section--dark min-h-screen text-white relative overflow-x-clip pt-32 pb-24" data-page-shell data-gsap-reveal>
-      <SectionAtmosphere theme="dark" intensity="soft" />
-
-      <motion.div 
-        className="container mx-auto px-6 relative z-10 max-w-4xl"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div variants={itemVariants} className="text-center mb-16">
-          <div className="inline-flex items-center justify-center p-3 bg-white/5 rounded-full mb-6 backdrop-blur-sm border border-white/10">
-            <Lock className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="display-title display-title--light text-[clamp(2.8rem,10vw,5rem)] mb-6">Política de Privacidade</h1>
-          <p className="text-xl text-gray-400">
-            Última atualização: {new Date().toLocaleDateString('pt-BR')}
-          </p>
-        </motion.div>
-
-        <div className="space-y-12">
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
-            <div className="flex items-start gap-4">
-              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
-                <Database className="w-6 h-6 text-white/70" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4 text-white">1. Coleta de Informações</h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  Coletamos informações que você nos fornece diretamente quando utiliza nosso formulário de contato ou interage conosco através de links de redes sociais. Isso pode incluir seu nome, endereço de e-mail e o conteúdo de sua mensagem.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
-            <div className="flex items-start gap-4">
-              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
-                <Eye className="w-6 h-6 text-white/70" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4 text-white">2. Uso das Informações</h2>
-                <p className="text-gray-300 leading-relaxed text-lg mb-4">
-                  As informações que coletamos são utilizadas para:
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-gray-400 ml-4">
-                  <li>Responder às suas consultas e solicitações;</li>
-                  <li>Melhorar nossos serviços e a experiência do usuário;</li>
-                  <li>Enviar atualizações sobre nossos serviços (apenas se solicitado);</li>
-                  <li>Garantir a segurança do nosso site.</li>
-                </ul>
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
-            <div className="flex items-start gap-4">
-              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
-                <Share2 className="w-6 h-6 text-white/70" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4 text-white">3. Compartilhamento de Dados</h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  Não vendemos, comercializamos ou transferimos suas informações pessoais para terceiros. Isso não inclui parceiros de hospedagem de sites e outras partes que nos auxiliam na operação do site, desde que essas partes concordem em manter essas informações confidenciais.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-
-          <motion.section variants={itemVariants} className="bg-white/5 backdrop-blur-md rounded-none p-6 sm:p-8 md:p-10 border border-white/10 hover:border-white/20 transition-colors">
-            <div className="flex items-start gap-4">
-              <div className="p-2 bg-white/[0.06] rounded-lg mt-1">
-                <Cookie className="w-6 h-6 text-white/70" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold mb-4 text-white">4. Cookies</h2>
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  Nosso site pode utilizar "cookies" para melhorar a experiência do usuário. O navegador do usuário coloca cookies no disco rígido para fins de manutenção de registros e, às vezes, para rastrear informações sobre eles. Você pode optar por configurar seu navegador para recusar cookies ou para alertá-lo quando os cookies estiverem sendo enviados.
-                </p>
-              </div>
-            </div>
-          </motion.section>
-        </div>
-
-        <motion.div variants={itemVariants} className="mt-16 text-center text-gray-500 text-sm">
-          <p>Seus dados estão seguros. Valorizamos sua privacidade e confiança.</p>
-        </motion.div>
-      </motion.div>
-    </div>
-  );
-};
-
-export default PrivacyPolicy;
+export default function PrivacyPolicy() {
+  return <LegalPage title="Política de privacidade" intro="Saiba quais informações são tratadas, por que são usadas e como solicitar acesso, correção ou retirada." sections={sections} />;
+}
